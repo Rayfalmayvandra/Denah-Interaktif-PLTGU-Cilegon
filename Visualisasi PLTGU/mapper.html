@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Polygon Mapper — PLTGU</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background: #f0ece5; color: #333; margin: 0; padding: 20px;}
+        h2 { margin-top: 0; color: #1e293b; }
+        .container { position: relative; display: inline-block; border: 4px solid #3b82f6; max-width: 1200px; border-radius: 10px; overflow: hidden; background: #e2dcd3; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);}
+        img { width: 100%; display: block; }
+        svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: crosshair; }
+        #output { margin: 20px auto; padding: 15px; background: #1e293b; color: #10b981; min-height: 50px; font-family: monospace; font-size: 14px; border-radius: 8px; max-width: 900px; text-align: left; word-break: break-all; user-select: all;}
+        .btn { padding: 10px 20px; font-size: 14px; margin: 5px; cursor: pointer; border: none; border-radius: 6px; font-weight: 600; color: #fff;}
+        .btn-clear { background: #ef4444; }
+        .btn-gen { background: #3b82f6; }
+        .btn:hover { opacity: 0.9; }
+        .instructions { background: #e0f2fe; color: #0369a1; padding: 12px 16px; border-radius: 8px; display: inline-block; margin-bottom: 15px; text-align: left; max-width: 900px; font-size: 14px; line-height: 1.6;}
+        .coord-display { background: #fff; padding: 8px 12px; border-radius: 6px; display: inline-block; margin: 10px 0; font-family: monospace; font-size: 13px; color: #555; border: 1px solid #ddd;}
+        .input-row { margin: 10px 0; }
+        .input-row label { font-weight: 600; margin-right: 8px; }
+        .input-row input { padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 180px; }
+    </style>
+</head>
+<body>
+    <h2>🔧 Alat Bantu Penempatan Bangunan (Mapper)</h2>
+    <p style="color:#64748b; margin-bottom:10px;">viewBox: <strong>0 0 8192 4320</strong> — Sesuai dengan denah SVG di index.html</p>
+    
+    <div class="instructions">
+        <strong>Cara Pakai:</strong><br>
+        1. Klik di ujung-ujung bangunan pada gambar di bawah untuk membuat pola (minimal 3 titik).<br>
+        2. Masukkan Building ID (misal: <code>newbuilding</code>) di kotak input, lalu klik <strong>"Generate Polygon"</strong>.<br>
+        3. <strong>Salin kode</strong> yang muncul di kotak hitam, lalu kirimkan ke chat atau tempel ke index.html.<br>
+        4. Klik "Hapus Titik" untuk menggambar bangunan berikutnya.
+    </div>
+
+    <div class="input-row" style="margin-bottom: 5px;">
+        <label style="cursor:pointer; margin-right:15px; font-weight:600;"><input type="radio" name="drawMode" value="building" checked onchange="changeMode()"> 🏢 Mode Bangunan</label>
+        <label style="cursor:pointer; font-weight:600;"><input type="radio" name="drawMode" value="route" onchange="changeMode()"> 🛣️ Mode Rute</label>
+    </div>
+    <div class="input-row">
+        <label for="buildingIdInput">ID / Nama:</label>
+        <input type="text" id="buildingIdInput" placeholder="misal: b1" value="b1">
+        <button class="btn btn-clear" onclick="clearPoints()">🗑️ Hapus Titik</button>
+        <button class="btn btn-gen" onclick="finishPolygon()">✅ Polygon</button>
+        <button class="btn btn-gen" style="background:#8b5cf6;" onclick="finishRect()">⬜ Rect</button>
+        <button class="btn btn-gen" style="background:#eab308; color:#000;" onclick="finishRoute()">🛣️ Simpan & Lanjut Rute</button>
+    </div>
+
+    <div class="coord-display" id="coordDisplay">Posisi kursor: —</div>
+
+    <div id="output">Kode SVG akan muncul di sini setelah generate...</div>
+
+    <div class="container" id="mapContainer">
+        <img src="denah google earth.jpg" alt="Map" onerror="this.style.display='none'">
+        <svg id="svgOverlay" viewBox="0 0 8192 4320" preserveAspectRatio="xMidYMid meet">
+            <!-- REFERENSI BANGUNAN YANG SUDAH DIBUAT (b1 - b16) -->
+            <g id="hardcoded-reference" style="pointer-events: none; fill: rgba(16, 185, 129, 0.4); stroke: #047857; stroke-width: 2;">
+                <polygon points="5431,3281 5424,3271 5424,3271 5424,3271 5424,3264 6271,3291 6244,4090 5431,4069"></polygon>
+                <text x="5830" y="3670" fill="#fff" font-size="24" font-weight="bold">b1</text>
+                <polygon points="1315,1602 2762,1677 2742,2483 1335,2469"></polygon>
+                <text x="2040" y="2030" fill="#fff" font-size="24" font-weight="bold">b2</text>
+                <polygon points="693,2850 686,2977 864,2969 864,2850"></polygon>
+                <text x="777" y="2912" fill="#fff" font-size="12" font-weight="bold">b3</text>
+                <polygon points="864,3600 864,3741 1035,3749 1020,3600"></polygon>
+                <text x="946" y="3673" fill="#fff" font-size="12" font-weight="bold">b4</text>
+                <polygon points="701,3615 812,3615 812,3704 708,3704"></polygon>
+                <text x="758" y="3660" fill="#fff" font-size="12" font-weight="bold">b5</text>
+                <polygon points="656,3415 515,3385 582,3095 723,3125"></polygon>
+                <text x="619" y="3255" fill="#fff" font-size="12" font-weight="bold">b6</text>
+                <polygon points="597,3608 656,3704 552,3741 508,3652"></polygon>
+                <text x="578" y="3676" fill="#fff" font-size="12" font-weight="bold">b7</text>
+                <polygon points="1317,2969 1554,2977 1584,3533 1324,3519"></polygon>
+                <text x="1445" y="3250" fill="#fff" font-size="12" font-weight="bold">b8</text>
+                <polygon points="1250,2702 1243,2821 1391,2821 1399,2702"></polygon>
+                <text x="1321" y="2762" fill="#fff" font-size="12" font-weight="bold">b9</text>
+                <polygon points="2067,3207 2237,3326 2312,3147 2141,3066"></polygon>
+                <text x="2189" y="3187" fill="#fff" font-size="12" font-weight="bold">b10</text>
+                <polygon points="2579,2821 2690,2813 2690,3036 2571,3029"></polygon>
+                <text x="2633" y="2925" fill="#fff" font-size="12" font-weight="bold">b11</text>
+                <polygon points="3061,2116 3358,2116 3343,2850 3069,2843"></polygon>
+                <text x="3208" y="2481" fill="#fff" font-size="12" font-weight="bold">b12</text>
+                <polygon points="3046,1321 3403,1329 3403,1663 3039,1641"></polygon>
+                <text x="3223" y="1489" fill="#fff" font-size="12" font-weight="bold">b12</text>
+                <polygon points="2764,445 3232,453 3232,854 2787,839"></polygon>
+                <text x="3004" y="648" fill="#fff" font-size="12" font-weight="bold">b13</text>
+                <polygon points="3277,379 3700,379 3707,972 3284,958"></polygon>
+                <text x="3492" y="672" fill="#fff" font-size="12" font-weight="bold">b14</text>
+                <polygon points="2519,1151 2519,1470 2126,1462 2141,1158"></polygon>
+                <text x="2326" y="1310" fill="#fff" font-size="12" font-weight="bold">b15</text>
+                <polygon points="2282,1010 2289,520 1309,512 1317,995"></polygon>
+                <text x="1799" y="759" fill="#fff" font-size="12" font-weight="bold">b16</text>
+            </g>
+
+            <polygon id="currentPolygon" points="" style="fill:rgba(59, 130, 246, 0.35); stroke:#2563eb; stroke-width:2;" />
+            <polyline id="currentPolyline" points="" style="fill:none; stroke:#FFD700; stroke-width:15; stroke-dasharray:30,15; stroke-linecap:round; display:none;" />
+            <line id="previewLine" x1="0" y1="0" x2="0" y2="0" style="stroke:#ef4444; stroke-width:4; stroke-dasharray:10,5; display:none; pointer-events:none;" />
+        </svg>
+    </div>
+
+    <!-- PENTING: Sertakan app.js agar mapper.html punya data bangunan -->
+    <script src="app.js"></script>
+
+    <script>
+        const svg = document.getElementById('svgOverlay');
+        const polygon = document.getElementById('currentPolygon');
+        const polyline = document.getElementById('currentPolyline');
+        const previewLine = document.getElementById('previewLine');
+        const output = document.getElementById('output');
+        const coordDisplay = document.getElementById('coordDisplay');
+        let points = [];
+        let savedRoutes = []; // Menyimpan semua rute dalam satu sesi
+        let currentMode = 'building';
+
+        function changeMode() {
+            currentMode = document.querySelector('input[name="drawMode"]:checked').value;
+            if (currentMode === 'building') {
+                polygon.style.display = 'block';
+                polyline.style.display = 'none';
+            } else {
+                polygon.style.display = 'none';
+                polyline.style.display = 'block';
+            }
+        }
+
+        // viewBox dimensions (must match index.html SVG)
+        const VB_WIDTH = 8192;
+        const VB_HEIGHT = 4320;
+
+        function getSVGCoords(e) {
+            const rect = svg.getBoundingClientRect();
+            const scaleX = VB_WIDTH / rect.width;
+            const scaleY = VB_HEIGHT / rect.height;
+            const x = Math.round((e.clientX - rect.left) * scaleX);
+            const y = Math.round((e.clientY - rect.top) * scaleY);
+            return { x, y };
+        }
+
+        // Live coordinate display on mousemove
+        svg.addEventListener('mousemove', (e) => {
+            const { x, y } = getSVGCoords(e);
+            coordDisplay.textContent = `Posisi kursor: x=${x}, y=${y}`;
+            
+            // Tampilkan garis panduan (preview line) yang mengikuti kursor
+            if (points.length > 0) {
+                const lastPoint = points[points.length - 1];
+                previewLine.setAttribute('x1', lastPoint.x);
+                previewLine.setAttribute('y1', lastPoint.y);
+                previewLine.setAttribute('x2', x);
+                previewLine.setAttribute('y2', y);
+                previewLine.style.display = 'block';
+            } else {
+                previewLine.style.display = 'none';
+            }
+        });
+
+        svg.addEventListener('click', (e) => {
+            const { x, y } = getSVGCoords(e);
+            points.push({ x, y });
+            const ptsStr = points.map(p => `${p.x},${p.y}`).join(' ');
+            polygon.setAttribute('points', ptsStr);
+            polyline.setAttribute('points', ptsStr);
+            
+            // Draw point marker
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', x);
+            circle.setAttribute('cy', y);
+            circle.setAttribute('r', 4);
+            circle.setAttribute('class', 'point-marker');
+            circle.setAttribute('fill', '#ef4444');
+            circle.setAttribute('stroke', '#fff');
+            circle.setAttribute('stroke-width', '1');
+            svg.appendChild(circle);
+
+            // Draw coordinate label
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', x + 6);
+            text.setAttribute('y', y - 6);
+            text.setAttribute('class', 'point-marker');
+            text.setAttribute('fill', '#ef4444');
+            text.setAttribute('font-size', '8');
+            text.setAttribute('font-family', 'monospace');
+            text.textContent = `${x},${y}`;
+            svg.appendChild(text);
+        });
+
+        function clearPoints() {
+            points = [];
+            polygon.setAttribute('points', '');
+            polyline.setAttribute('points', '');
+            previewLine.style.display = 'none';
+            const markers = document.querySelectorAll('.point-marker');
+            markers.forEach(m => m.remove());
+            output.innerHTML = "Kode SVG akan muncul di sini setelah generate...";
+        }
+
+        function checkDuplicateId(bid) {
+            // Cek di app.js data
+            if (typeof buildingData !== 'undefined' && buildingData[bid]) {
+                alert(`ID sudah dipakai dengan nama '${buildingData[bid].name}'! Silakan gunakan ID lain agar tidak bentrok.`);
+                return true;
+            }
+            
+            // Cek di localStorage (bangunan yang baru saja digambar)
+            let savedLocal = JSON.parse(localStorage.getItem('mappedPolygons') || '[]');
+            if (savedLocal.find(item => item.id === bid)) {
+                alert(`ID '${bid}' sudah Anda gunakan barusan di sesi ini! Silakan gunakan ID lain.`);
+                return true;
+            }
+            
+            return false;
+        }
+
+        function saveToLocalStorage(bid, type, params) {
+            let savedLocal = JSON.parse(localStorage.getItem('mappedPolygons') || '[]');
+            savedLocal.push({ id: bid, type: type, params: params });
+            localStorage.setItem('mappedPolygons', JSON.stringify(savedLocal));
+        }
+
+        function finishPolygon() {
+            if (points.length < 3) {
+                alert("Klik minimal 3 titik untuk membuat polygon!");
+                return;
+            }
+            const bid = document.getElementById('buildingIdInput').value.trim() || 'b1';
+            
+            if (checkDuplicateId(bid)) return;
+
+            const ptsStr = points.map(p => `${p.x},${p.y}`).join(' ');
+            
+            // Hitung titik tengah untuk teks
+            const cx = Math.round(points.reduce((a,p)=>a+p.x,0)/points.length);
+            const cy = Math.round(points.reduce((a,p)=>a+p.y,0)/points.length);
+            
+            const code = `<g data-building-id="${bid}" class="building-polygon" role="button" tabindex="0" aria-label="${bid}">
+    <polygon points="${ptsStr}" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+    <text x="${cx}" y="${cy}" class="bldg-label" font-size="9">${bid}</text>
+</g>`;
+            output.textContent = code;
+
+            // Gambar penanda permanen di layar mapper
+            const savedPoly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+            savedPoly.setAttribute('points', ptsStr);
+            savedPoly.setAttribute('style', 'fill:rgba(16, 185, 129, 0.5); stroke:#047857; stroke-width:2; pointer-events:none;');
+            svg.insertBefore(savedPoly, polygon);
+
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', cx);
+            text.setAttribute('y', cy);
+            text.setAttribute('fill', '#fff');
+            text.setAttribute('font-size', '12');
+            text.setAttribute('font-weight', 'bold');
+            text.setAttribute('style', 'pointer-events:none;');
+            text.textContent = bid;
+            svg.insertBefore(text, polygon);
+
+            // Simpan ke localStorage
+            saveToLocalStorage(bid, 'polygon', { ptsStr, cx, cy });
+
+            // Bersihkan titik untuk menggambar bangunan berikutnya
+            points = [];
+            polygon.setAttribute('points', '');
+            polyline.setAttribute('points', '');
+            document.querySelectorAll('.point-marker').forEach(m => m.remove());
+        }
+
+        function finishRect() {
+            if (points.length < 2) {
+                alert("Klik minimal 2 titik (sudut kiri-atas dan kanan-bawah) untuk membuat rect!");
+                return;
+            }
+            const bid = document.getElementById('buildingIdInput').value.trim() || 'b1';
+            
+            if (checkDuplicateId(bid)) return;
+            const xs = points.map(p => p.x);
+            const ys = points.map(p => p.y);
+            const minX = Math.min(...xs);
+            const minY = Math.min(...ys);
+            const maxX = Math.max(...xs);
+            const maxY = Math.max(...ys);
+            const w = maxX - minX;
+            const h = maxY - minY;
+            const cx = Math.round(minX + w/2);
+            const cy = Math.round(minY + h/2);
+            
+            const code = `<g data-building-id="${bid}" class="building-polygon" role="button" tabindex="0" aria-label="${bid}">
+    <rect x="${minX}" y="${minY}" width="${w}" height="${h}" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+    <text x="${cx}" y="${cy + 4}" class="bldg-label" font-size="9">${bid}</text>
+</g>`;
+            output.textContent = code;
+
+            // Gambar penanda permanen di layar mapper
+            const savedRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            savedRect.setAttribute('x', minX);
+            savedRect.setAttribute('y', minY);
+            savedRect.setAttribute('width', w);
+            savedRect.setAttribute('height', h);
+            savedRect.setAttribute('style', 'fill:rgba(16, 185, 129, 0.5); stroke:#047857; stroke-width:2; pointer-events:none;');
+            svg.insertBefore(savedRect, polygon);
+
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', cx);
+            text.setAttribute('y', cy + 4);
+            text.setAttribute('fill', '#fff');
+            text.setAttribute('font-size', '12');
+            text.setAttribute('font-weight', 'bold');
+            text.setAttribute('style', 'pointer-events:none;');
+            text.textContent = bid;
+            svg.insertBefore(text, polygon);
+
+            // Simpan ke localStorage
+            saveToLocalStorage(bid, 'rect', { minX, minY, w, h, cx, cy });
+
+            // Bersihkan titik untuk menggambar bangunan berikutnya
+            points = [];
+            polygon.setAttribute('points', '');
+            polyline.setAttribute('points', '');
+            document.querySelectorAll('.point-marker').forEach(m => m.remove());
+        }
+
+        function finishRoute() {
+            if (points.length < 2) {
+                alert("Klik minimal 2 titik untuk membuat rute!");
+                return;
+            }
+            const ptsStr = points.map(p => `${p.x},${p.y}`).join(' ');
+            savedRoutes.push(ptsStr);
+
+            // 1. Gambar rute secara permanen di layar mapper (sebagai referensi cabang)
+            const savedPoly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+            savedPoly.setAttribute('points', ptsStr);
+            savedPoly.setAttribute('style', 'fill:none; stroke:#FFD700; stroke-width:15; stroke-dasharray:30,15; opacity:0.5; stroke-linecap:round;');
+            svg.insertBefore(savedPoly, polyline); // Taruh di belakang garis yang sedang aktif
+
+            // 2. Kumpulkan semua kode rute
+            let code = `<!-- ===== JALAN INDUSTRI ===== -->\n<g class="industrial-routes">\n`;
+            savedRoutes.forEach((route, index) => {
+                code += `    <!-- Rute ${index + 1} -->\n`;
+                code += `    <polyline class="jalan-industri" points="${route}" />\n`;
+            });
+            code += `</g>`;
+            output.textContent = code;
+
+            // 3. Hapus titik saat ini untuk mulai cabang baru
+            points = [];
+            polygon.setAttribute('points', '');
+            polyline.setAttribute('points', '');
+            document.querySelectorAll('.point-marker').forEach(m => m.remove());
+        }
+
+        // Fitur pintar: Baca localStorage untuk bangunan baru dan coba muat index.html
+        window.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Render dari Local Storage (bangunan yang baru saja ditambahkan pengguna)
+            let savedLocal = JSON.parse(localStorage.getItem('mappedPolygons') || '[]');
+            const referenceGroup = document.getElementById('hardcoded-reference');
+            
+            savedLocal.forEach(item => {
+                if (item.type === 'polygon') {
+                    const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+                    poly.setAttribute('points', item.params.ptsStr);
+                    referenceGroup.appendChild(poly);
+                    
+                    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    text.setAttribute('x', item.params.cx);
+                    text.setAttribute('y', item.params.cy);
+                    text.setAttribute('fill', '#fff');
+                    text.setAttribute('font-size', '12');
+                    text.setAttribute('font-weight', 'bold');
+                    text.textContent = item.id;
+                    referenceGroup.appendChild(text);
+                } else if (item.type === 'rect') {
+                    const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                    r.setAttribute('x', item.params.minX);
+                    r.setAttribute('y', item.params.minY);
+                    r.setAttribute('width', item.params.w);
+                    r.setAttribute('height', item.params.h);
+                    referenceGroup.appendChild(r);
+                    
+                    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    text.setAttribute('x', item.params.cx);
+                    text.setAttribute('y', item.params.cy + 4);
+                    text.setAttribute('fill', '#fff');
+                    text.setAttribute('font-size', '12');
+                    text.setAttribute('font-weight', 'bold');
+                    text.textContent = item.id;
+                    referenceGroup.appendChild(text);
+                }
+            });
+
+            // 2. Fallback baca index.html (jika menggunakan Live Server)
+            fetch('index.html')
+                .then(res => res.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const existingBuildings = doc.querySelectorAll('.building-polygon');
+                    
+                    // Hanya tambahkan yang BUKAN b1-b16 karena sudah di-hardcode
+                    const existingIds = ['b1','b2','b3','b4','b5','b6','b7','b8','b9','b10','b11','b12','b13','b14','b15','b16'];
+                    
+                    existingBuildings.forEach(g => {
+                        const bid = g.getAttribute('data-building-id');
+                        if (existingIds.includes(bid)) return; // Skip yang sudah ada
+                        
+                        const shape = g.querySelector('polygon, rect');
+                        const text = g.querySelector('text');
+                        
+                        if (shape) {
+                            const clone = shape.cloneNode(true);
+                            clone.removeAttribute('filter');
+                            referenceGroup.appendChild(clone);
+                        }
+                        if (text) {
+                            const cloneText = text.cloneNode(true);
+                            cloneText.setAttribute('fill', '#fff');
+                            cloneText.setAttribute('font-weight', 'bold');
+                            cloneText.setAttribute('font-size', '12');
+                            referenceGroup.appendChild(cloneText);
+                        }
+                    });
+                })
+                .catch(err => {
+                    console.log("Membaca index.html diblokir CORS. Menggunakan hardcoded & localStorage saja.");
+                });
+        });
+    </script>
+</body>
+</html>

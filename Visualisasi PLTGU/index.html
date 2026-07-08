@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denah Interaktif PLTGU Cilegon</title>
+    <meta name="description" content="Peta interaktif fasilitas PLTGU Cilegon. Klik bangunan untuk melihat detail.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+    <div class="page-wrapper">
+        <!-- ===== TOP BAR ===== -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <img src="pln-logo.svg" alt="PLN Logo" class="logo">
+                <div class="top-bar-text">
+                    <h1 class="top-bar-title">Denah Interaktif PLTGU Cilegon</h1>
+                    <span class="top-bar-subtitle">Pembangkit Listrik Tenaga Gas & Uap</span>
+                </div>
+            </div>
+            <div id="digitalClock" class="digital-clock">
+                <span class="clock-time" id="clockTime">00:00</span>
+                <span class="clock-label">WIB</span>
+            </div>
+        </header>
+
+        <!-- ===== MAP AREA ===== -->
+        <main class="map-container" id="mapContainer">
+            
+            <!-- ===== CARI CEPAT (EXPANDABLE) ===== -->
+            <div class="cari-cepat-wrapper" id="cariCepatWrapper">
+                <div class="cari-cepat-header" id="btnCariCepat">
+                    Cari Cepat
+                </div>
+                <div class="cari-cepat-content">
+                    <ul class="building-list" id="buildingList">
+                        <!-- List bangunan akan dimasukkan lewat JavaScript -->
+                    </ul>
+                </div>
+            </div>
+
+            <img src="denah google earth.jpg" alt="Denah PLTGU Cilegon" class="base-map" id="baseMap">
+            <svg class="map-overlay" id="mapOverlay" viewBox="0 0 8192 4320" preserveAspectRatio="xMidYMid meet">
+
+                <!-- ===== FUEL SYSTEM ===== -->
+                <g data-building-id="b1" class="building-polygon" role="button" tabindex="0" aria-label="b1">
+                    <polygon points="5431,3281 5424,3271 5424,3271 5424,3271 5424,3264 6271,3291 6244,4090 5431,4069" />
+                </g>
+
+                <!-- ===== SWITCHYARD ===== -->
+                <g data-building-id="b2" class="building-polygon" role="button" tabindex="0" aria-label="b2">
+                    <polygon points="1315,1602 2762,1677 2742,2483 1335,2469" />
+                </g>
+
+                <!-- ===== AREA POS JAGA ===== -->
+                <g data-building-id="b3" class="building-polygon" role="button" tabindex="0" aria-label="b3">
+                    <polygon points="693,2850 686,2977 864,2969 864,2850" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="777" y="2912" class="bldg-label" font-size="9">b3</text>
+                </g>
+
+                <!-- ===== FIRE TRUCK STATION ===== -->
+                <g data-building-id="b4" class="building-polygon" role="button" tabindex="0" aria-label="b4">
+                    <polygon points="864,3600 864,3741 1035,3749 1020,3600" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="946" y="3673" class="bldg-label" font-size="9">b4</text>
+                </g>
+
+                <!-- ===== UPPK ===== -->
+                <g data-building-id="b5" class="building-polygon" role="button" tabindex="0" aria-label="b5">
+                    <polygon points="701,3615 812,3615 812,3704 708,3704" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="758" y="3660" class="bldg-label" font-size="9">b5</text>
+                </g>
+
+                <!-- ===== STASIUN GAS ===== -->
+                <g data-building-id="b6" class="building-polygon" role="button" tabindex="0" aria-label="b6">
+                    <polygon points="656,3415 515,3385 582,3095 723,3125" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="619" y="3255" class="bldg-label" font-size="9">b6</text>
+                </g>
+
+                <!-- ===== RUMAH BIBIT ===== -->
+                <g data-building-id="b7" class="building-polygon" role="button" tabindex="0" aria-label="b7">
+                    <polygon points="597,3608 656,3704 552,3741 508,3652" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="578" y="3676" class="bldg-label" font-size="9">b7</text>
+                </g>
+
+                <!-- ===== GEDUNG ADMIN ===== -->
+                <g data-building-id="b8" class="building-polygon" role="button" tabindex="0" aria-label="b8">
+                    <polygon points="1317,2969 1554,2977 1584,3533 1324,3519" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1445" y="3250" class="bldg-label" font-size="9">b8</text>
+                </g>
+
+                <!-- ===== SAFETY CENTER ===== -->
+                <g data-building-id="b9" class="building-polygon" role="button" tabindex="0" aria-label="b9">
+                    <polygon points="1250,2702 1243,2821 1391,2821 1399,2702" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1321" y="2762" class="bldg-label" font-size="9">b9</text>
+                </g>
+
+                <!-- ===== MASJID ===== -->
+                <g data-building-id="b10" class="building-polygon" role="button" tabindex="0" aria-label="b10">
+                    <polygon points="2067,3207 2237,3326 2312,3147 2141,3066" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2189" y="3187" class="bldg-label" font-size="9">b10</text>
+                </g>
+
+                <!-- ===== AREA POS GATE ===== -->
+                <g data-building-id="b11" class="building-polygon" role="button" tabindex="0" aria-label="b11">
+                    <polygon points="2579,2821 2690,2813 2690,3036 2571,3029" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2633" y="2925" class="bldg-label" font-size="9">b11</text>
+                </g>
+
+                <!-- ===== AREA TRAFFO ===== -->
+                <g data-building-id="b12" class="building-polygon" role="button" tabindex="0" aria-label="b12">
+                    <polygon points="3061,2116 3358,2116 3343,2850 3069,2843" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3208" y="2481" class="bldg-label" font-size="9">b12</text>
+                </g>
+                <g data-building-id="b12" class="building-polygon" role="button" tabindex="0" aria-label="b12">
+                    <polygon points="3046,1321 3403,1329 3403,1663 3039,1641" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3223" y="1489" class="bldg-label" font-size="9">b12</text>
+                </g>
+
+                <!-- ===== AREA RAW WATER TANK ===== -->
+                <g data-building-id="b13" class="building-polygon" role="button" tabindex="0" aria-label="b13">
+                    <polygon points="2764,445 3232,453 3232,854 2787,839" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3004" y="648" class="bldg-label" font-size="9">b13</text>
+                </g>
+
+                <!-- ===== AREA DESALINATION A & B ===== -->
+                <g data-building-id="b14" class="building-polygon" role="button" tabindex="0" aria-label="b14">
+                    <polygon points="3277,379 3700,379 3707,972 3284,958" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3492" y="672" class="bldg-label" font-size="9">b14</text>
+                </g>
+
+                <!-- ===== GARDU INDUK ===== -->
+                <g data-building-id="b15" class="building-polygon" role="button" tabindex="0" aria-label="b15">
+                    <polygon points="2519,1151 2519,1470 2126,1462 2141,1158" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2326" y="1310" class="bldg-label" font-size="9">b15</text>
+                </g>
+
+                <!-- ===== AREA MAKE UP WATERTANK ===== -->
+                <g data-building-id="b16" class="building-polygon" role="button" tabindex="0" aria-label="b16">
+                    <polygon points="2282,1010 2289,520 1309,512 1317,995" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1799" y="759" class="bldg-label" font-size="9">b16</text>
+                </g>
+
+                <!-- ===== JALAN INDUSTRI ===== -->
+                <g class="industrial-routes">
+                    <!-- Rute 1 -->
+                    <polyline class="jalan-industri" points="386,3500 980,3514 1001,2933 1294,2947 1281,3677" />
+                    <!-- Rute 2 -->
+                    <polyline class="jalan-industri" points="1294,2947 2946,2961 2974,1111 1151,1076 1158,885" />
+                    <!-- Rute 3 -->
+                    <polyline class="jalan-industri" points="2946,2961 2926,4067 4858,4135" />
+                    <!-- Rute 4 -->
+                    <polyline class="jalan-industri" points="4858,4138 6408,4165 6408,3926 6599,3946" />
+                    <!-- Rute 5 -->
+                    <polyline class="jalan-industri" points="6408,3929 6414,3553 7548,3567" />
+                    <!-- Rute 6 -->
+                    <polyline class="jalan-industri" points="6421,3537 6408,3250 6210,3182 6005,3182 6005,2950" />
+                    <!-- Rute 7 -->
+                    <polyline class="jalan-industri" points="6005,3182 4844,3148 4844,2363 4489,2356" />
+                    <!-- Rute 8 -->
+                    <polyline class="jalan-industri" points="4851,2359 4858,1218 4633,1157 4557,1143 4564,918" />
+                    <!-- Rute 9 -->
+                    <polyline class="jalan-industri" points="4551,1139 4489,1139 4489,1501" />
+                    <!-- Rute 10 -->
+                    <polyline class="jalan-industri" points="4489,1134 2967,1100" />
+                    <!-- Rute 11 -->
+                    <polyline class="jalan-industri" points="3458,1111 3452,1343" />
+                    <!-- Rute 12 -->
+                    <polyline class="jalan-industri" points="4271,1120 4366,478" />
+                    <!-- Rute 13 -->
+                    <polyline class="jalan-industri" points="4844,3141 4837,4131" />
+                    <!-- Rute 14 -->
+                    <polyline class="jalan-industri" points="2933,2957 4844,2998" />
+                    <!-- Rute 15 -->
+                    <polyline class="jalan-industri" points="3301,2962 3295,3058" />
+                    <!-- Rute 16 -->
+                    <polyline class="jalan-industri" points="4018,2984 4018,3100" />
+                    <!-- Rute 17 -->
+                    <polyline class="jalan-industri" points="2414,1096 2414,1000" />
+                    <!-- Rute 18 -->
+                    <polyline class="jalan-industri" points="2086,1086 2079,1591" />
+                    <!-- Rute 19 -->
+                    <polyline class="jalan-industri" points="3547,2970 3547,3114" />
+                    <!-- Rute 20 -->
+                    <polyline class="jalan-industri" points="3493,1104 3493,653" />
+                </g>
+
+            </svg>
+        </main>
+    </div>
+
+    <!-- Floating Tooltip -->
+    <div id="tooltip" class="map-tooltip"></div>
+
+    <!-- Popover Card -->
+    <div id="popoverCard" class="popover-card">
+        <button class="popover-close" id="popoverClose" aria-label="Tutup">&times;</button>
+        <img id="popoverImage" src="" alt="Building Image" class="popover-img" style="display: none;">
+        <div class="popover-body">
+            <h3 id="popoverTitle">Nama Bangunan</h3>
+            <p id="popoverDesc">Deskripsi singkat bangunan...</p>
+            <div class="popover-footer">
+                <button id="btnDetail" class="btn-detail">Detail</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div id="infoModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modalName">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal" aria-label="Tutup modal">&times;</button>
+            <div class="modal-header">
+                <span class="building-number" id="modalNumber">#00</span>
+                <h2 id="modalName">Nama Bangunan</h2>
+            </div>
+            <div class="modal-body">
+                <p id="modalDescription">Deskripsi bangunan.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
