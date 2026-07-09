@@ -24,14 +24,21 @@
 </head>
 <body>
     <h2>🔧 Alat Bantu Penempatan Bangunan (Mapper)</h2>
-    <p style="color:#64748b; margin-bottom:10px;">viewBox: <strong>0 0 8192 4320</strong> — Sesuai dengan denah SVG di index.html</p>
+    <p style="color:#64748b; margin-bottom:10px;">viewBox aktif: <strong id="activeViewBox">0 0 8192 4320</strong> — <span id="activeMapLabel">Satelit</span></p>
     
     <div class="instructions">
         <strong>Cara Pakai:</strong><br>
-        1. Klik di ujung-ujung bangunan pada gambar di bawah untuk membuat pola (minimal 3 titik).<br>
-        2. Masukkan Building ID (misal: <code>newbuilding</code>) di kotak input, lalu klik <strong>"Generate Polygon"</strong>.<br>
+        1. Pilih denah latar (<strong>Satelit</strong> atau <strong>Vektor</strong>) sesuai yang ingin Anda mapping.<br>
+        2. Pilih ID Bangunan dari <strong>dropdown</strong> (atau ketik manual untuk ID baru), lalu klik di ujung-ujung bangunan.<br>
         3. <strong>Salin kode</strong> yang muncul di kotak hitam, lalu kirimkan ke chat atau tempel ke index.html.<br>
         4. Klik "Hapus Titik" untuk menggambar bangunan berikutnya.
+    </div>
+
+    <!-- ===== MAP BACKGROUND TOGGLE ===== -->
+    <div class="input-row" style="margin-bottom: 8px;">
+        <strong style="margin-right:10px;">Denah Latar:</strong>
+        <button class="btn" style="background:#3b82f6; padding:6px 14px; font-size:13px;" id="mapperBtnSatelit" onclick="switchMapperBg('satelit')">🛰️ Satelit</button>
+        <button class="btn" style="background:#64748b; padding:6px 14px; font-size:13px;" id="mapperBtnVektor" onclick="switchMapperBg('vektor')">📐 Vektor</button>
     </div>
 
     <div class="input-row" style="margin-bottom: 5px;">
@@ -39,10 +46,17 @@
         <label style="cursor:pointer; font-weight:600;"><input type="radio" name="drawMode" value="route" onchange="changeMode()"> 🛣️ Mode Rute</label>
     </div>
     <div class="input-row">
-        <label for="buildingIdInput">ID Bangunan:</label>
-        <input type="text" id="buildingIdInput" placeholder="misal: b1" value="b1" style="width: 80px;">
+        <label for="buildingIdSelect">ID Bangunan:</label>
+        <select id="buildingIdSelect" style="padding:6px 10px; border:1px solid #ccc; border-radius:4px; font-size:14px; width:220px;" onchange="onBuildingSelect()">
+            <option value="">— Pilih bangunan —</option>
+            <!-- Akan diisi otomatis oleh JavaScript -->
+        </select>
+        <label for="buildingIdInput" style="margin-left: 10px;">atau ID Manual:</label>
+        <input type="text" id="buildingIdInput" placeholder="misal: b_baru" value="" style="width: 100px;">
         <label for="buildingNameInput" style="margin-left: 10px;">Nama:</label>
         <input type="text" id="buildingNameInput" placeholder="misal: Area Gasena" style="width: 150px;">
+    </div>
+    <div class="input-row" style="margin-top: 5px;">
         <button class="btn btn-clear" onclick="clearPoints()">🗑️ Hapus Semua</button>
         <button class="btn btn-clear" style="background:#f97316;" onclick="undoPoint()">↩️ Batal 1 Titik</button>
         <button class="btn btn-clear" style="background:#db2777;" onclick="undoLastSaved()">⏪ Undo Simpan Terakhir</button>
@@ -65,7 +79,8 @@
     <div id="output">Kode SVG akan muncul di sini setelah generate...</div>
 
     <div class="container" id="mapContainer">
-        <img src="denah satelit.jpg" alt="Map" onerror="this.style.display='none'">
+        <img src="denah satelit.jpg" alt="Map Satelit" id="mapperImgSatelit" onerror="this.style.display='none'">
+        <img src="denah vector.svg" alt="Map Vektor" id="mapperImgVektor" style="display:none;" onerror="this.style.display='none'">
         <svg id="svgOverlay" viewBox="0 0 8192 4320" preserveAspectRatio="xMidYMid meet">
             <!-- REFERENSI BANGUNAN YANG SUDAH DIBUAT (b1 - b16) -->
             <g id="hardcoded-reference" style="pointer-events: none; fill: rgba(16, 185, 129, 0.4); stroke: #047857; stroke-width: 2;">
@@ -146,6 +161,10 @@
                 <polygon data-building-id="b37" points="829,3843 1140,3851 1140,4086 905,4055 829,3987"></polygon>
                 <text data-building-id="b37" x="969" y="3964" fill="#fff" font-size="12" font-weight="bold">b37</text>
             </g>
+            
+            <!-- REFERENSI BANGUNAN VEKTOR YANG SUDAH DIBUAT (Akan diisi lewat localStorage Vektor) -->
+            <g id="vektor-reference" style="display:none; pointer-events: none; fill: rgba(59, 130, 246, 0.4); stroke: #2563eb; stroke-width: 2;">
+            </g>
 
             <polygon id="currentPolygon" points="" style="fill:rgba(59, 130, 246, 0.35); stroke:#2563eb; stroke-width:2;" />
             <polyline id="currentPolyline" points="" style="fill:none; stroke:#FFD700; stroke-width:15; stroke-dasharray:30,15; stroke-linecap:round; display:none;" />
@@ -166,6 +185,130 @@
         let points = [];
         let savedRoutes = []; // Menyimpan semua rute dalam satu sesi
         let currentMode = 'building';
+        let currentMapMode = 'satelit'; // 'satelit' | 'vektor'
+
+        // viewBox dimensions — berubah tergantung mode
+        const VIEWBOX_SATELIT = { w: 8192, h: 4320 };
+        const VIEWBOX_VEKTOR = { w: 2752, h: 1536 };
+        let VB_WIDTH = VIEWBOX_SATELIT.w;
+        let VB_HEIGHT = VIEWBOX_SATELIT.h;
+
+        // ===== SWITCH MAPPER BACKGROUND =====
+        function switchMapperBg(mode) {
+            currentMapMode = mode;
+            const imgSatelit = document.getElementById('mapperImgSatelit');
+            const imgVektor = document.getElementById('mapperImgVektor');
+            const btnSatelit = document.getElementById('mapperBtnSatelit');
+            const btnVektor = document.getElementById('mapperBtnVektor');
+            const viewBoxLabel = document.getElementById('activeViewBox');
+            const mapLabel = document.getElementById('activeMapLabel');
+            const satRef = document.getElementById('hardcoded-reference');
+            const vecRef = document.getElementById('vektor-reference');
+
+            if (mode === 'satelit') {
+                imgSatelit.style.display = '';
+                imgVektor.style.display = 'none';
+                btnSatelit.style.background = '#3b82f6';
+                btnVektor.style.background = '#64748b';
+                VB_WIDTH = VIEWBOX_SATELIT.w;
+                VB_HEIGHT = VIEWBOX_SATELIT.h;
+                svg.setAttribute('viewBox', `0 0 ${VB_WIDTH} ${VB_HEIGHT}`);
+                viewBoxLabel.textContent = `0 0 ${VB_WIDTH} ${VB_HEIGHT}`;
+                mapLabel.textContent = 'Satelit';
+                
+                // Toggle Reference Layer
+                if (satRef) satRef.style.display = '';
+                if (vecRef) vecRef.style.display = 'none';
+            } else {
+                imgSatelit.style.display = 'none';
+                imgVektor.style.display = '';
+                btnSatelit.style.background = '#64748b';
+                btnVektor.style.background = '#3b82f6';
+                VB_WIDTH = VIEWBOX_VEKTOR.w;
+                VB_HEIGHT = VIEWBOX_VEKTOR.h;
+                svg.setAttribute('viewBox', `0 0 ${VB_WIDTH} ${VB_HEIGHT}`);
+                viewBoxLabel.textContent = `0 0 ${VB_WIDTH} ${VB_HEIGHT}`;
+                mapLabel.textContent = 'Vektor';
+
+                // Toggle Reference Layer
+                if (satRef) satRef.style.display = 'none';
+                if (vecRef) vecRef.style.display = '';
+            }
+            // Reset titik saat ganti mode
+            clearPoints();
+            localStorage.setItem('activeMapMode', mode);
+        }
+
+        // ===== POPULATE DROPDOWN DARI buildingData =====
+        function populateBuildingDropdown() {
+            const select = document.getElementById('buildingIdSelect');
+            // Tunggu buildingData dimuat dari module (async)
+            if (typeof window.buildingData === 'undefined') {
+                setTimeout(populateBuildingDropdown, 200);
+                return;
+            }
+            const data = window.buildingData;
+            const ids = Object.keys(data).sort((a, b) => {
+                const numA = parseInt(a.replace(/\D/g, '')) || 0;
+                const numB = parseInt(b.replace(/\D/g, '')) || 0;
+                return numA - numB;
+            });
+            ids.forEach(id => {
+                const opt = document.createElement('option');
+                opt.value = id;
+                opt.textContent = `${id} — ${data[id].name}`;
+                select.appendChild(opt);
+            });
+        }
+        // Panggil saat load
+        populateBuildingDropdown();
+
+        // ===== ON BUILDING SELECT (dari dropdown) =====
+        function onBuildingSelect() {
+            const select = document.getElementById('buildingIdSelect');
+            const idInput = document.getElementById('buildingIdInput');
+            const nameInput = document.getElementById('buildingNameInput');
+            
+            if (select.value) {
+                idInput.value = select.value;
+                if (typeof window.buildingData !== 'undefined' && window.buildingData[select.value]) {
+                    nameInput.value = window.buildingData[select.value].name;
+                }
+            }
+        }
+
+        // Hubungkan event listener setelah DOM siap
+        window.addEventListener('DOMContentLoaded', () => {
+            const select = document.getElementById('buildingIdSelect');
+            const idInput = document.getElementById('buildingIdInput');
+            const nameInput = document.getElementById('buildingNameInput');
+
+            // Saat dropdown berubah
+            select.addEventListener('change', () => {
+                onBuildingSelect();
+            });
+
+            // Saat input manual diketik
+            idInput.addEventListener('input', () => {
+                const val = idInput.value.trim();
+                // Jika input manual diisi, kosongkan pilihan dropdown agar tidak membingungkan
+                if (val !== select.value) {
+                    select.value = "";
+                    // Cari apakah ID manual tersebut terdaftar di buildingData untuk auto-complete nama
+                    if (typeof window.buildingData !== 'undefined' && window.buildingData[val]) {
+                        nameInput.value = window.buildingData[val].name;
+                        select.value = val; // Set kembali ke dropdown jika cocok
+                    }
+                }
+            });
+        });
+
+        // ===== HELPER: GET ACTIVE BUILDING ID =====
+        function getBuildingId() {
+            const manualId = document.getElementById('buildingIdInput').value.trim();
+            const selectId = document.getElementById('buildingIdSelect').value;
+            return manualId || selectId || 'b1';
+        }
 
         function changeMode() {
             currentMode = document.querySelector('input[name="drawMode"]:checked').value;
@@ -177,10 +320,6 @@
                 polyline.style.display = 'block';
             }
         }
-
-        // viewBox dimensions (must match index.html SVG)
-        const VB_WIDTH = 8192;
-        const VB_HEIGHT = 4320;
 
         function getSVGCoords(e) {
             const rect = svg.getBoundingClientRect();
@@ -301,9 +440,10 @@
         }
 
         function saveToLocalStorage(bid, name, type, params) {
-            let savedLocal = JSON.parse(localStorage.getItem('mappedPolygons') || '[]');
+            const key = currentMapMode === 'vektor' ? 'mappedPolygonsVektor' : 'mappedPolygons';
+            let savedLocal = JSON.parse(localStorage.getItem(key) || '[]');
             savedLocal.push({ id: bid, name: name, type: type, params: params });
-            localStorage.setItem('mappedPolygons', JSON.stringify(savedLocal));
+            localStorage.setItem(key, JSON.stringify(savedLocal));
         }
 
         function finishPolygon() {
@@ -311,7 +451,7 @@
                 alert("Klik minimal 3 titik untuk membuat polygon!");
                 return;
             }
-            const bid = document.getElementById('buildingIdInput').value.trim() || 'b1';
+            const bid = getBuildingId();
             const bName = document.getElementById('buildingNameInput').value.trim();
             
             if (checkDuplicateId(bid)) return;
@@ -343,10 +483,11 @@
             output.textContent = code;
 
             // Gambar penanda permanen di layar mapper
+            const targetGroup = document.getElementById(currentMapMode === 'vektor' ? 'vektor-reference' : 'hardcoded-reference');
             const savedPoly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
             savedPoly.setAttribute('points', ptsStr);
-            savedPoly.setAttribute('style', 'fill:rgba(16, 185, 129, 0.5); stroke:#047857; stroke-width:2; pointer-events:none;');
-            svg.insertBefore(savedPoly, polygon);
+            savedPoly.setAttribute('style', currentMapMode === 'vektor' ? 'fill:rgba(59, 130, 246, 0.5); stroke:#2563eb; stroke-width:2; pointer-events:none;' : 'fill:rgba(16, 185, 129, 0.5); stroke:#047857; stroke-width:2; pointer-events:none;');
+            if (targetGroup) targetGroup.appendChild(savedPoly);
 
             const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
             text.setAttribute('x', cx);
@@ -356,7 +497,7 @@
             text.setAttribute('font-weight', 'bold');
             text.setAttribute('style', 'pointer-events:none;');
             text.textContent = bid;
-            svg.insertBefore(text, polygon);
+            if (targetGroup) targetGroup.appendChild(text);
 
             // Simpan ke localStorage
             saveToLocalStorage(bid, bName, 'polygon', { ptsStr, cx, cy });
@@ -373,7 +514,7 @@
                 alert("Klik minimal 2 titik (sudut kiri-atas dan kanan-bawah) untuk membuat rect!");
                 return;
             }
-            const bid = document.getElementById('buildingIdInput').value.trim() || 'b1';
+            const bid = getBuildingId();
             const bName = document.getElementById('buildingNameInput').value.trim();
             
             if (checkDuplicateId(bid)) return;
@@ -410,13 +551,14 @@
             output.textContent = code;
 
             // Gambar penanda permanen di layar mapper
+            const targetGroup = document.getElementById(currentMapMode === 'vektor' ? 'vektor-reference' : 'hardcoded-reference');
             const savedRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
             savedRect.setAttribute('x', minX);
             savedRect.setAttribute('y', minY);
             savedRect.setAttribute('width', w);
             savedRect.setAttribute('height', h);
-            savedRect.setAttribute('style', 'fill:rgba(16, 185, 129, 0.5); stroke:#047857; stroke-width:2; pointer-events:none;');
-            svg.insertBefore(savedRect, polygon);
+            savedRect.setAttribute('style', currentMapMode === 'vektor' ? 'fill:rgba(59, 130, 246, 0.5); stroke:#2563eb; stroke-width:2; pointer-events:none;' : 'fill:rgba(16, 185, 129, 0.5); stroke:#047857; stroke-width:2; pointer-events:none;');
+            if (targetGroup) targetGroup.appendChild(savedRect);
 
             const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
             text.setAttribute('x', cx);
@@ -426,7 +568,7 @@
             text.setAttribute('font-weight', 'bold');
             text.setAttribute('style', 'pointer-events:none;');
             text.textContent = bid;
-            svg.insertBefore(text, polygon);
+            if (targetGroup) targetGroup.appendChild(text);
 
             // Simpan ke localStorage
             saveToLocalStorage(bid, bName, 'rect', { minX, minY, w, h, cx, cy });
@@ -625,8 +767,13 @@
             // Hapus secara visual (mirip fungsi hapus) tanpa double confirm
             deleteBuilding(item, true);
             
-            // Isi input ID dan Nama
+            // Isi input ID, Dropdown, dan Nama
             document.getElementById('buildingIdInput').value = item.id;
+            const select = document.getElementById('buildingIdSelect');
+            if (select) {
+                // Cari opsi yang sesuai
+                select.value = item.id;
+            }
             const currentName = item.name || (typeof buildingData !== 'undefined' && buildingData[item.id] ? buildingData[item.id].name : '');
             document.getElementById('buildingNameInput').value = currentName;
             
@@ -714,7 +861,7 @@
                 refs.forEach(el => el.style.display = 'none');
             });
 
-            // 1. Render dari Local Storage (bangunan yang baru saja ditambahkan pengguna)
+            // 1. Render dari Local Storage (bangunan yang baru saja ditambahkan pengguna) - SATELIT
             let savedLocal = JSON.parse(localStorage.getItem('mappedPolygons') || '[]');
             const referenceGroup = document.getElementById('hardcoded-reference');
             
@@ -751,37 +898,110 @@
                 }
             });
 
+            // 1.1 Render dari Local Storage - VEKTOR
+            let savedLocalVektor = JSON.parse(localStorage.getItem('mappedPolygonsVektor') || '[]');
+            const vektorGroup = document.getElementById('vektor-reference');
+            
+            if (vektorGroup) {
+                savedLocalVektor.forEach(item => {
+                    if (item.type === 'polygon') {
+                        const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+                        poly.setAttribute('points', item.params.ptsStr);
+                        vektorGroup.appendChild(poly);
+                        
+                        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                        text.setAttribute('x', item.params.cx);
+                        text.setAttribute('y', item.params.cy);
+                        text.setAttribute('fill', '#fff');
+                        text.setAttribute('font-size', '12');
+                        text.setAttribute('font-weight', 'bold');
+                        text.textContent = item.id;
+                        vektorGroup.appendChild(text);
+                    } else if (item.type === 'rect') {
+                        const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                        r.setAttribute('x', item.params.minX);
+                        r.setAttribute('y', item.params.minY);
+                        r.setAttribute('width', item.params.w);
+                        r.setAttribute('height', item.params.h);
+                        vektorGroup.appendChild(r);
+                        
+                        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                        text.setAttribute('x', item.params.cx);
+                        text.setAttribute('y', item.params.cy + 4);
+                        text.setAttribute('fill', '#fff');
+                        text.setAttribute('font-size', '12');
+                        text.setAttribute('font-weight', 'bold');
+                        text.textContent = item.id;
+                        vektorGroup.appendChild(text);
+                    }
+                });
+            }
+
+            // Restore active background mode from localStorage if it exists
+            const lastMode = localStorage.getItem('activeMapMode');
+            if (lastMode) {
+                switchMapperBg(lastMode);
+            }
+
             // 2. Fallback baca index.html (jika menggunakan Live Server)
             fetch('index.html')
                 .then(res => res.text())
                 .then(html => {
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(html, 'text/html');
-                    const existingBuildings = doc.querySelectorAll('.building-polygon');
                     
-                    // Hanya tambahkan yang BUKAN b1-b16 karena sudah di-hardcode
-                    const existingIds = ['b1','b2','b3','b4','b5','b6','b7','b8','b9','b10','b11','b12','b13','b14','b15','b16'];
-                    
-                    existingBuildings.forEach(g => {
-                        const bid = g.getAttribute('data-building-id');
-                        if (existingIds.includes(bid)) return; // Skip yang sudah ada
+                    // 2.1 Load Satelit references
+                    const satOverlay = doc.getElementById('mapOverlaySatelit');
+                    if (satOverlay) {
+                        const existingBuildings = satOverlay.querySelectorAll('.building-polygon');
+                        const existingIds = ['b1','b2','b3','b4','b5','b6','b7','b8','b9','b10','b11','b12','b13','b14','b15','b16'];
                         
-                        const shape = g.querySelector('polygon, rect');
-                        const text = g.querySelector('text');
+                        existingBuildings.forEach(g => {
+                            const bid = g.getAttribute('data-building-id');
+                            if (existingIds.includes(bid)) return; // Skip yang sudah ada
+                            
+                            const shape = g.querySelector('polygon, rect');
+                            const text = g.querySelector('text');
+                            
+                            if (shape) {
+                                const clone = shape.cloneNode(true);
+                                clone.removeAttribute('filter');
+                                referenceGroup.appendChild(clone);
+                            }
+                            if (text) {
+                                const cloneText = text.cloneNode(true);
+                                cloneText.setAttribute('fill', '#fff');
+                                cloneText.setAttribute('font-weight', 'bold');
+                                cloneText.setAttribute('font-size', '12');
+                                referenceGroup.appendChild(cloneText);
+                            }
+                        });
+                    }
+
+                    // 2.2 Load Vektor references
+                    const vecOverlay = doc.getElementById('mapOverlayVektor');
+                    const vektorRefGroup = document.getElementById('vektor-reference');
+                    if (vecOverlay && vektorRefGroup) {
+                        const existingBuildings = vecOverlay.querySelectorAll('.building-polygon');
                         
-                        if (shape) {
-                            const clone = shape.cloneNode(true);
-                            clone.removeAttribute('filter');
-                            referenceGroup.appendChild(clone);
-                        }
-                        if (text) {
-                            const cloneText = text.cloneNode(true);
-                            cloneText.setAttribute('fill', '#fff');
-                            cloneText.setAttribute('font-weight', 'bold');
-                            cloneText.setAttribute('font-size', '12');
-                            referenceGroup.appendChild(cloneText);
-                        }
-                    });
+                        existingBuildings.forEach(g => {
+                            const shape = g.querySelector('polygon, rect');
+                            const text = g.querySelector('text');
+                            
+                            if (shape) {
+                                const clone = shape.cloneNode(true);
+                                clone.removeAttribute('filter');
+                                vektorRefGroup.appendChild(clone);
+                            }
+                            if (text) {
+                                const cloneText = text.cloneNode(true);
+                                cloneText.setAttribute('fill', '#fff');
+                                cloneText.setAttribute('font-weight', 'bold');
+                                cloneText.setAttribute('font-size', '12');
+                                vektorRefGroup.appendChild(cloneText);
+                            }
+                        });
+                    }
                 })
                 .catch(err => {
                     console.log("Membaca index.html diblokir CORS. Menggunakan hardcoded & localStorage saja.");
