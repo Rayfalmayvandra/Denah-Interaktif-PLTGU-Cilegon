@@ -72,32 +72,10 @@
             <img src="denah satelit.jpg" alt="Denah PLTGU Cilegon (Satelit)" class="base-map active"
                 id="baseMapSatelit">
             <img src="denah vector.svg" alt="Denah PLTGU Cilegon (Vektor)" class="base-map" id="baseMapVektor"
-                style="display:none; transform-origin: center center;">
+                style="display:none;">
 
-            <!-- ===== KALIBRASI VEKTOR (TEMP) ===== -->
-            <div id="calibrationTool"
-                style="position:absolute; top:80px; left:20px; z-index:100; background:rgba(0,0,0,0.8); color:white; padding:15px; border-radius:8px; display:none; flex-direction:column; gap:10px; font-family:monospace; font-size:12px; width:250px;">
-                <h4 style="margin:0; padding-bottom:5px; border-bottom:1px solid #555;">Kalibrasi Vektor</h4>
-
-                <label>Scale: <span id="val-scale">1.000</span>
-                    <input type="range" id="cal-scale" min="0.5" max="2.5" step="0.001" value="1" style="width:100%">
-                </label>
-                <label>Translate X (%): <span id="val-tx">0.0</span>
-                    <input type="range" id="cal-tx" min="-50" max="50" step="0.1" value="0" style="width:100%">
-                </label>
-                <label>Translate Y (%): <span id="val-ty">0.0</span>
-                    <input type="range" id="cal-ty" min="-50" max="50" step="0.1" value="0" style="width:100%">
-                </label>
-                <label>Vektor Opacity: <span id="val-op">0.5</span>
-                    <input type="range" id="cal-op" min="0" max="1" step="0.05" value="0.5" style="width:100%">
-                </label>
-                <div style="font-size:10px; color:#aaa; margin-top:5px;">
-                    * Geser slider agar gambar vektor pas dengan garis biru (polygon).<br>
-                    * Jika sudah pas, infokan nilainya di chat!
-                </div>
-            </div>
-
-            <svg class="map-overlay" id="mapOverlay" viewBox="0 0 8192 4320" preserveAspectRatio="xMidYMid meet">
+            <!-- ===== SVG OVERLAY SATELIT (koordinat untuk denah satelit) ===== -->
+            <svg class="map-overlay" id="mapOverlaySatelit" viewBox="0 0 8192 4320" preserveAspectRatio="xMidYMid meet">
 
                 <!-- ===== FUEL SYSTEM ===== -->
                 <g data-building-id="b1" class="building-polygon" role="button" tabindex="0" aria-label="b1">
@@ -403,6 +381,14 @@
                     <polyline class="jalan-industri" points="3493,1104 3493,653" />
                 </g>
 
+            </svg>
+
+            <!-- ===== SVG OVERLAY VEKTOR (koordinat untuk denah vektor — akan diisi via mapper) ===== -->
+            <svg class="map-overlay" id="mapOverlayVektor" viewBox="0 0 2752 1536" preserveAspectRatio="xMidYMid meet" style="display:none;">
+                <!-- Polygon bangunan untuk denah vektor akan ditambahkan di sini -->
+                <!-- Gunakan mapper.html dengan mode Vektor untuk menggambar koordinat -->
+
+                <!-- Rute jalan untuk denah vektor akan ditambahkan di sini -->
             </svg>
         </main>
     </div>
