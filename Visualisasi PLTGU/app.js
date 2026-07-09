@@ -239,6 +239,111 @@ const buildingData = {
         number: "44",
         name: "Area Make Up Watertank",
         description: "Area tangki Make Up Water yang menampung air pengisi tambahan untuk menjaga siklus air dan uap di dalam pembangkit."
+    },
+    "b17": {
+        number: "45",
+        name: "Traffo Cadangan",
+        description: "Area Transformator (Traffo) Cadangan."
+    },
+    "b18": {
+        number: "46",
+        name: "Fire Pump Station",
+        description: "Fire Pump Station untuk sistem pemadam kebakaran."
+    },
+    "b19": {
+        number: "47",
+        name: "Area Water Intake",
+        description: "Area Water Intake untuk pengambilan air baku."
+    },
+    "b20": {
+        number: "48",
+        name: "Area HRSG",
+        description: "Area Heat Recovery Steam Generator (HRSG)."
+    },
+    "b21": {
+        number: "49",
+        name: "Condensate Water Tank",
+        description: "Tangki air kondensat (Condensate Water Tank)."
+    },
+    "b22": {
+        number: "50",
+        name: "Area Bangunan K3 Kecil",
+        description: "Area fasilitas Bangunan K3 Kecil."
+    },
+    "b23": {
+        number: "51",
+        name: "Area Clorination Plant",
+        description: "Fasilitas Chlorination Plant."
+    },
+    "b24": {
+        number: "52",
+        name: "Area Solar Panel",
+        description: "Area panel surya (Solar Panel) untuk pasokan energi bersih."
+    },
+    "b25": {
+        number: "53",
+        name: "Area Gudang Penyimpan Pelumas",
+        description: "Fasilitas gudang penyimpanan pelumas (lubricant storage)."
+    },
+    "b26": {
+        number: "54",
+        name: "Area Air Limbah WWTP",
+        description: "Fasilitas pengolahan air limbah (Waste Water Treatment Plant)."
+    },
+    "b27": {
+        number: "55",
+        name: "Area Air Limbah Desalinasi",
+        description: "Fasilitas pengolahan limbah dari proses desalinasi."
+    },
+    "b28": {
+        number: "56",
+        name: "Area Pertamina / Gas Metering Station",
+        description: "Stasiun pengukuran gas (Gas Metering Station)."
+    },
+    "b29": {
+        number: "57",
+        name: "Gudang & Workshop",
+        description: "Area Gudang dan Workshop."
+    },
+    "b30": {
+        number: "58",
+        name: "Gas Station",
+        description: "Gas Station."
+    },
+    "b31": {
+        number: "59",
+        name: "Station Gas Compressor",
+        description: "Fasilitas kompresor gas (Station Gas Compressor)."
+    },
+    "b32": {
+        number: "60",
+        name: "Area Gasena",
+        description: "Area Gasena."
+    },
+    "b33": {
+        number: "61",
+        name: "Area Titik Pembuangan (Outfall)",
+        description: "Area Titik Pembuangan (Outfall)."
+    },
+    "b34": {
+        number: "62",
+        name: "Gedung Enjinering",
+        description: "Gedung Enjinering."
+    },
+    "b35": {
+        number: "63",
+        name: "Gedung K3",
+        description: "Gedung K3."
+    },
+    "b36": {
+        number: "64",
+        name: "Area Olahraga",
+        description: "Area Olahraga."
+    },
+    "b37": {
+        number: "65",
+        name: "Gedung Parkir",
+        description: "Gedung Parkir."
     }
 };
 
