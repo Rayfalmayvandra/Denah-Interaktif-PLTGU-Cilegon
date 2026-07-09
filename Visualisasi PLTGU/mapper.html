@@ -160,10 +160,53 @@
                 <text data-building-id="b36" x="1284" y="3987" fill="#fff" font-size="12" font-weight="bold">b36</text>
                 <polygon data-building-id="b37" points="829,3843 1140,3851 1140,4086 905,4055 829,3987"></polygon>
                 <text data-building-id="b37" x="969" y="3964" fill="#fff" font-size="12" font-weight="bold">b37</text>
+                
             </g>
             
             <!-- REFERENSI BANGUNAN VEKTOR YANG SUDAH DIBUAT (Akan diisi lewat localStorage Vektor) -->
             <g id="vektor-reference" style="display:none; pointer-events: none; fill: rgba(59, 130, 246, 0.4); stroke: #2563eb; stroke-width: 2;">
+                <polygon data-building-id="b16" points="576,370 941,377 939,494 565,489"></polygon>
+                <text data-building-id="b16" x="755" y="433" fill="#fff" font-size="12" font-weight="bold">b16</text>
+                <polygon data-building-id="b1" points="1888,1177 2127,1183 2127,1427 1884,1420"></polygon>
+                <text data-building-id="b1" x="2007" y="1302" fill="#fff" font-size="12" font-weight="bold">b1</text>
+                <polygon data-building-id="b2" points="636,679 1088,688 1083,952 632,945"></polygon>
+                <text data-building-id="b2" x="860" y="816" fill="#fff" font-size="12" font-weight="bold">b2</text>
+                <polygon data-building-id="b4" points="501,1326 563,1328 563,1282 501,1282"></polygon>
+                <text data-building-id="b4" x="532" y="1305" fill="#fff" font-size="12" font-weight="bold">b4</text>
+                <polygon data-building-id="b5" points="453,1284 453,1312 487,1312 487,1283"></polygon>
+                <text data-building-id="b5" x="470" y="1298" fill="#fff" font-size="12" font-weight="bold">b5</text>
+                <polygon data-building-id="b6" points="402,1217 444,1228 460,1162 418,1153"></polygon>
+                <text data-building-id="b6" x="431" y="1190" fill="#fff" font-size="12" font-weight="bold">b6</text>
+                <polygon data-building-id="b7" points="402,1303 432,1291 441,1314 407,1326"></polygon>
+                <text data-building-id="b7" x="421" y="1309" fill="#fff" font-size="12" font-weight="bold">b7</text>
+                <polygon data-building-id="b8" points="655,1109 730,1112 726,1252 648,1252"></polygon>
+                <text data-building-id="b8" x="690" y="1181" fill="#fff" font-size="12" font-weight="bold">b8</text>
+                <polygon data-building-id="b10" points="886,1136 941,1157 918,1200 868,1174"></polygon>
+                <text data-building-id="b10" x="903" y="1167" fill="#fff" font-size="12" font-weight="bold">b10</text>
+                <polygon data-building-id="b11" points="1024,1047 1058,1047 1058,1063 1021,1061"></polygon>
+                <text data-building-id="b11" x="1040" y="1055" fill="#fff" font-size="12" font-weight="bold">b11</text>
+                <polygon data-building-id="b12a" points="1152,825 1267,827 1267,1075 1154,1070"></polygon>
+                <text data-building-id="b12a" x="1210" y="949" fill="#fff" font-size="12" font-weight="bold">b12a</text>
+                <polygon data-building-id="b12b" points="1159,571 1274,573 1271,690 1154,688"></polygon>
+                <text data-building-id="b12b" x="1205" y="631" fill="#fff" font-size="12" font-weight="bold">b12b</text>
+                polygon data-building-id="b13" points="1083,331 1081,436 1214,436 1214,328"></polygon>
+                <text data-building-id="b13" x="1148" y="1167" fill="#fff" font-size="12" font-weight="bold">b13</text>
+                polygon data-building-id="b14" points="1239,303 1386,305 1377,498 1235,491"></polygon>
+                <text data-building-id="b14" x="1309" y="399" fill="#fff" font-size="12" font-weight="bold">b14</text>
+                polygon data-building-id="b15" points="898,544 1010,544 1008,629 898,626"></polygon>
+                <text data-building-id="b15" x="954" y="586" fill="#fff" font-size="12" font-weight="bold">b15</text>
+                polygon data-building-id="b17" points="698,591 733,593 733,621 698,618"></polygon>
+                <text data-building-id="b17" x="716" y="606" fill="#fff" font-size="12" font-weight="bold">b17</text>
+
+ 
+
+
+
+                       
+
+
+
+
             </g>
 
             <polygon id="currentPolygon" points="" style="fill:rgba(59, 130, 246, 0.35); stroke:#2563eb; stroke-width:2;" />
@@ -540,14 +583,6 @@
             code += `    <text x="${cx}" y="${cy}" class="bldg-label" font-size="9">${bid}</text>\n`;
             code += `</g>\n`;
             
-            if (bName) {
-                code += `\n/* Kode untuk app.js */\n`;
-                code += `"${bid}": {\n`;
-                code += `    number: "", // isi nomor urut\n`;
-                code += `    name: "${bName}",\n`;
-                code += `    description: "${bName}."\n`;
-                code += `}`;
-            }
             output.textContent = code;
 
             // Gambar penanda permanen di layar mapper
