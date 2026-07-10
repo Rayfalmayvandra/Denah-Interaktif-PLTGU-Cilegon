@@ -526,7 +526,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = buildingData[buildingId];
         if (!data) return;
 
-        modalNumber.textContent = '#' + data.number;
+        const numVal = data.number || buildingId;
+        modalNumber.textContent = (numVal.startsWith('b') || numVal.startsWith('B') || numVal.startsWith('#')) ? numVal : '#' + numVal;
         modalName.textContent = data.name;
         modalDescription.textContent = data.description;
 
@@ -560,14 +561,16 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // 1. Populate data
         const sortedBuildings = Object.entries(buildingData).sort((a, b) => {
-            return parseInt(a[1].number) - parseInt(b[1].number);
+            const numA = parseInt(a[0].replace(/[^0-9]/g, '')) || 0;
+            const numB = parseInt(b[0].replace(/[^0-9]/g, '')) || 0;
+            return numA - numB;
         });
 
         sortedBuildings.forEach(([id, data]) => {
             const li = document.createElement('li');
             li.className = 'building-item';
             li.innerHTML = `
-                <div class="building-item-number">${data.number}</div>
+                <div class="building-item-number">${data.number || id}</div>
                 <div class="building-item-name">${data.name}</div>
             `;
             

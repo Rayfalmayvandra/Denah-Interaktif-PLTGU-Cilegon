@@ -4,22 +4,8 @@
 // ============================================================
 
 export const buildingData = {
-    "b2": {
-        number: "07",
-        name: "Switch Yard",
-        zona: "A",
-        dimensi: "± 1.447 m²",
-        shortDesc: "Gardu induk tegangan tinggi 150kV yang menyalurkan listrik ke jaringan transmisi PLN.",
-        description: "Gardu induk tegangan tinggi 150kV (GIS — Gas Insulated Switchgear) yang menyalurkan listrik yang dihasilkan ke jaringan transmisi PLN. Dilengkapi dengan circuit breaker, disconnector, bus bar, current transformer, dan sistem proteksi relay.",
-        fungsi: [
-            "Menyalurkan daya listrik ke jaringan transmisi PLN 150kV",
-            "Proteksi sistem tenaga menggunakan relay pengaman",
-            "Menghubungkan generator PLTGU ke jaringan eksternal"
-        ]
-    },
-
     "b1": {
-        number: "17",
+        number: "b1",
         name: "Distillate Oil Tank",
         zona: "B",
         dimensi: "± 5.320 m² (diameter ±82 m)",
@@ -32,8 +18,21 @@ export const buildingData = {
             "Cadangan operasi saat pasokan gas alam terganggu"
         ]
     },
+    "b2": {
+        number: "b2",
+        name: "Switch Yard",
+        zona: "A",
+        dimensi: "± 1.447 m²",
+        shortDesc: "Gardu induk tegangan tinggi 150kV yang menyalurkan listrik ke jaringan transmisi PLN.",
+        description: "Gardu induk tegangan tinggi 150kV (GIS — Gas Insulated Switchgear) yang menyalurkan listrik yang dihasilkan ke jaringan transmisi PLN. Dilengkapi dengan circuit breaker, disconnector, bus bar, current transformer, dan sistem proteksi relay.",
+        fungsi: [
+            "Menyalurkan daya listrik ke jaringan transmisi PLN 150kV",
+            "Proteksi sistem tenaga menggunakan relay pengaman",
+            "Menghubungkan generator PLTGU ke jaringan eksternal"
+        ]
+    },
     "b3": {
-        number: "31",
+        number: "b3",
         name: "Area Pos Jaga",
         zona: "D",
         dimensi: "± 171 m²",
@@ -45,7 +44,7 @@ export const buildingData = {
         ]
     },
     "b4": {
-        number: "32",
+        number: "b4",
         name: "Fire Truck Station",
         zona: "D",
         dimensi: "± 171 m²",
@@ -57,7 +56,7 @@ export const buildingData = {
         ]
     },
     "b5": {
-        number: "33",
+        number: "b5",
         name: "Unit Pelayanan Kesehatan Kerja (UPPK)",
         zona: "D",
         dimensi: "± 111 m²",
@@ -69,7 +68,7 @@ export const buildingData = {
         ]
     },
     "b6": {
-        number: "34",
+        number: "b6",
         name: "Stasiun Gas",
         zona: "B",
         dimensi: "± 124 m²",
@@ -81,7 +80,7 @@ export const buildingData = {
         ]
     },
     "b7": {
-        number: "35",
+        number: "b7",
         name: "Rumah Bibit",
         zona: "D",
         dimensi: "± 145 m²",
@@ -93,7 +92,7 @@ export const buildingData = {
         ]
     },
     "b8": {
-        number: "36",
+        number: "b8",
         name: "Gedung Admin",
         zona: "D",
         dimensi: "± 718 m²",
@@ -105,7 +104,7 @@ export const buildingData = {
         ]
     },
     "b9": {
-        number: "37",
+        number: "b9",
         name: "Safety Center",
         zona: "D",
         dimensi: "± 189 m²",
@@ -117,7 +116,7 @@ export const buildingData = {
         ]
     },
     "b10": {
-        number: "38",
+        number: "b10",
         name: "Masjid",
         zona: "D",
         dimensi: "± 245 m²",
@@ -129,7 +128,7 @@ export const buildingData = {
         ]
     },
     "b11": {
-        number: "39",
+        number: "b11",
         name: "Area Pos Gate",
         zona: "D",
         dimensi: "± 119 m²",
@@ -141,7 +140,7 @@ export const buildingData = {
         ]
     },
     "b12": {
-        number: "40",
+        number: "b12",
         name: "Area Traffo",
         zona: "A",
         dimensi: "± 2.145 m²",
@@ -153,7 +152,7 @@ export const buildingData = {
         ]
     },
     "b13": {
-        number: "41",
+        number: "b13",
         name: "Area Raw Water Tank",
         zona: "C",
         dimensi: "± 468 m²",
@@ -165,7 +164,7 @@ export const buildingData = {
         ]
     },
     "b14": {
-        number: "42",
+        number: "b14",
         name: "Area Desalination A & B",
         zona: "C",
         dimensi: "± 1.693 m²",
@@ -177,7 +176,7 @@ export const buildingData = {
         ]
     },
     "b15": {
-        number: "43",
+        number: "b15",
         name: "Gardu Induk",
         zona: "A",
         dimensi: "± 340 m²",
@@ -189,7 +188,7 @@ export const buildingData = {
         ]
     },
     "b16": {
-        number: "44",
+        number: "b16",
         name: "Area Make Up Watertank",
         zona: "C",
         dimensi: "± 973 m²",
@@ -201,7 +200,7 @@ export const buildingData = {
         ]
     },
     "b17": {
-        number: "45",
+        number: "b17",
         name: "Traffo Cadangan",
         zona: "C",
         dimensi: "± 150 m²",
@@ -213,7 +212,7 @@ export const buildingData = {
         ]
     },
     "b18": {
-        number: "46",
+        number: "b18",
         name: "Fire Pump Station",
         zona: "C",
         dimensi: "± 297 m²",
@@ -225,7 +224,7 @@ export const buildingData = {
         ]
     },
     "b19": {
-        number: "47",
+        number: "b19",
         name: "Area Water Intake",
         zona: "C",
         dimensi: "± 720 m²",
@@ -237,7 +236,7 @@ export const buildingData = {
         ]
     },
     "b20": {
-        number: "48",
+        number: "b20",
         name: "Area HRSG",
         zona: "A",
         dimensi: "± 3.360 m²",
@@ -249,7 +248,7 @@ export const buildingData = {
         ]
     },
     "b21": {
-        number: "49",
+        number: "b21",
         name: "Condensate Water Tank",
         zona: "A",
         dimensi: "± 2.900 m²",
@@ -261,7 +260,7 @@ export const buildingData = {
         ]
     },
     "b22": {
-        number: "50",
+        number: "b22",
         name: "Area Bangunan K3 Kecil",
         zona: "C",
         dimensi: "± 205 m²",
@@ -273,7 +272,7 @@ export const buildingData = {
         ]
     },
     "b23": {
-        number: "51",
+        number: "b23",
         name: "Area Clorination Plant",
         zona: "C",
         dimensi: "± 1.840 m²",
@@ -285,7 +284,7 @@ export const buildingData = {
         ]
     },
     "b24": {
-        number: "52",
+        number: "b24",
         name: "Area Solar Panel",
         zona: "B",
         dimensi: "± 250 m²",
@@ -297,7 +296,7 @@ export const buildingData = {
         ]
     },
     "b25": {
-        number: "53",
+        number: "b25",
         name: "Area Gudang Penyimpan Pelumas",
         zona: "C",
         dimensi: "± 1.870 m²",
@@ -309,7 +308,7 @@ export const buildingData = {
         ]
     },
     "b26": {
-        number: "54",
+        number: "b26",
         name: "Area Air Limbah WWTP",
         zona: "C",
         dimensi: "± 1.000 m²",
@@ -321,7 +320,7 @@ export const buildingData = {
         ]
     },
     "b27": {
-        number: "55",
+        number: "b27",
         name: "Area Air Limbah Desalinasi",
         zona: "C",
         dimensi: "± 3.500 m²",
@@ -333,7 +332,7 @@ export const buildingData = {
         ]
     },
     "b28": {
-        number: "56",
+        number: "b28",
         name: "Area Pertamina / Gas Metering Station",
         zona: "B",
         dimensi: "± 1.770 m²",
@@ -345,7 +344,7 @@ export const buildingData = {
         ]
     },
     "b29": {
-        number: "57",
+        number: "b29",
         name: "Gudang & Workshop",
         zona: "C",
         dimensi: "± 648 m²",
@@ -357,7 +356,7 @@ export const buildingData = {
         ]
     },
     "b30": {
-        number: "58",
+        number: "b30",
         name: "Gas Station",
         zona: "C",
         dimensi: "± 770 m²",
@@ -369,7 +368,7 @@ export const buildingData = {
         ]
     },
     "b31": {
-        number: "59",
+        number: "b31",
         name: "Station Gas Compressor",
         zona: "C",
         dimensi: "± 614 m²",
@@ -381,7 +380,7 @@ export const buildingData = {
         ]
     },
     "b32": {
-        number: "60",
+        number: "b32",
         name: "Area Gasena",
         zona: "C",
         dimensi: "± 1.235 m²",
@@ -393,7 +392,7 @@ export const buildingData = {
         ]
     },
     "b33": {
-        number: "61",
+        number: "b33",
         name: "Area Titik Pembuangan (Outfall)",
         zona: "D",
         dimensi: "± 800 m²",
@@ -405,7 +404,7 @@ export const buildingData = {
         ]
     },
     "b34": {
-        number: "62",
+        number: "b34",
         name: "Gedung Enjinering",
         zona: "D",
         dimensi: "± 180 m²",
@@ -417,7 +416,7 @@ export const buildingData = {
         ]
     },
     "b35": {
-        number: "63",
+        number: "b35",
         name: "Gedung K3",
         zona: "D",
         dimensi: "± 156 m²",
@@ -429,7 +428,7 @@ export const buildingData = {
         ]
     },
     "b36": {
-        number: "64",
+        number: "b36",
         name: "Area Olahraga",
         zona: "D",
         dimensi: "± 235 m²",
@@ -441,7 +440,7 @@ export const buildingData = {
         ]
     },
     "b37": {
-        number: "65",
+        number: "b37",
         name: "Gedung Parkir",
         zona: "D",
         dimensi: "± 311 m²",
@@ -663,7 +662,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = buildingData[buildingId];
         if (!data) return;
 
-        document.getElementById('modalNumber').textContent = '#' + data.number;
+        const numVal = data.number || buildingId;
+        document.getElementById('modalNumber').textContent = (numVal.startsWith('b') || numVal.startsWith('B') || numVal.startsWith('#')) ? numVal : '#' + numVal;
         document.getElementById('modalName').textContent = data.name;
         document.getElementById('modalDescription').textContent = data.description;
         document.getElementById('modalDimensi').textContent = data.dimensi || '-';
@@ -955,14 +955,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 1. Populate data
         const sortedBuildings = Object.entries(buildingData).sort((a, b) => {
-            return parseInt(a[1].number) - parseInt(b[1].number);
+            const numA = parseInt(a[0].replace(/[^0-9]/g, '')) || 0;
+            const numB = parseInt(b[0].replace(/[^0-9]/g, '')) || 0;
+            return numA - numB;
         });
 
         sortedBuildings.forEach(([id, data]) => {
             const li = document.createElement('li');
             li.className = 'building-item';
             li.innerHTML = `
-                <div class="building-item-number">${data.number}</div>
+                <div class="building-item-number">${data.number || id}</div>
                 <div class="building-item-name">${data.name}</div>
             `;
 
