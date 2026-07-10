@@ -397,12 +397,11 @@
 
             <!-- ===== SVG OVERLAY VEKTOR (koordinat untuk denah vektor — akan diisi via mapper) ===== -->
             <svg class="map-overlay" id="mapOverlayVektor" viewBox="0 0 2752 1536" preserveAspectRatio="xMidYMid meet" style="display:none;">
-                <!-- ===== AREA MAKE UP WATERTANK ===== --> 
+            <!-- ===== AREA MAKE UP WATERTANK ===== --> 
                 <g data-building-id="b16" class="building-polygon" role="button" tabindex="0" aria-label="b16"> 
-                    <polygon points="576,370 941,377 939,494 565,489" rx="3" fill="#6b8ba8" stroke="#2d3748" 
-                    stroke-width="0.8" filter="url(#shadow)" /> 
-                    <text x="755" y="433" class="bldg-label" font-size="9">b16</text> </g> 
-                <!-- ===== DISTILLATE OIL TANK ===== -->
+                   <polygon points="836,372 831,494 939,498 941,372" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                   <text x="887" y="434" class="bldg-label" font-size="9">b16</text> 
+               </g> 
                 <g data-building-id="b1" class="building-polygon" role="button" tabindex="0" aria-label="b38">
                     <polygon points="1888,1177 2127,1183 2127,1427 1884,1420" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
                     <text x="2007" y="1302" class="bldg-label" font-size="9">b1</text>
@@ -477,11 +476,35 @@
                 <polygon points="698,591 733,593 733,621 698,618" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
                 <text x="716" y="606" class="bldg-label" font-size="9">b17</text> 
             </g>
+            <!-- ===== FIRE PUMP STATION ===== --> 
+             <g data-building-id="b18" class="building-polygon" role="button" tabindex="0" aria-label="b18"> 
+                <polygon points="572,369 567,490 643,492 645,369" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                <text x="607" y="430" class="bldg-label" font-size="9">b18</text> 
+            </g> 
             <!-- ===== AREA WATER INTAKE ===== --> 
              <g data-building-id="b19" class="building-polygon" role="button" tabindex="0" aria-label="b19"> 
                 <polygon points="1515,449 1432,437 1531,-1 1595,4" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
                 <text x="1518" y="222" class="bldg-label" font-size="9">b19</text> 
             </g>
+
+            <!-- ===== AREA HRSG ===== --> 
+             <g data-building-id="b20" class="building-polygon" role="button" tabindex="0" aria-label="b20"> 
+                <polygon points="1276,571 1547,576 1547,810 1698,810 1691,1048 1269,1041 1271,784 1168,782 1166,697 1278,695" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                <text x="1391" y="781" class="bldg-label" font-size="9">b20</text> 
+            </g> 
+
+
+
+            <!-- ===== CONDENSATE WATER TANK ===== --> 
+             <g data-building-id="b21" class="building-polygon" role="button" tabindex="0" aria-label="b21"> 
+                <polygon points="1551,567 1684,564 1684,796 1556,794" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                <text x="1619" y="680" class="bldg-label" font-size="9">b21</text> 
+            </g> 
+
+
+
+
+
             <!-- ===== AREA CLORINATION PLANT ===== --> 
              <g data-building-id="b23" class="building-polygon" role="button" tabindex="0" aria-label="b23"> 
                 <polygon points="1574,514 1703,516 1693,296 1581,298" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
@@ -565,6 +588,26 @@
                 <!-- Gunakan mapper.html dengan mode Vektor untuk menggambar koordinat -->
 
                 <!-- Rute jalan untuk denah vektor akan ditambahkan di sini -->
+
+                <!-- ===== JALAN INDUSTRI ===== --> 
+                 <g class="industrial-routes"> 
+                    <!-- Rute 1 --> <polyline class="jalan-industri" points="570,517 875,524 875,676" /> 
+                    <!-- Rute 2 --> <polyline class="jalan-industri" points="882,524 973,526 973,487" /> 
+                    <!-- Rute 3 --> <polyline class="jalan-industri" points="982,524 1292,531 1294,495" /> 
+                    <!-- Rute 4 --> <polyline class="jalan-industri" points="1294,563 1294,531 1540,534 1547,402 1586,243 1579,142" /> 
+                    <!-- Rute 5 --> <polyline class="jalan-industri" points="1549,536 1599,536 1599,561" /> 
+                    <!-- Rute 6 --> <polyline class="jalan-industri" points="1618,516 1618,539 1693,543 1714,573 1719,621 1709,908 1693,908" /> 
+                    <!-- Rute 7 --> <polyline class="jalan-industri" points="1707,917 1705,1141 2058,1148 2058,1066 2079,1017 2118,1001 2157,1022 2187,1050 2271,1130" /> 
+                    <!-- Rute 8 --> <polyline class="jalan-industri" points="2063,1146 2150,1153 2180,1174 2180,1430 2166,1451 1152,1426 1129,1382 1138,1095 1138,811 1262,813" /> 
+                    <!-- Rute 9 --> <polyline class="jalan-industri" points="1145,529 1138,816" /> 
+                    <!-- Rute 10 --> <polyline class="jalan-industri" points="1141,1085 1249,1089 1249,1130" /> 
+                    <!-- Rute 11 --> <polyline class="jalan-industri" points="1251,1089 1320,1089 1322,1036" /> 
+                    <!-- Rute 12 --> <polyline class="jalan-industri" points="1322,1087 1705,1094" /> 
+                    <!-- Rute 13 --> <polyline class="jalan-industri" points="1705,1138 1707,1436" /> 
+                    <!-- Rute 14 --> <polyline class="jalan-industri" points="2182,1265 2519,1270 2528,1288 2528,1313 2524,1474" /> 
+                    <!-- Rute 15 --> <polyline class="jalan-industri" points="1136,1084 627,1079 620,1318" /> </g>
+
+                
             </svg>
         </main>
     </div>
