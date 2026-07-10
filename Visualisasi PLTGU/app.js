@@ -249,9 +249,9 @@ const buildingData = {
         image: "buildings/b15(Gardu Induk)/thumb.jpg"
     },
     "b16": {
-        number: "44", // isi nomor urut
+        number: "b16",
         name: "Area Make Up Watertank",
-        description: "Area Make Up Watertank.",
+        description: "Area tangki Make Up Water yang menampung air pengisi tambahan untuk menjaga siklus air dan uap di dalam pembangkit.",
         image: "buildings/b16(Area Make Up Watertank)/thumb.jpg"
     },
     "b17": {
@@ -273,15 +273,15 @@ const buildingData = {
         image: "buildings/b19(Area Water Intake)/thumb.jpg"
     },
     "b20": {
-        number: "48", // isi nomor urut
+        number: "b20",
         name: "Area HRSG",
-        description: "Area HRSG.",
+        description: "Area Heat Recovery Steam Generator (HRSG) — memanfaatkan gas buang panas dari Gas Turbin untuk menghasilkan uap bertekanan tinggi yang menggerakkan Steam Turbin, menghasilkan listrik tambahan tanpa bahan bakar ekstra.",
         image: "buildings/b20(Area HRSG)/thumb.jpg"
     },
     "b21": {
-        number: "49",
+        number: "b21",
         name: "Condensate Water Tank",
-        description: "Tangki air kondensat (Condensate Water Tank).",
+        description: "Tangki air kondensat (Condensate Water Tank) — menampung uap yang telah dikondensasikan kembali menjadi air setelah melewati steam turbin, untuk kemudian disirkulasikan kembali ke HRSG.",
         image: "buildings/b21(Condensate Water Tank)/thumb.jpg"
     },
     "b22": {
@@ -577,7 +577,25 @@ document.addEventListener("DOMContentLoaded", () => {
             li.addEventListener('click', (e) => {
                 e.stopPropagation();
                 cariCepatWrapper.classList.remove('expanded');
-                openModal(id);
+
+                // Cari elemen polygon bangunan yang sedang aktif/terlihat di layar
+                const polys = document.querySelectorAll(`.building-polygon[data-building-id="${id}"]`);
+                let targetRect = null;
+                for (let i = 0; i < polys.length; i++) {
+                    const rect = polys[i].getBoundingClientRect();
+                    if (rect && rect.width > 0 && rect.height > 0) {
+                        targetRect = rect;
+                        break;
+                    }
+                }
+
+                if (targetRect) {
+                    const x = targetRect.left + targetRect.width / 2;
+                    const y = targetRect.top + targetRect.height / 2;
+                    openPopover(id, x, y);
+                } else {
+                    openPopover(id, window.innerWidth / 2, window.innerHeight / 2);
+                }
             });
             
             buildingList.appendChild(li);

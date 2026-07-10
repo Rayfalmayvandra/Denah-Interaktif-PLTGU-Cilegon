@@ -491,15 +491,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const overlaySatelit = document.getElementById('mapOverlaySatelit');
         const overlayVektor = document.getElementById('mapOverlayVektor');
 
+        let mapSwitchTimeout = null;
+
         function switchMapView(view) {
+            if (mapSwitchTimeout) clearTimeout(mapSwitchTimeout);
+
             if (view === 'satelit') {
                 btnSatelit.classList.add('active');
                 btnVektor.classList.remove('active');
                 // Base map
-                baseMapSatelit.classList.add('active');
                 baseMapSatelit.style.display = '';
+                baseMapSatelit.offsetHeight; // reflow
+                baseMapSatelit.classList.add('active');
                 baseMapVektor.classList.remove('active');
-                setTimeout(() => { baseMapVektor.style.display = 'none'; }, 400);
+                mapSwitchTimeout = setTimeout(() => {
+                    if (!baseMapVektor.classList.contains('active')) {
+                        baseMapVektor.style.display = 'none';
+                    }
+                }, 400);
                 // SVG overlay
                 if (overlaySatelit) overlaySatelit.style.display = '';
                 if (overlayVektor) overlayVektor.style.display = 'none';
@@ -511,7 +520,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 baseMapVektor.offsetHeight; // reflow
                 baseMapVektor.classList.add('active');
                 baseMapSatelit.classList.remove('active');
-                setTimeout(() => { baseMapSatelit.style.display = 'none'; }, 400);
+                mapSwitchTimeout = setTimeout(() => {
+                    if (!baseMapSatelit.classList.contains('active')) {
+                        baseMapSatelit.style.display = 'none';
+                    }
+                }, 400);
                 // SVG overlay
                 if (overlaySatelit) overlaySatelit.style.display = 'none';
                 if (overlayVektor) overlayVektor.style.display = '';
@@ -971,7 +984,25 @@ document.addEventListener("DOMContentLoaded", () => {
             li.addEventListener('click', (e) => {
                 e.stopPropagation();
                 cariCepatWrapper.classList.remove('expanded');
-                openModal(id);
+
+                // Cari elemen polygon bangunan yang sedang aktif/terlihat di layar (Satelit atau Vektor)
+                const polys = document.querySelectorAll(`.building-polygon[data-building-id="${id}"]`);
+                let targetRect = null;
+                for (let i = 0; i < polys.length; i++) {
+                    const rect = polys[i].getBoundingClientRect();
+                    if (rect && rect.width > 0 && rect.height > 0) {
+                        targetRect = rect;
+                        break;
+                    }
+                }
+
+                if (targetRect) {
+                    const x = targetRect.left + targetRect.width / 2;
+                    const y = targetRect.top + targetRect.height / 2;
+                    openPopover(id, x, y);
+                } else {
+                    openPopover(id, window.innerWidth / 2, window.innerHeight / 2);
+                }
             });
 
             buildingList.appendChild(li);
