@@ -7,191 +7,450 @@ export const buildingData = {
     "b2": {
         number: "07",
         name: "Switch Yard",
+        zona: "A",
+        dimensi: "± 1.447 m²",
         shortDesc: "Gardu induk tegangan tinggi 150kV yang menyalurkan listrik ke jaringan transmisi PLN.",
-        description: "Gardu induk tegangan tinggi 150kV (GIS — Gas Insulated Switchgear) yang menyalurkan listrik yang dihasilkan ke jaringan transmisi PLN. Dilengkapi dengan circuit breaker, disconnector, bus bar, current transformer, dan sistem proteksi relay."
+        description: "Gardu induk tegangan tinggi 150kV (GIS — Gas Insulated Switchgear) yang menyalurkan listrik yang dihasilkan ke jaringan transmisi PLN. Dilengkapi dengan circuit breaker, disconnector, bus bar, current transformer, dan sistem proteksi relay.",
+        fungsi: [
+            "Menyalurkan daya listrik ke jaringan transmisi PLN 150kV",
+            "Proteksi sistem tenaga menggunakan relay pengaman",
+            "Menghubungkan generator PLTGU ke jaringan eksternal"
+        ]
     },
 
     "b1": {
         number: "17",
         name: "Distillate Oil Tank",
+        zona: "B",
+        dimensi: "± 5.320 m² (diameter ±82 m)",
         shortDesc: "Fasilitas penyimpanan besar yang dari atas terlihat berbentuk bundar. Tangki ini berfungsi krusial untuk menampung bahan bakar cadangan, yang biasanya berupa minyak diesel atau High-Speed Diesel (HSD).",
         description: "Tangki penyimpanan Distillate Oil (minyak sulingan) berkapasitas lebih kecil yang digunakan sebagai bahan bakar cadangan harian (day tank) atau untuk proses start-up gas turbin sebelum dialihkan ke gas alam.",
-        image: "Screenshot 2026-07-06 153448.png"
+        image: "Screenshot 2026-07-06 153448.png",
+        fungsi: [
+            "Menyimpan bahan bakar cadangan High-Speed Diesel (HSD)",
+            "Menyediakan bahan bakar saat start-up gas turbin",
+            "Cadangan operasi saat pasokan gas alam terganggu"
+        ]
     },
     "b3": {
         number: "31",
         name: "Area Pos Jaga",
-        description: "Area pos jaga keamanan tambahan di fasilitas PLTGU."
+        zona: "D",
+        dimensi: "± 171 m²",
+        description: "Area pos jaga keamanan tambahan di fasilitas PLTGU.",
+        fungsi: [
+            "Pemantauan keamanan area PLTGU",
+            "Kontrol akses keluar-masuk kendaraan dan personel",
+            "Koordinasi keamanan dengan pos gate utama"
+        ]
     },
     "b4": {
         number: "32",
         name: "Fire Truck Station",
-        description: "Stasiun pemadam kebakaran (Fire Truck Station) untuk penanganan darurat dan siaga kebakaran di area PLTGU."
+        zona: "D",
+        dimensi: "± 171 m²",
+        description: "Stasiun pemadam kebakaran (Fire Truck Station) untuk penanganan darurat dan siaga kebakaran di area PLTGU.",
+        fungsi: [
+            "Penyimpanan armada truk pemadam kebakaran",
+            "Siaga 24 jam untuk penanganan darurat kebakaran",
+            "Pusat koordinasi respons darurat kebakaran PLTGU"
+        ]
     },
     "b5": {
         number: "33",
         name: "Unit Pelayanan Kesehatan Kerja (UPPK)",
-        description: "Unit Pelayanan Kesehatan Kerja (UPPK) yang menyediakan fasilitas medis dan penanganan kesehatan bagi para pekerja dan staf."
+        zona: "D",
+        dimensi: "± 111 m²",
+        description: "Unit Pelayanan Kesehatan Kerja (UPPK) yang menyediakan fasilitas medis dan penanganan kesehatan bagi para pekerja dan staf.",
+        fungsi: [
+            "Pelayanan kesehatan dasar bagi karyawan PLTGU",
+            "Penanganan pertolongan pertama kecelakaan kerja",
+            "Pemantauan kesehatan dan program K3 karyawan"
+        ]
     },
     "b6": {
         number: "34",
         name: "Stasiun Gas",
-        description: "Stasiun penerimaan dan pengaturan pasokan gas (Stasiun Gas)."
+        zona: "B",
+        dimensi: "± 124 m²",
+        description: "Stasiun penerimaan dan pengaturan pasokan gas (Stasiun Gas).",
+        fungsi: [
+            "Penerimaan dan regulasi tekanan gas bumi dari jaringan PGN",
+            "Pengukuran debit dan kualitas gas masuk",
+            "Sistem keamanan dan shut-off valve otomatis"
+        ]
     },
     "b7": {
         number: "35",
         name: "Rumah Bibit",
-        description: "Rumah Bibit (Greenhouse / Nursery) untuk pembibitan tanaman di area PLTGU."
+        zona: "D",
+        dimensi: "± 145 m²",
+        description: "Rumah Bibit (Greenhouse / Nursery) untuk pembibitan tanaman di area PLTGU.",
+        fungsi: [
+            "Pembibitan dan perawatan tanaman penghijauan",
+            "Penyediaan bibit untuk program penghijauan PLTGU",
+            "Pemeliharaan vegetasi kawasan industri"
+        ]
     },
     "b8": {
         number: "36",
         name: "Gedung Admin",
-        description: "Gedung Admin (Administrative Building) sebagai pusat kegiatan administrasi dan perkantoran."
+        zona: "D",
+        dimensi: "± 718 m²",
+        description: "Gedung Admin (Administrative Building) sebagai pusat kegiatan administrasi dan perkantoran.",
+        fungsi: [
+            "Pusat administrasi dan manajemen operasional PLTGU",
+            "Ruang kerja staf dan pejabat perusahaan",
+            "Ruang rapat, dokumen, dan komunikasi"
+        ]
     },
     "b9": {
         number: "37",
         name: "Safety Center",
-        description: "Safety Center sebagai pusat kendali dan pemantauan K3 (Keselamatan dan Kesehatan Kerja)."
+        zona: "D",
+        dimensi: "± 189 m²",
+        description: "Safety Center sebagai pusat kendali dan pemantauan K3 (Keselamatan dan Kesehatan Kerja).",
+        fungsi: [
+            "Pusat koordinasi program K3 seluruh PLTGU",
+            "Penyimpanan alat pelindung diri (APD) dan peralatan keselamatan",
+            "Pelatihan dan sosialisasi prosedur K3"
+        ]
     },
     "b10": {
         number: "38",
         name: "Masjid",
-        description: "Masjid untuk fasilitas ibadah karyawan dan tamu di lingkungan PLTGU."
+        zona: "D",
+        dimensi: "± 245 m²",
+        description: "Masjid untuk fasilitas ibadah karyawan dan tamu di lingkungan PLTGU.",
+        fungsi: [
+            "Fasilitas ibadah sholat bagi karyawan Muslim",
+            "Kegiatan kerohanian dan keagamaan karyawan",
+            "Tempat ibadah untuk tamu dan mitra PLTGU"
+        ]
     },
     "b11": {
         number: "39",
         name: "Area Pos Gate",
-        description: "Area Pos Gate untuk pemeriksaan akses masuk dan pengamanan fasilitas."
+        zona: "D",
+        dimensi: "± 119 m²",
+        description: "Area Pos Gate untuk pemeriksaan akses masuk dan pengamanan fasilitas.",
+        fungsi: [
+            "Pemeriksaan identitas dan akses masuk personel",
+            "Pencatatan keluar-masuk kendaraan dan tamu",
+            "Pengamanan gerbang utama fasilitas PLTGU"
+        ]
     },
     "b12": {
         number: "40",
         name: "Area Traffo",
-        description: "Area Transformator (Traffo) yang berfungsi menaikkan tegangan untuk ditransmisikan atau menurunkan tegangan untuk pemakaian sendiri."
+        zona: "A",
+        dimensi: "± 2.145 m²",
+        description: "Area Transformator (Traffo) yang berfungsi menaikkan tegangan untuk ditransmisikan atau menurunkan tegangan untuk pemakaian sendiri.",
+        fungsi: [
+            "Menaikkan tegangan output generator ke 150kV",
+            "Menurunkan tegangan untuk kebutuhan auxiliary PLTGU",
+            "Distribusi tenaga listrik ke seluruh area fasilitas"
+        ]
     },
     "b13": {
         number: "41",
         name: "Area Raw Water Tank",
-        description: "Area tangki penampungan air mentah (Raw Water Tank) sebelum diproses lebih lanjut oleh unit pengolahan air."
+        zona: "C",
+        dimensi: "± 468 m²",
+        description: "Area tangki penampungan air mentah (Raw Water Tank) sebelum diproses lebih lanjut oleh unit pengolahan air.",
+        fungsi: [
+            "Penampungan air mentah dari sumber air baku",
+            "Buffer stok air sebelum masuk unit pengolahan",
+            "Menjamin ketersediaan air proses secara berkelanjutan"
+        ]
     },
     "b14": {
         number: "42",
         name: "Area Desalination A & B",
-        description: "Area fasilitas desalinasi unit A & B yang mengolah air laut menjadi air tawar untuk kebutuhan pembangkit."
+        zona: "C",
+        dimensi: "± 1.693 m²",
+        description: "Area fasilitas desalinasi unit A & B yang mengolah air laut menjadi air tawar untuk kebutuhan pembangkit.",
+        fungsi: [
+            "Mengolah air laut menjadi air tawar melalui teknologi reverse osmosis",
+            "Menyediakan air proses berkualitas tinggi untuk HRSG dan cooling",
+            "Mengurangi ketergantungan terhadap pasokan air tawar eksternal"
+        ]
     },
     "b15": {
         number: "43",
         name: "Gardu Induk",
-        description: "Fasilitas Gardu Induk untuk mendistribusikan aliran listrik yang dihasilkan ke jaringan transmisi PLN."
+        zona: "A",
+        dimensi: "± 340 m²",
+        description: "Fasilitas Gardu Induk untuk mendistribusikan aliran listrik yang dihasilkan ke jaringan transmisi PLN.",
+        fungsi: [
+            "Distribusi dan pengaturan aliran daya listrik 150kV",
+            "Pengamanan sistem tenaga melalui proteksi relay",
+            "Switching dan isolasi jaringan transmisi"
+        ]
     },
     "b16": {
         number: "44",
         name: "Area Make Up Watertank",
-        description: "Area tangki Make Up Water yang menampung air pengisi tambahan untuk menjaga siklus air dan uap di dalam pembangkit."
+        zona: "C",
+        dimensi: "± 973 m²",
+        description: "Area tangki Make Up Water yang menampung air pengisi tambahan untuk menjaga siklus air dan uap di dalam pembangkit.",
+        fungsi: [
+            "Penyimpanan air pengisi (make-up water) untuk siklus uap HRSG",
+            "Menjaga keseimbangan volume air dalam sistem siklus tertutup",
+            "Cadangan air demin untuk operasi darurat"
+        ]
     },
     "b17": {
         number: "45",
         name: "Traffo Cadangan",
-        description: "Area Transformator (Traffo) Cadangan."
+        zona: "C",
+        dimensi: "± 150 m²",
+        description: "Area Transformator (Traffo) Cadangan.",
+        fungsi: [
+            "Transformator cadangan untuk keandalan pasokan listrik",
+            "Backup saat transformator utama dalam perbaikan",
+            "Memastikan kontinuitas operasi sistem kelistrikan"
+        ]
     },
     "b18": {
         number: "46",
         name: "Fire Pump Station",
-        description: "Fire Pump Station untuk sistem pemadam kebakaran."
+        zona: "C",
+        dimensi: "± 297 m²",
+        description: "Fire Pump Station untuk sistem pemadam kebakaran.",
+        fungsi: [
+            "Memompa air bertekanan untuk sistem hydrant dan sprinkler",
+            "Menjamin pasokan air pemadam kebakaran di seluruh area",
+            "Operasi otomatis saat deteksi kebakaran terdeteksi"
+        ]
     },
     "b19": {
         number: "47",
         name: "Area Water Intake",
-        description: "Area Water Intake untuk pengambilan air baku."
+        zona: "C",
+        dimensi: "± 720 m²",
+        description: "Area Water Intake untuk pengambilan air baku.",
+        fungsi: [
+            "Pengambilan air laut/sungai sebagai sumber air baku",
+            "Penyaringan awal (screening) material besar dari air",
+            "Pompa transfer air ke unit pengolahan selanjutnya"
+        ]
     },
     "b20": {
         number: "48",
         name: "Area HRSG",
-        description: "Area Heat Recovery Steam Generator (HRSG)."
+        zona: "A",
+        dimensi: "± 3.360 m²",
+        description: "Area Heat Recovery Steam Generator (HRSG) — memanfaatkan gas buang panas dari Gas Turbin untuk menghasilkan uap bertekanan tinggi yang menggerakkan Steam Turbin, menghasilkan listrik tambahan tanpa bahan bakar ekstra.",
+        fungsi: [
+            "Mengkonversi panas gas buang turbin gas menjadi uap bertekanan",
+            "Menghasilkan uap untuk menggerakkan steam turbin",
+            "Meningkatkan efisiensi keseluruhan sistem Combined Cycle"
+        ]
     },
     "b21": {
         number: "49",
         name: "Condensate Water Tank",
-        description: "Tangki air kondensat (Condensate Water Tank)."
+        zona: "A",
+        dimensi: "± 2.900 m²",
+        description: "Tangki air kondensat (Condensate Water Tank) — menampung uap yang telah dikondensasikan kembali menjadi air setelah melewati steam turbin, untuk kemudian disirkulasikan kembali ke HRSG.",
+        fungsi: [
+            "Menampung air kondensat dari kondenser steam turbin",
+            "Mendistribusikan air kondensat kembali ke HRSG",
+            "Menjaga keseimbangan siklus air-uap pembangkit"
+        ]
     },
     "b22": {
         number: "50",
         name: "Area Bangunan K3 Kecil",
-        description: "Area fasilitas Bangunan K3 Kecil."
+        zona: "C",
+        dimensi: "± 205 m²",
+        description: "Area fasilitas Bangunan K3 Kecil.",
+        fungsi: [
+            "Penyimpanan peralatan K3 dan APD di area setempat",
+            "Pos pemantauan keselamatan kerja lapangan",
+            "Fasilitas P3K di area operasi"
+        ]
     },
     "b23": {
         number: "51",
         name: "Area Clorination Plant",
-        description: "Fasilitas Chlorination Plant."
+        zona: "C",
+        dimensi: "± 1.840 m²",
+        description: "Fasilitas Chlorination Plant — melakukan proses klorinasi pada air baku untuk mencegah pertumbuhan biota laut (bio-fouling) pada sistem pendingin.",
+        fungsi: [
+            "Injeksi klorin pada air pendingin untuk mencegah bio-fouling",
+            "Perlindungan pipa kondenser dari pertumbuhan kerang dan ganggang",
+            "Pengolahan air laut sebelum digunakan sebagai media pendingin"
+        ]
     },
     "b24": {
         number: "52",
         name: "Area Solar Panel",
-        description: "Area panel surya (Solar Panel) untuk pasokan energi bersih."
+        zona: "B",
+        dimensi: "± 250 m²",
+        description: "Area panel surya (Solar Panel) untuk pasokan energi bersih.",
+        fungsi: [
+            "Pembangkitan listrik dari energi surya",
+            "Memasok kebutuhan listrik fasilitas penunjang",
+            "Kontribusi terhadap target energi terbarukan perusahaan"
+        ]
     },
     "b25": {
         number: "53",
         name: "Area Gudang Penyimpan Pelumas",
-        description: "Fasilitas gudang penyimpanan pelumas (lubricant storage)."
+        zona: "C",
+        dimensi: "± 1.870 m²",
+        description: "Fasilitas gudang penyimpanan pelumas (lubricant storage).",
+        fungsi: [
+            "Penyimpanan oli pelumas untuk turbin gas dan steam turbin",
+            "Manajemen stok minyak pelumas operasional",
+            "Pengelolaan dan pembuangan limbah oli bekas"
+        ]
     },
     "b26": {
         number: "54",
         name: "Area Air Limbah WWTP",
-        description: "Fasilitas pengolahan air limbah (Waste Water Treatment Plant)."
+        zona: "C",
+        dimensi: "± 1.000 m²",
+        description: "Fasilitas pengolahan air limbah (Waste Water Treatment Plant) — mengolah air limbah dari berbagai proses PLTGU sebelum dibuang ke lingkungan.",
+        fungsi: [
+            "Pengolahan air limbah proses sebelum dibuang ke lingkungan",
+            "Menetralisir kandungan kimia berbahaya dalam air limbah",
+            "Memenuhi baku mutu lingkungan sesuai regulasi KLHK"
+        ]
     },
     "b27": {
         number: "55",
         name: "Area Air Limbah Desalinasi",
-        description: "Fasilitas pengolahan limbah dari proses desalinasi."
+        zona: "C",
+        dimensi: "± 3.500 m²",
+        description: "Fasilitas pengolahan limbah dari proses desalinasi (brine discharge area).",
+        fungsi: [
+            "Pengolahan dan pembuangan air garam hasil desalinasi",
+            "Pengenceran brine water sebelum dibuang ke laut",
+            "Pemantauan dampak lingkungan pembuangan brine"
+        ]
     },
     "b28": {
         number: "56",
         name: "Area Pertamina / Gas Metering Station",
-        description: "Stasiun pengukuran gas (Gas Metering Station)."
+        zona: "B",
+        dimensi: "± 1.770 m²",
+        description: "Stasiun pengukuran gas (Gas Metering Station) dan area fasilitas Pertamina untuk penerimaan bahan bakar minyak.",
+        fungsi: [
+            "Pengukuran volume gas bumi yang diterima dari PGN/Pertamina",
+            "Stasiun regulasi tekanan gas untuk distribusi ke turbin",
+            "Penerimaan dan pemeriksaan kualitas bahan bakar"
+        ]
     },
     "b29": {
         number: "57",
         name: "Gudang & Workshop",
-        description: "Area Gudang dan Workshop."
+        zona: "C",
+        dimensi: "± 648 m²",
+        description: "Area Gudang dan Workshop untuk penyimpanan suku cadang dan kegiatan pemeliharaan.",
+        fungsi: [
+            "Penyimpanan suku cadang (spare parts) mesin dan peralatan",
+            "Kegiatan perbaikan dan pemeliharaan peralatan",
+            "Fabrikasi dan modifikasi komponen mekanik"
+        ]
     },
     "b30": {
         number: "58",
         name: "Gas Station",
-        description: "Gas Station."
+        zona: "C",
+        dimensi: "± 770 m²",
+        description: "Gas Station — stasiun pengisian bahan bakar untuk kendaraan operasional PLTGU.",
+        fungsi: [
+            "Pengisian bahan bakar kendaraan operasional",
+            "Penyimpanan BBM untuk kendaraan dinas",
+            "Pengelolaan distribusi BBM internal"
+        ]
     },
     "b31": {
         number: "59",
         name: "Station Gas Compressor",
-        description: "Fasilitas kompresor gas (Station Gas Compressor)."
+        zona: "C",
+        dimensi: "± 614 m²",
+        description: "Fasilitas kompresor gas (Station Gas Compressor) untuk meningkatkan tekanan gas sebelum masuk ke ruang bakar turbin gas.",
+        fungsi: [
+            "Kompresi gas bumi ke tekanan operasi turbin gas",
+            "Memastikan tekanan gas yang cukup untuk injeksi ke combustor",
+            "Pengaturan laju aliran gas ke masing-masing unit turbin"
+        ]
     },
     "b32": {
         number: "60",
         name: "Area Gasena",
-        description: "Area Gasena."
+        zona: "C",
+        dimensi: "± 1.235 m²",
+        description: "Area Gasena — fasilitas pengelolaan gas industri dan nitrogen untuk kebutuhan operasional PLTGU.",
+        fungsi: [
+            "Penyimpanan dan distribusi gas nitrogen untuk purging",
+            "Penyediaan gas industri untuk kebutuhan operasional dan pemeliharaan",
+            "Fasilitas pengelolaan gas bertekanan"
+        ]
     },
     "b33": {
         number: "61",
         name: "Area Titik Pembuangan (Outfall)",
-        description: "Area Titik Pembuangan (Outfall)."
+        zona: "D",
+        dimensi: "± 800 m²",
+        description: "Area Titik Pembuangan (Outfall) — titik akhir pembuangan air dari sistem pendingin dan proses pengolahan air limbah ke laut.",
+        fungsi: [
+            "Titik pembuangan air pendingin ke laut",
+            "Pemantauan suhu dan kualitas air buangan",
+            "Pengenceran dan dispersi air buangan ke lingkungan laut"
+        ]
     },
     "b34": {
         number: "62",
         name: "Gedung Enjinering",
-        description: "Gedung Enjinering."
+        zona: "D",
+        dimensi: "± 180 m²",
+        description: "Gedung Enjinering sebagai pusat kegiatan teknis, perencanaan, dan engineering support.",
+        fungsi: [
+            "Ruang kerja tim engineering dan technical support",
+            "Penyimpanan dokumen teknis, P&ID, dan drawing",
+            "Perencanaan dan koordinasi proyek pemeliharaan"
+        ]
     },
     "b35": {
         number: "63",
         name: "Gedung K3",
-        description: "Gedung K3."
+        zona: "D",
+        dimensi: "± 156 m²",
+        description: "Gedung K3 sebagai pusat kegiatan Keselamatan dan Kesehatan Kerja.",
+        fungsi: [
+            "Pusat administrasi program K3 PLTGU",
+            "Ruang pelatihan dan simulasi keselamatan",
+            "Penyimpanan dan pengelolaan dokumen K3"
+        ]
     },
     "b36": {
         number: "64",
         name: "Area Olahraga",
-        description: "Area Olahraga."
+        zona: "D",
+        dimensi: "± 235 m²",
+        description: "Area Olahraga untuk fasilitas kebugaran dan rekreasi karyawan.",
+        fungsi: [
+            "Fasilitas olahraga dan rekreasi karyawan",
+            "Program kesehatan dan kebugaran staf",
+            "Kegiatan sosial dan team building"
+        ]
     },
     "b37": {
         number: "65",
         name: "Gedung Parkir",
-        description: "Gedung Parkir."
+        zona: "D",
+        dimensi: "± 311 m²",
+        description: "Gedung Parkir untuk kendaraan karyawan dan tamu PLTGU.",
+        fungsi: [
+            "Area parkir kendaraan karyawan dan tamu",
+            "Pengelolaan akses dan keamanan kendaraan",
+            "Fasilitas penunjang mobilitas di area PLTGU"
+        ]
     }
 };
 
@@ -199,6 +458,9 @@ export const buildingData = {
 // ============================================================
 // APPLICATION LOGIC
 // ============================================================
+
+const allImageFiles = import.meta.glob('../public/buildings/**/*.{jpg,jpeg,png,webp}');
+const allImagePaths = Object.keys(allImageFiles);
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -339,12 +601,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         popoverDesc.textContent = desc;
 
-        if (data.image) {
-            popoverImage.src = data.image;
+        // Auto-load thumbnail dari /buildings/<id>(<nama>)/thumb.jpg atau thumb.png
+        const folderName = buildingId + '(' + data.name.replace(/[\/\\:*?"<>|]/g, '-') + ')';
+        const thumbSrc = `/buildings/${folderName}/thumb.jpg`;
+        const thumbImg = new Image();
+        thumbImg.onload = () => {
+            popoverImage.src = thumbSrc;
             popoverImage.style.display = 'block';
-        } else {
-            popoverImage.style.display = 'none';
-        }
+        };
+        thumbImg.onerror = () => {
+            // Coba thumb.png jika thumb.jpg tidak ada
+            const thumbPng = `/buildings/${buildingId}/thumb.png`;
+            const thumbImgPng = new Image();
+            thumbImgPng.onload = () => {
+                popoverImage.src = thumbPng;
+                popoverImage.style.display = 'block';
+            };
+            thumbImgPng.onerror = () => {
+                popoverImage.style.display = 'none';
+            };
+            thumbImgPng.src = thumbPng;
+        };
+        thumbImg.src = thumbSrc;
 
         popoverCard.classList.add('visible');
 
@@ -385,13 +663,247 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = buildingData[buildingId];
         if (!data) return;
 
-        modalNumber.textContent = '#' + data.number;
-        modalName.textContent = data.name;
-        modalDescription.textContent = data.description;
+        document.getElementById('modalNumber').textContent = '#' + data.number;
+        document.getElementById('modalName').textContent = data.name;
+        document.getElementById('modalDescription').textContent = data.description;
+        document.getElementById('modalDimensi').textContent = data.dimensi || '-';
+
+        // Zona badge (header + meta-row)
+        const zonaEl = document.getElementById('modalZona');
+        const zonaDetailEl = document.getElementById('modalZonaDetail');
+        const zonaVal = data.zona || '-';
+        [zonaEl, zonaDetailEl].forEach(el => {
+            if (el) {
+                el.textContent = 'Zona ' + zonaVal;
+                el.className = 'zona-badge zona-' + zonaVal.toLowerCase();
+            }
+        });
+        // Fungsi list
+        const fungsiEl = document.getElementById('modalFungsi');
+        fungsiEl.innerHTML = '';
+        if (data.fungsi && data.fungsi.length > 0) {
+            data.fungsi.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                fungsiEl.appendChild(li);
+            });
+            document.getElementById('modalFungsiSection').style.display = '';
+        } else {
+            document.getElementById('modalFungsiSection').style.display = 'none';
+        }
+
+        // Gallery — auto-detect photos from /buildings/<id>/ and sub-folders (floors)
+        const galleryContent = document.getElementById('galleryContent');
+        const gallerySection = document.getElementById('modalGallery');
+        galleryContent.innerHTML = '';
+
+        const folderName = buildingId + '(' + data.name.replace(/[\/\\:*?"<>|]/g, '-') + ')';
+        const folderPathMatcher = `../public/buildings/${folderName}/`;
+        const folderPathMatcherFallback = `../public/buildings/${buildingId}/`;
+
+        // Categorize photos into root photos and floor-grouped photos
+        const rootPhotos = [];
+        const floorPhotos = {}; // key = floor name, value = array of photo objects
+
+        allImagePaths.forEach(path => {
+            if (path.startsWith(folderPathMatcher) || path.startsWith(folderPathMatcherFallback)) {
+                if (path.toLowerCase().endsWith('thumb.jpg') || path.toLowerCase().endsWith('thumb.png')) return;
+                
+                const url = path.replace('../public', '');
+                const fileName = path.split('/').pop();
+                const match = fileName.match(/\((.*?)\)/);
+                const title = match ? match[1] : '';
+
+                // Determine which folder the file lives in
+                const relativePath = path.startsWith(folderPathMatcher) 
+                    ? path.substring(folderPathMatcher.length) 
+                    : path.substring(folderPathMatcherFallback.length);
+                
+                const pathParts = relativePath.split('/');
+                
+                if (pathParts.length > 1) {
+                    // File is in a sub-folder (floor)
+                    const floorName = pathParts[0]; // e.g., "Lt 1", "Lt 2", "Lt Dasar"
+                    if (!floorPhotos[floorName]) floorPhotos[floorName] = [];
+                    floorPhotos[floorName].push({ url, title, fileName, originalPath: path });
+                } else {
+                    // File is in root folder
+                    rootPhotos.push({ url, title, fileName, originalPath: path });
+                }
+            }
+        });
+
+        // Sort photos by numeric prefix in filename
+        const sortPhotos = (arr) => arr.sort((a, b) => {
+            const numA = parseInt(a.fileName) || 999;
+            const numB = parseInt(b.fileName) || 999;
+            return numA - numB;
+        });
+
+        sortPhotos(rootPhotos);
+        Object.values(floorPhotos).forEach(sortPhotos);
+
+        // Sort floor names naturally
+        const floorNames = Object.keys(floorPhotos).sort((a, b) => {
+            // Put "Lt Dasar" first, then "Lt 1", "Lt 2", etc.
+            if (a.toLowerCase().includes('dasar')) return -1;
+            if (b.toLowerCase().includes('dasar')) return 1;
+            const numA = parseInt(a.replace(/\D/g, '')) || 0;
+            const numB = parseInt(b.replace(/\D/g, '')) || 0;
+            return numA - numB;
+        });
+
+        const hasFloors = floorNames.length > 0;
+        const allSections = [];
+
+        // Prepare sections
+        if (rootPhotos.length > 0) {
+            allSections.push({
+                title: hasFloors ? '🏢 Eksterior Bangunan' : null,
+                photos: rootPhotos
+            });
+        }
+
+        floorNames.forEach(floorName => {
+            allSections.push({
+                title: `🏠 ${floorName}`,
+                photos: floorPhotos[floorName]
+            });
+        });
+
+        if (allSections.length === 0) {
+            gallerySection.style.display = 'none';
+        } else {
+            gallerySection.style.display = '';
+            
+            allSections.forEach((section, sectionIdx) => {
+                const sectionEl = document.createElement('div');
+                sectionEl.className = 'gallery-floor-section';
+
+                // Floor title
+                if (section.title) {
+                    const titleEl = document.createElement('div');
+                    titleEl.className = 'gallery-floor-title';
+                    titleEl.textContent = section.title;
+                    sectionEl.appendChild(titleEl);
+                }
+
+                // Gallery wrapper with arrows
+                const wrapper = document.createElement('div');
+                wrapper.className = 'gallery-wrapper';
+
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'gallery-arrow gallery-arrow--prev';
+                prevBtn.innerHTML = '&#8249;';
+                prevBtn.setAttribute('aria-label', 'Foto sebelumnya');
+
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'gallery-arrow gallery-arrow--next';
+                nextBtn.innerHTML = '&#8250;';
+                nextBtn.setAttribute('aria-label', 'Foto berikutnya');
+
+                const slider = document.createElement('div');
+                slider.className = 'gallery-slider';
+
+                // Counter badge
+                const counter = document.createElement('div');
+                counter.className = 'gallery-counter';
+                slider.appendChild(counter);
+
+                // Track (horizontal flex container)
+                const track = document.createElement('div');
+                track.className = 'gallery-track';
+
+                section.photos.forEach((photo, i) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'gallery-slide';
+
+                    const img = document.createElement('img');
+                    img.src = photo.url;
+                    img.alt = photo.title || `Foto ${data.name} ${i + 1}`;
+                    img.addEventListener('click', () => openLightbox(photo.url, photo.title || img.alt));
+                    slide.appendChild(img);
+
+                    if (photo.title) {
+                        const caption = document.createElement('div');
+                        caption.className = 'gallery-caption';
+                        caption.textContent = photo.title;
+                        slide.appendChild(caption);
+                    }
+
+                    track.appendChild(slide);
+                });
+
+                slider.appendChild(track);
+                wrapper.appendChild(prevBtn);
+                wrapper.appendChild(slider);
+                wrapper.appendChild(nextBtn);
+                sectionEl.appendChild(wrapper);
+
+                // Dot navigation
+                const nav = document.createElement('div');
+                nav.className = 'gallery-nav';
+
+                let currentIdx = 0;
+                const totalPhotos = section.photos.length;
+
+                function updateSlider() {
+                    track.style.transform = `translateX(-${currentIdx * 100}%)`;
+                    counter.textContent = `${currentIdx + 1} / ${totalPhotos}`;
+                    prevBtn.disabled = currentIdx === 0;
+                    nextBtn.disabled = currentIdx === totalPhotos - 1;
+
+                    nav.querySelectorAll('.gallery-dot').forEach((dot, i) => {
+                        dot.classList.toggle('active', i === currentIdx);
+                    });
+                }
+
+                section.photos.forEach((photo, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', photo.title || `Foto ${i + 1}`);
+                    dot.addEventListener('click', () => {
+                        currentIdx = i;
+                        updateSlider();
+                    });
+                    nav.appendChild(dot);
+                });
+
+                sectionEl.appendChild(nav);
+
+                // Arrow events
+                prevBtn.addEventListener('click', () => {
+                    if (currentIdx > 0) {
+                        currentIdx--;
+                        updateSlider();
+                    }
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    if (currentIdx < totalPhotos - 1) {
+                        currentIdx++;
+                        updateSlider();
+                    }
+                });
+
+                // Show/hide arrows
+                if (totalPhotos <= 1) {
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                    nav.style.display = 'none';
+                    counter.style.display = 'none';
+                }
+
+                // Initialize
+                updateSlider();
+
+                galleryContent.appendChild(sectionEl);
+            });
+        }
 
         modalOverlay.classList.add('active');
         modalOverlay.setAttribute('aria-hidden', 'false');
-        setTimeout(() => closeModalBtn.focus(), 100);
+        setTimeout(() => document.getElementById('closeModal').focus(), 100);
     }
 
     // Close modal
@@ -408,6 +920,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
+    });
+
+    // ===== LIGHTBOX =====
+    const lightboxOverlay = document.getElementById('lightboxOverlay');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src, caption) {
+        lightboxImage.src = src;
+        lightboxCaption.textContent = caption || '';
+        lightboxOverlay.classList.add('active');
+    }
+
+    function closeLightbox() {
+        lightboxOverlay.classList.remove('active');
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxOverlay.addEventListener('click', (e) => {
+        if (e.target === lightboxOverlay) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) closeLightbox();
     });
 
     // Cari Cepat Expanding Logic

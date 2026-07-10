@@ -43,7 +43,69 @@
 
     <div class="input-row" style="margin-bottom: 5px;">
         <label style="cursor:pointer; margin-right:15px; font-weight:600;"><input type="radio" name="drawMode" value="building" checked onchange="changeMode()"> 🏢 Mode Bangunan</label>
-        <label style="cursor:pointer; font-weight:600;"><input type="radio" name="drawMode" value="route" onchange="changeMode()"> 🛣️ Mode Rute</label>
+        <label style="cursor:pointer; margin-right:15px; font-weight:600;"><input type="radio" name="drawMode" value="route" onchange="changeMode()"> 🛣️ Mode Rute</label>
+        <label style="cursor:pointer; font-weight:600;"><input type="radio" name="drawMode" value="icon" onchange="changeMode()"> 📍 Mode Icon</label>
+    </div>
+
+    <!-- ICON PICKER (Muncul saat Mode Icon dipilih) -->
+    <div class="input-row" id="iconPickerDiv" style="display:none; margin-bottom: 5px;">
+        <label for="iconSelect">Pilih Icon:</label>
+        <select id="iconSelect" style="padding:6px 10px; border:1px solid #ccc; border-radius:4px; font-size:14px; width:220px;" onchange="updateIconPreview()">
+            <option value="001-market.png">001-market.png</option>
+            <option value="002-gantt.png">002-gantt.png</option>
+            <option value="003-communiation.png">003-communiation.png</option>
+            <option value="004-survey.png">004-survey.png</option>
+            <option value="005-adjustments.png">005-adjustments.png</option>
+            <option value="006-presentation.png">006-presentation.png</option>
+            <option value="007-summary.png">007-summary.png</option>
+            <option value="008-research.png">008-research.png</option>
+            <option value="009-industry.png">009-industry.png</option>
+            <option value="010-factory.png">010-factory.png</option>
+            <option value="011-factory-1.png">011-factory-1.png</option>
+            <option value="012-factory-2.png">012-factory-2.png</option>
+            <option value="013-factory-3.png">013-factory-3.png</option>
+            <option value="014-factory-4.png">014-factory-4.png</option>
+            <option value="015-factory-5.png">015-factory-5.png</option>
+            <option value="016-factory-6.png">016-factory-6.png</option>
+            <option value="017-power-plant.png">017-power-plant.png</option>
+            <option value="018-manufacture.png">018-manufacture.png</option>
+            <option value="019-security-staff.png">019-security-staff.png</option>
+            <option value="020-id-card.png">020-id-card.png</option>
+            <option value="021-security-staff-1.png">021-security-staff-1.png</option>
+            <option value="022-mosque.png">022-mosque.png</option>
+            <option value="023-mosque-1.png">023-mosque-1.png</option>
+            <option value="024-mosque-2.png">024-mosque-2.png</option>
+            <option value="025-mosque-3.png">025-mosque-3.png</option>
+            <option value="026-mosque-4.png">026-mosque-4.png</option>
+            <option value="027-transformer.png">027-transformer.png</option>
+            <option value="028-transformers.png">028-transformers.png</option>
+            <option value="029-solar-panel.png">029-solar-panel.png</option>
+            <option value="030-solar-cell.png">030-solar-cell.png</option>
+            <option value="031-fire-station.png">031-fire-station.png</option>
+            <option value="032-fire-station-1.png">032-fire-station-1.png</option>
+            <option value="033-fire-station-2.png">033-fire-station-2.png</option>
+            <option value="034-garden.png">034-garden.png</option>
+            <option value="035-agricultural-area.png">035-agricultural-area.png</option>
+            <option value="036-water-drop.png">036-water-drop.png</option>
+            <option value="037-drops.png">037-drops.png</option>
+            <option value="038-oil-tank.png">038-oil-tank.png</option>
+            <option value="039-oil-tank-1.png">039-oil-tank-1.png</option>
+            <option value="040-tank.png">040-tank.png</option>
+            <option value="041-oil-tank-2.png">041-oil-tank-2.png</option>
+            <option value="042-electricity.png">042-electricity.png</option>
+            <option value="043-lightning.png">043-lightning.png</option>
+            <option value="044-electric-panel.png">044-electric-panel.png</option>
+            <option value="045-tower.png">045-tower.png</option>
+            <option value="046-troubleshooting.png">046-troubleshooting.png</option>
+            <option value="047-power.png">047-power.png</option>
+            <option value="048-eco-house.png">048-eco-house.png</option>
+            <option value="049-thunder.png">049-thunder.png</option>
+            <option value="050-power-grid.png">050-power-grid.png</option>
+            <option value="051-electrical.png">051-electrical.png</option>
+        </select>
+        <img id="iconPreview" src="/png/001-market.png" alt="preview" style="display:inline-block; vertical-align:middle; width:40px; height:40px; margin: 0 15px; background: #fff; padding: 4px; border-radius: 4px;">
+        <label for="iconSize">Ukuran (px):</label>
+        <input type="number" id="iconSize" value="80" style="width: 70px;">
     </div>
     <div class="input-row">
         <label for="buildingIdSelect">ID Bangunan:</label>
@@ -61,9 +123,10 @@
         <button class="btn btn-clear" style="background:#f97316;" onclick="undoPoint()">↩️ Batal 1 Titik</button>
         <button class="btn btn-clear" style="background:#db2777;" onclick="undoLastSaved()">⏪ Undo Simpan Terakhir</button>
         <button class="btn btn-clear" style="background:#0284c7;" onclick="toggleList()">📋 Daftar Bangunan</button>
-        <button class="btn btn-gen" onclick="finishPolygon()">✅ Polygon</button>
-        <button class="btn btn-gen" style="background:#8b5cf6;" onclick="finishRect()">⬜ Rect</button>
-        <button class="btn btn-gen" style="background:#eab308; color:#000;" onclick="finishRoute()">🛣️ Simpan & Lanjut Rute</button>
+        <button class="btn btn-gen" id="btnPolygon" onclick="finishPolygon()">✅ Polygon</button>
+        <button class="btn btn-gen" id="btnRect" style="background:#8b5cf6;" onclick="finishRect()">⬜ Rect</button>
+        <button class="btn btn-gen" id="btnRoute" style="background:#eab308; color:#000;" onclick="finishRoute()">🛣️ Simpan & Lanjut Rute</button>
+        <button class="btn btn-gen" id="btnSimpanIcon" style="background:#14b8a6; display:none;" onclick="finishIcon()">📍 Simpan Icon</button>
     </div>
 
     <div class="coord-display" id="coordDisplay">Posisi kursor: —</div>
@@ -160,53 +223,10 @@
                 <text data-building-id="b36" x="1284" y="3987" fill="#fff" font-size="12" font-weight="bold">b36</text>
                 <polygon data-building-id="b37" points="829,3843 1140,3851 1140,4086 905,4055 829,3987"></polygon>
                 <text data-building-id="b37" x="969" y="3964" fill="#fff" font-size="12" font-weight="bold">b37</text>
-                
             </g>
             
             <!-- REFERENSI BANGUNAN VEKTOR YANG SUDAH DIBUAT (Akan diisi lewat localStorage Vektor) -->
             <g id="vektor-reference" style="display:none; pointer-events: none; fill: rgba(59, 130, 246, 0.4); stroke: #2563eb; stroke-width: 2;">
-                <polygon data-building-id="b16" points="576,370 941,377 939,494 565,489"></polygon>
-                <text data-building-id="b16" x="755" y="433" fill="#fff" font-size="12" font-weight="bold">b16</text>
-                <polygon data-building-id="b1" points="1888,1177 2127,1183 2127,1427 1884,1420"></polygon>
-                <text data-building-id="b1" x="2007" y="1302" fill="#fff" font-size="12" font-weight="bold">b1</text>
-                <polygon data-building-id="b2" points="636,679 1088,688 1083,952 632,945"></polygon>
-                <text data-building-id="b2" x="860" y="816" fill="#fff" font-size="12" font-weight="bold">b2</text>
-                <polygon data-building-id="b4" points="501,1326 563,1328 563,1282 501,1282"></polygon>
-                <text data-building-id="b4" x="532" y="1305" fill="#fff" font-size="12" font-weight="bold">b4</text>
-                <polygon data-building-id="b5" points="453,1284 453,1312 487,1312 487,1283"></polygon>
-                <text data-building-id="b5" x="470" y="1298" fill="#fff" font-size="12" font-weight="bold">b5</text>
-                <polygon data-building-id="b6" points="402,1217 444,1228 460,1162 418,1153"></polygon>
-                <text data-building-id="b6" x="431" y="1190" fill="#fff" font-size="12" font-weight="bold">b6</text>
-                <polygon data-building-id="b7" points="402,1303 432,1291 441,1314 407,1326"></polygon>
-                <text data-building-id="b7" x="421" y="1309" fill="#fff" font-size="12" font-weight="bold">b7</text>
-                <polygon data-building-id="b8" points="655,1109 730,1112 726,1252 648,1252"></polygon>
-                <text data-building-id="b8" x="690" y="1181" fill="#fff" font-size="12" font-weight="bold">b8</text>
-                <polygon data-building-id="b10" points="886,1136 941,1157 918,1200 868,1174"></polygon>
-                <text data-building-id="b10" x="903" y="1167" fill="#fff" font-size="12" font-weight="bold">b10</text>
-                <polygon data-building-id="b11" points="1024,1047 1058,1047 1058,1063 1021,1061"></polygon>
-                <text data-building-id="b11" x="1040" y="1055" fill="#fff" font-size="12" font-weight="bold">b11</text>
-                <polygon data-building-id="b12a" points="1152,825 1267,827 1267,1075 1154,1070"></polygon>
-                <text data-building-id="b12a" x="1210" y="949" fill="#fff" font-size="12" font-weight="bold">b12a</text>
-                <polygon data-building-id="b12b" points="1159,571 1274,573 1271,690 1154,688"></polygon>
-                <text data-building-id="b12b" x="1205" y="631" fill="#fff" font-size="12" font-weight="bold">b12b</text>
-                polygon data-building-id="b13" points="1083,331 1081,436 1214,436 1214,328"></polygon>
-                <text data-building-id="b13" x="1148" y="1167" fill="#fff" font-size="12" font-weight="bold">b13</text>
-                polygon data-building-id="b14" points="1239,303 1386,305 1377,498 1235,491"></polygon>
-                <text data-building-id="b14" x="1309" y="399" fill="#fff" font-size="12" font-weight="bold">b14</text>
-                polygon data-building-id="b15" points="898,544 1010,544 1008,629 898,626"></polygon>
-                <text data-building-id="b15" x="954" y="586" fill="#fff" font-size="12" font-weight="bold">b15</text>
-                polygon data-building-id="b17" points="698,591 733,593 733,621 698,618"></polygon>
-                <text data-building-id="b17" x="716" y="606" fill="#fff" font-size="12" font-weight="bold">b17</text>
-
- 
-
-
-
-                       
-
-
-
-
             </g>
 
             <polygon id="currentPolygon" points="" style="fill:rgba(59, 130, 246, 0.35); stroke:#2563eb; stroke-width:2;" />
@@ -355,13 +375,43 @@
 
         function changeMode() {
             currentMode = document.querySelector('input[name="drawMode"]:checked').value;
+            const iconPickerDiv = document.getElementById('iconPickerDiv');
+            const btnPolygon = document.getElementById('btnPolygon');
+            const btnRect = document.getElementById('btnRect');
+            const btnRoute = document.getElementById('btnRoute');
+            const btnSimpanIcon = document.getElementById('btnSimpanIcon');
+
             if (currentMode === 'building') {
                 polygon.style.display = 'block';
                 polyline.style.display = 'none';
-            } else {
+                iconPickerDiv.style.display = 'none';
+                if(btnPolygon) btnPolygon.style.display = 'inline-block';
+                if(btnRect) btnRect.style.display = 'inline-block';
+                if(btnRoute) btnRoute.style.display = 'inline-block';
+                if(btnSimpanIcon) btnSimpanIcon.style.display = 'none';
+            } else if (currentMode === 'route') {
                 polygon.style.display = 'none';
                 polyline.style.display = 'block';
+                iconPickerDiv.style.display = 'none';
+                if(btnPolygon) btnPolygon.style.display = 'none';
+                if(btnRect) btnRect.style.display = 'none';
+                if(btnRoute) btnRoute.style.display = 'inline-block';
+                if(btnSimpanIcon) btnSimpanIcon.style.display = 'none';
+            } else if (currentMode === 'icon') {
+                polygon.style.display = 'none';
+                polyline.style.display = 'none';
+                iconPickerDiv.style.display = 'block';
+                if(btnPolygon) btnPolygon.style.display = 'none';
+                if(btnRect) btnRect.style.display = 'none';
+                if(btnRoute) btnRoute.style.display = 'none';
+                if(btnSimpanIcon) btnSimpanIcon.style.display = 'inline-block';
             }
+        }
+
+        function updateIconPreview() {
+            const iconSelect = document.getElementById('iconSelect');
+            const iconPreview = document.getElementById('iconPreview');
+            iconPreview.src = '/png/' + iconSelect.value;
         }
 
         function getSVGCoords(e) {
@@ -393,6 +443,68 @@
 
         svg.addEventListener('click', (e) => {
             const { x, y } = getSVGCoords(e);
+            
+            // Logika untuk Mode Icon
+            if (currentMode === 'icon') {
+                const iconName = document.getElementById('iconSelect').value;
+                const size = parseInt(document.getElementById('iconSize').value) || 80;
+                const bid = getBuildingId();
+                
+                const xPos = Math.round(x - size/2);
+                const yPos = Math.round(y - size/2);
+                
+                // SVG Code output
+                const svgCode = `<!-- ===== ICON ${bid} ===== -->\n<image href="/png/${iconName}" x="${xPos}" y="${yPos}" width="${size}" height="${size}" class="building-icon" data-building-id="${bid}" />`;
+                output.textContent = svgCode;
+                
+                // Clear existing temporary icon preview
+                const existingPreview = document.getElementById('iconTempPreview');
+                if (existingPreview) existingPreview.remove();
+
+                // Draw temporary preview on canvas
+                const img = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+                img.setAttribute('href', `/png/${iconName}`);
+                img.setAttribute('x', xPos);
+                img.setAttribute('y', yPos);
+                img.setAttribute('width', size);
+                img.setAttribute('height', size);
+                img.setAttribute('id', 'iconTempPreview');
+                img.setAttribute('class', 'point-marker'); // So it gets deleted on "Hapus Semua"
+                
+                const targetGroup = currentMapMode === 'vektor' ? document.getElementById('vektor-reference') : document.getElementById('hardcoded-reference');
+                targetGroup.appendChild(img);
+
+                // Store point
+                points = [{ x, y, xPos, yPos, size, iconName, bid }];
+                
+                // Clear old red markers for icon
+                document.querySelectorAll('.icon-marker-temp').forEach(el => el.remove());
+
+                // Draw red circle marker
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', x);
+                circle.setAttribute('cy', y);
+                circle.setAttribute('r', 4);
+                circle.setAttribute('class', 'point-marker icon-marker-temp');
+                circle.setAttribute('fill', '#ef4444');
+                circle.setAttribute('stroke', '#fff');
+                circle.setAttribute('stroke-width', '1');
+                svg.appendChild(circle);
+
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', x + 6);
+                text.setAttribute('y', y - 6);
+                text.setAttribute('class', 'point-marker icon-marker-temp');
+                text.setAttribute('fill', '#ef4444');
+                text.setAttribute('font-size', '8');
+                text.setAttribute('font-family', 'monospace');
+                text.textContent = `${x},${y}`;
+                svg.appendChild(text);
+
+                return;
+            }
+
+            // Logika untuk Mode Bangunan / Rute
             points.push({ x, y });
             const ptsStr = points.map(p => `${p.x},${p.y}`).join(' ');
             polygon.setAttribute('points', ptsStr);
@@ -451,16 +563,35 @@
         }
 
         function undoLastSaved() {
-            let savedLocal = JSON.parse(localStorage.getItem('mappedPolygons') || '[]');
+            const key = currentMapMode === 'vektor' ? 'mappedPolygonsVektor' : 'mappedPolygons';
+            let savedLocal = JSON.parse(localStorage.getItem(key) || '[]');
             if (savedLocal.length === 0) {
-                alert("Tidak ada riwayat bangunan baru yang bisa dihapus.");
+                alert("Tidak ada riwayat baru yang bisa di-undo.");
                 return;
             }
             const last = savedLocal[savedLocal.length - 1];
-            if (confirm(`Apakah Anda yakin ingin menghapus bangunan "${last.id}" dari riwayat penyimpanan lokal?`)) {
+            const nameToDisplay = last.name || last.id;
+            if (confirm(`Apakah Anda yakin ingin melakukan Undo untuk "${nameToDisplay}"?`)) {
                 savedLocal.pop();
-                localStorage.setItem('mappedPolygons', JSON.stringify(savedLocal));
-                location.reload(); // Muat ulang layar untuk menghilangkan polygon
+                localStorage.setItem(key, JSON.stringify(savedLocal));
+                
+                // Cari elemen SVG secara visual dan hapus (berdasarkan data-building-id)
+                const refs = document.querySelectorAll(`[data-building-id="${last.id}"]`);
+                refs.forEach(el => el.remove());
+                
+                // Hapus elemen (seperti polygon/rect) yang mengandalkan sibling text (kasus lama tanpa data-building-id)
+                const localShapes = svg.querySelectorAll(`polygon:not(#currentPolygon), rect`);
+                localShapes.forEach(el => {
+                    if (el.nextElementSibling && el.nextElementSibling.tagName === 'text' && el.nextElementSibling.textContent === last.id) {
+                        el.remove();
+                        el.nextElementSibling.remove();
+                    }
+                });
+
+                // Update daftar bangunan jika sedang terbuka
+                if (document.getElementById('buildingListPanel').style.display === 'block') {
+                    renderBuildingList();
+                }
             }
         }
 
@@ -553,45 +684,41 @@
         }
 
         function finishRect() {
-            if (points.length < 2) {
-                alert("Klik minimal 2 titik (sudut kiri-atas dan kanan-bawah) untuk membuat rect!");
+            if (points.length !== 2) {
+                alert("Mode Rect membutuhkan TEPAT 2 titik (ujung kiri-atas dan ujung kanan-bawah).");
                 return;
             }
             const bid = getBuildingId();
-            const bName = document.getElementById('buildingNameInput').value.trim();
+            const name = document.getElementById('buildingNameInput').value || bid;
             
             if (checkDuplicateId(bid)) return;
-            
-            if (!confirm(`Apakah Anda yakin ingin menyimpan rect ini dengan ID "${bid}"?`)) {
-                return;
-            }
 
-            const xs = points.map(p => p.x);
-            const ys = points.map(p => p.y);
-            const minX = Math.min(...xs);
-            const minY = Math.min(...ys);
-            const maxX = Math.max(...xs);
-            const maxY = Math.max(...ys);
+            const p1 = points[0];
+            const p2 = points[1];
+            const minX = Math.min(p1.x, p2.x);
+            const maxX = Math.max(p1.x, p2.x);
+            const minY = Math.min(p1.y, p2.y);
+            const maxY = Math.max(p1.y, p2.y);
             const w = maxX - minX;
             const h = maxY - minY;
-            const cx = Math.round(minX + w/2);
-            const cy = Math.round(minY + h/2);
-            
-            let code = `<!-- ===== ${bName ? bName.toUpperCase() : 'BANGUNAN BARU'} ===== -->\n`;
-            code += `<g data-building-id="${bid}" class="building-polygon" role="button" tabindex="0" aria-label="${bid}">\n`;
-            code += `    <rect x="${minX}" y="${minY}" width="${w}" height="${h}" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />\n`;
-            code += `    <text x="${cx}" y="${cy}" class="bldg-label" font-size="9">${bid}</text>\n`;
-            code += `</g>\n`;
-            
-            output.textContent = code;
+            const cx = minX + (w / 2);
+            const cy = minY + (h / 2);
 
-            // Gambar penanda permanen di layar mapper
+            const rectHTML = `<rect data-building-id="${bid}" x="${minX}" y="${minY}" width="${w}" height="${h}"></rect>\n<text data-building-id="${bid}" x="${cx}" y="${cy}" fill="#fff" font-size="12" font-weight="bold">${bid}</text>`;
+            
+            const fullHTML = `<!-- ===== BANGUNAN ${bid} ===== -->\n${rectHTML}`;
+            output.textContent = fullHTML;
+            
+            saveToLocalStorage(bid, name, 'rect', { minX, minY, w, h, cx, cy });
+
+            // Gambar penanda rect permanen
             const targetGroup = document.getElementById(currentMapMode === 'vektor' ? 'vektor-reference' : 'hardcoded-reference');
             const savedRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
             savedRect.setAttribute('x', minX);
             savedRect.setAttribute('y', minY);
             savedRect.setAttribute('width', w);
             savedRect.setAttribute('height', h);
+            savedRect.setAttribute('data-building-id', bid);
             savedRect.setAttribute('style', currentMapMode === 'vektor' ? 'fill:rgba(59, 130, 246, 0.5); stroke:#2563eb; stroke-width:2; pointer-events:none;' : 'fill:rgba(16, 185, 129, 0.5); stroke:#047857; stroke-width:2; pointer-events:none;');
             if (targetGroup) targetGroup.appendChild(savedRect);
 
@@ -604,15 +731,58 @@
             text.setAttribute('style', 'pointer-events:none;');
             text.textContent = bid;
             if (targetGroup) targetGroup.appendChild(text);
+            
+            clearPoints();
+            if (document.getElementById('buildingListPanel').style.display === 'block') {
+                renderBuildingList();
+            }
+        }
 
-            // Simpan ke localStorage
-            saveToLocalStorage(bid, bName, 'rect', { minX, minY, w, h, cx, cy });
+        function finishIcon() {
+            if (currentMode !== 'icon' || points.length === 0) {
+                alert("Silakan klik di peta untuk menempatkan icon terlebih dahulu.");
+                return;
+            }
+            const pt = points[0];
+            const bid = getBuildingId();
+            const name = document.getElementById('buildingNameInput').value || bid;
+            
+            // Bypass checkDuplicateId untuk Icon, karena icon TIDAK menimpa polygon.
+            // Kita tambahkan suffix '_icon' untuk membedakannya di localStorage.
+            const storageId = bid + '_icon_' + Date.now();
 
-            // Bersihkan titik untuk menggambar bangunan berikutnya
-            points = [];
-            polygon.setAttribute('points', '');
-            polyline.setAttribute('points', '');
-            document.querySelectorAll('.point-marker').forEach(m => m.remove());
+            // Simpan ke local storage
+            saveToLocalStorage(storageId, name + " (Icon)", 'icon', { 
+                cx: pt.xPos, 
+                cy: pt.yPos, 
+                size: pt.size, 
+                iconName: pt.iconName,
+                originalBid: bid
+            });
+
+            // SVG Output (tidak pakai data-building-id yang ketat agar tidak konflik jika user hanya butuh markernya)
+            const svgCode = `<!-- ===== ICON ${bid} ===== -->\n<image href="/png/${pt.iconName}" x="${pt.xPos}" y="${pt.yPos}" width="${pt.size}" height="${pt.size}" class="building-icon" />`;
+            
+            clearPoints();
+            output.textContent = svgCode;
+            
+            if (document.getElementById('buildingListPanel').style.display === 'block') {
+                renderBuildingList();
+            }
+            
+            // Tanpa reload halaman (agar user bisa menaruh banyak icon dengan cepat)
+            // Gambar penanda icon permanen di kanvas mapper
+            const img = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+            img.setAttribute('href', `/png/${pt.iconName}`);
+            img.setAttribute('x', pt.xPos);
+            img.setAttribute('y', pt.yPos);
+            img.setAttribute('width', pt.size);
+            img.setAttribute('height', pt.size);
+            img.setAttribute('class', 'building-icon');
+            img.setAttribute('data-building-id', storageId); // Penting agar bisa dihapus oleh Undo secara visual
+            
+            const targetGroup = currentMapMode === 'vektor' ? document.getElementById('vektor-reference') : document.getElementById('hardcoded-reference');
+            if (targetGroup) targetGroup.appendChild(img);
         }
 
         function finishRoute() {
@@ -930,19 +1100,28 @@
                     text.setAttribute('font-weight', 'bold');
                     text.textContent = item.id;
                     referenceGroup.appendChild(text);
+                } else if (item.type === 'icon') {
+                    const img = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+                    img.setAttribute('href', `/png/${item.params.iconName}`);
+                    img.setAttribute('x', item.params.cx);
+                    img.setAttribute('y', item.params.cy);
+                    img.setAttribute('width', item.params.size);
+                    img.setAttribute('height', item.params.size);
+                    img.setAttribute('data-building-id', item.id);
+                    img.setAttribute('class', 'building-icon');
+                    referenceGroup.appendChild(img);
                 }
             });
 
-            // 1.1 Render dari Local Storage - VEKTOR
+            // 1.5 Render Local Storage Vektor
             let savedLocalVektor = JSON.parse(localStorage.getItem('mappedPolygonsVektor') || '[]');
-            const vektorGroup = document.getElementById('vektor-reference');
-            
-            if (vektorGroup) {
+            const vektorReferenceGroup = document.getElementById('vektor-reference');
+            if (vektorReferenceGroup) {
                 savedLocalVektor.forEach(item => {
                     if (item.type === 'polygon') {
                         const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
                         poly.setAttribute('points', item.params.ptsStr);
-                        vektorGroup.appendChild(poly);
+                        vektorReferenceGroup.appendChild(poly);
                         
                         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
                         text.setAttribute('x', item.params.cx);
@@ -951,14 +1130,14 @@
                         text.setAttribute('font-size', '12');
                         text.setAttribute('font-weight', 'bold');
                         text.textContent = item.id;
-                        vektorGroup.appendChild(text);
+                        vektorReferenceGroup.appendChild(text);
                     } else if (item.type === 'rect') {
                         const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
                         r.setAttribute('x', item.params.minX);
                         r.setAttribute('y', item.params.minY);
                         r.setAttribute('width', item.params.w);
                         r.setAttribute('height', item.params.h);
-                        vektorGroup.appendChild(r);
+                        vektorReferenceGroup.appendChild(r);
                         
                         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
                         text.setAttribute('x', item.params.cx);
@@ -967,7 +1146,17 @@
                         text.setAttribute('font-size', '12');
                         text.setAttribute('font-weight', 'bold');
                         text.textContent = item.id;
-                        vektorGroup.appendChild(text);
+                        vektorReferenceGroup.appendChild(text);
+                    } else if (item.type === 'icon') {
+                        const img = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+                        img.setAttribute('href', `/png/${item.params.iconName}`);
+                        img.setAttribute('x', item.params.cx);
+                        img.setAttribute('y', item.params.cy);
+                        img.setAttribute('width', item.params.size);
+                        img.setAttribute('height', item.params.size);
+                        img.setAttribute('data-building-id', item.id);
+                        img.setAttribute('class', 'building-icon');
+                        vektorReferenceGroup.appendChild(img);
                     }
                 });
             }
@@ -1001,6 +1190,9 @@
                             if (shape) {
                                 const clone = shape.cloneNode(true);
                                 clone.removeAttribute('filter');
+                                clone.removeAttribute('fill');
+                                clone.removeAttribute('stroke');
+                                clone.removeAttribute('stroke-width');
                                 referenceGroup.appendChild(clone);
                             }
                             if (text) {
@@ -1026,6 +1218,9 @@
                             if (shape) {
                                 const clone = shape.cloneNode(true);
                                 clone.removeAttribute('filter');
+                                clone.removeAttribute('fill');
+                                clone.removeAttribute('stroke');
+                                clone.removeAttribute('stroke-width');
                                 vektorRefGroup.appendChild(clone);
                             }
                             if (text) {

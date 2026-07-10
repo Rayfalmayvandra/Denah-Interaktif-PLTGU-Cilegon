@@ -97,7 +97,7 @@ const buildingData = {
         name: "Distillate Oil Tank",
         shortDesc: "Fasilitas penyimpanan besar yang dari atas terlihat berbentuk bundar. Tangki ini berfungsi krusial untuk menampung bahan bakar cadangan, yang biasanya berupa minyak diesel atau High-Speed Diesel (HSD).",
         description: "Tangki penyimpanan Distillate Oil (minyak sulingan) berkapasitas lebih kecil yang digunakan sebagai bahan bakar cadangan harian (day tank) atau untuk proses start-up gas turbin sebelum dialihkan ke gas alam.",
-        image: "Screenshot 2026-07-06 153448.png"
+        image: "buildings/b1(Distillate Oil Tank)/thumb.jpg"
     },
 
     // ===== WATER & COOLING SYSTEM =====
@@ -173,132 +173,158 @@ const buildingData = {
     "b3": {
         number: "31",
         name: "Area Pos Jaga",
-        description: "Area pos jaga keamanan tambahan di fasilitas PLTGU."
+        description: "Area pos jaga keamanan tambahan di fasilitas PLTGU.",
+        image: "buildings/b3(Area Pos Jaga)/Gambar1.jpg"
     },
     "b4": {
         number: "32",
         name: "Fire Truck Station",
-        description: "Stasiun pemadam kebakaran (Fire Truck Station) untuk penanganan darurat dan siaga kebakaran di area PLTGU."
+        description: "Stasiun pemadam kebakaran (Fire Truck Station) untuk penanganan darurat dan siaga kebakaran di area PLTGU.",
+        image: "buildings/b4(Fire Truck Station)/Gambar2.jpg"
     },
     "b5": {
         number: "33",
         name: "Unit Pelayanan Kesehatan Kerja (UPPK)",
-        description: "Unit Pelayanan Kesehatan Kerja (UPPK) yang menyediakan fasilitas medis dan penanganan kesehatan bagi para pekerja dan staf."
+        description: "Unit Pelayanan Kesehatan Kerja (UPPK) yang menyediakan fasilitas medis dan penanganan kesehatan bagi para pekerja dan staf.",
+        image: "buildings/b5(Unit Pelayanan Kesehatan Kerja (UPPK))/Gambar3.jpg"
     },
     "b6": {
         number: "34",
         name: "Stasiun Gas",
-        description: "Stasiun penerimaan dan pengaturan pasokan gas (Stasiun Gas)."
+        description: "Stasiun penerimaan dan pengaturan pasokan gas (Stasiun Gas).",
+        image: "buildings/b6(Stasiun Gas)/thumb.jpg"
     },
     "b7": {
         number: "35",
         name: "Rumah Bibit",
-        description: "Rumah Bibit (Greenhouse / Nursery) untuk pembibitan tanaman di area PLTGU."
+        description: "Rumah Bibit (Greenhouse / Nursery) untuk pembibitan tanaman di area PLTGU.",
+        image: "buildings/b7(Rumah Bibit)/Gambar5.jpg"
     },
     "b8": {
         number: "36",
         name: "Gedung Admin",
-        description: "Gedung Admin (Administrative Building) sebagai pusat kegiatan administrasi dan perkantoran."
+        description: "Gedung Admin (Administrative Building) sebagai pusat kegiatan administrasi dan perkantoran.",
+        image: "buildings/b8(Gedung Admin)/Gambar6.jpg"
     },
     "b9": {
         number: "37",
         name: "Safety Center",
-        description: "Safety Center sebagai pusat kendali dan pemantauan K3 (Keselamatan dan Kesehatan Kerja)."
+        description: "Safety Center sebagai pusat kendali dan pemantauan K3 (Keselamatan dan Kesehatan Kerja).",
+        image: "buildings/b9(Safety Center)/Gambar7.jpg"
     },
     "b10": {
         number: "38",
         name: "Masjid",
-        description: "Masjid untuk fasilitas ibadah karyawan dan tamu di lingkungan PLTGU."
+        description: "Masjid untuk fasilitas ibadah karyawan dan tamu di lingkungan PLTGU.",
+        image: "buildings/b10(Masjid)/Gambar8.jpg"
     },
     "b11": {
         number: "39",
         name: "Area Pos Gate",
-        description: "Area Pos Gate untuk pemeriksaan akses masuk dan pengamanan fasilitas."
+        description: "Area Pos Gate untuk pemeriksaan akses masuk dan pengamanan fasilitas.",
+        image: "buildings/b11(Area Pos Gate)/thumb.jpg"
     },
     "b12": {
         number: "40",
         name: "Area Traffo",
-        description: "Area Transformator (Traffo) yang berfungsi menaikkan tegangan untuk ditransmisikan atau menurunkan tegangan untuk pemakaian sendiri."
+        description: "Area Transformator (Traffo) yang berfungsi menaikkan tegangan untuk ditransmisikan atau menurunkan tegangan untuk pemakaian sendiri.",
+        image: "buildings/b12(Area Traffo)/thumb.jpg"
     },
     "b13": {
         number: "41",
         name: "Area Raw Water Tank",
-        description: "Area tangki penampungan air mentah (Raw Water Tank) sebelum diproses lebih lanjut oleh unit pengolahan air."
+        description: "Area tangki penampungan air mentah (Raw Water Tank) sebelum diproses lebih lanjut oleh unit pengolahan air.",
+        image: "buildings/b13(Area Raw Water Tank)/thumb.jpg"
     },
     "b14": {
         number: "42",
         name: "Area Desalination A & B",
-        description: "Area fasilitas desalinasi unit A & B yang mengolah air laut menjadi air tawar untuk kebutuhan pembangkit."
+        description: "Area fasilitas desalinasi unit A & B yang mengolah air laut menjadi air tawar untuk kebutuhan pembangkit.",
+        image: "buildings/b14(Area Desalination A & B)/thumb.jpg"
     },
     "b15": {
         number: "43",
         name: "Gardu Induk",
-        description: "Fasilitas Gardu Induk untuk mendistribusikan aliran listrik yang dihasilkan ke jaringan transmisi PLN."
+        description: "Fasilitas Gardu Induk untuk mendistribusikan aliran listrik yang dihasilkan ke jaringan transmisi PLN.",
+        image: "buildings/b15(Gardu Induk)/thumb.jpg"
     },
     "b16": {
-        number: "44",
+        number: "44", // isi nomor urut
         name: "Area Make Up Watertank",
-        description: "Area tangki Make Up Water yang menampung air pengisi tambahan untuk menjaga siklus air dan uap di dalam pembangkit."
+        description: "Area Make Up Watertank.",
+        image: "buildings/b16(Area Make Up Watertank)/thumb.jpg"
     },
     "b17": {
         number: "45",
         name: "Traffo Cadangan",
-        description: "Area Transformator (Traffo) Cadangan."
+        description: "Area Transformator (Traffo) Cadangan.",
+        image: "buildings/b17(Traffo Cadangan)/thumb.jpg"
     },
     "b18": {
         number: "46",
         name: "Fire Pump Station",
-        description: "Fire Pump Station untuk sistem pemadam kebakaran."
+        description: "Fire Pump Station untuk sistem pemadam kebakaran.",
+        image: "buildings/b18(Fire Pump Station)/thumb.jpg"
     },
     "b19": {
         number: "47",
         name: "Area Water Intake",
-        description: "Area Water Intake untuk pengambilan air baku."
+        description: "Area Water Intake untuk pengambilan air baku.",
+        image: "buildings/b19(Area Water Intake)/thumb.jpg"
     },
     "b20": {
-        number: "48",
+        number: "48", // isi nomor urut
         name: "Area HRSG",
-        description: "Area Heat Recovery Steam Generator (HRSG)."
+        description: "Area HRSG.",
+        image: "buildings/b20(Area HRSG)/thumb.jpg"
     },
     "b21": {
         number: "49",
         name: "Condensate Water Tank",
-        description: "Tangki air kondensat (Condensate Water Tank)."
+        description: "Tangki air kondensat (Condensate Water Tank).",
+        image: "buildings/b21(Condensate Water Tank)/thumb.jpg"
     },
     "b22": {
         number: "50",
         name: "Area Bangunan K3 Kecil",
-        description: "Area fasilitas Bangunan K3 Kecil."
+        description: "Area fasilitas Bangunan K3 Kecil.",
+        image: "buildings/b22(Area Bangunan K3 Kecil)/thumb.jpg"
     },
     "b23": {
         number: "51",
         name: "Area Clorination Plant",
-        description: "Fasilitas Chlorination Plant."
+        description: "Fasilitas Chlorination Plant.",
+        image: "buildings/b23(Area Clorination Plant)/thumb.jpg"
     },
     "b24": {
         number: "52",
         name: "Area Solar Panel",
-        description: "Area panel surya (Solar Panel) untuk pasokan energi bersih."
+        description: "Area panel surya (Solar Panel) untuk pasokan energi bersih.",
+        image: "buildings/b24(Area Solar Panel)/thumb.jpg"
     },
     "b25": {
         number: "53",
         name: "Area Gudang Penyimpan Pelumas",
-        description: "Fasilitas gudang penyimpanan pelumas (lubricant storage)."
+        description: "Fasilitas gudang penyimpanan pelumas (lubricant storage).",
+        image: "buildings/b25(Area Gudang Penyimpan Pelumas)/thumb.jpg"
     },
     "b26": {
         number: "54",
         name: "Area Air Limbah WWTP",
-        description: "Fasilitas pengolahan air limbah (Waste Water Treatment Plant)."
+        description: "Fasilitas pengolahan air limbah (Waste Water Treatment Plant).",
+        image: "buildings/b26(Area Air Limbah WWTP)/thumb.jpg"
     },
     "b27": {
         number: "55",
         name: "Area Air Limbah Desalinasi",
-        description: "Fasilitas pengolahan limbah dari proses desalinasi."
+        description: "Fasilitas pengolahan limbah dari proses desalinasi.",
+        image: "buildings/b27(Area Air Limbah Desalinasi)/thumb.jpg"
     },
     "b28": {
         number: "56",
         name: "Area Pertamina / Gas Metering Station",
-        description: "Stasiun pengukuran gas (Gas Metering Station)."
+        description: "Stasiun pengukuran gas (Gas Metering Station).",
+        image: "buildings/b28(Area Pertamina - Gas Metering Station)/thumb.jpg"
     },
     "b29": {
         number: "57",
@@ -308,7 +334,8 @@ const buildingData = {
     "b30": {
         number: "58",
         name: "Gas Station",
-        description: "Gas Station."
+        description: "Gas Station.",
+        image: "buildings/b30(Gas Station)/thumb.jpg"
     },
     "b31": {
         number: "59",
@@ -323,7 +350,8 @@ const buildingData = {
     "b33": {
         number: "61",
         name: "Area Titik Pembuangan (Outfall)",
-        description: "Area Titik Pembuangan (Outfall)."
+        description: "Area Titik Pembuangan (Outfall).",
+        image: "buildings/b33(Area Titik Pembuangan (Outfall))/thumb.jpg"
     },
     "b34": {
         number: "62",
@@ -344,6 +372,11 @@ const buildingData = {
         number: "65",
         name: "Gedung Parkir",
         description: "Gedung Parkir."
+    },
+    "b38": {
+        number: "66", // isi nomor urut
+        name: "Area Fire Water Tank",
+        description: "Area Fire Water Tank."
     }
 };
 
