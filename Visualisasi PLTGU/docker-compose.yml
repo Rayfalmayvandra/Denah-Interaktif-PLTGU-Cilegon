@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  web-visualisasi-pltgu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: visualisasi-pltgu:latest
+    container_name: denah-pltgu-container
+    restart: always
+    ports:
+      - "80:80"       # Ubah ke "8080:80" atau port lain jika port 80 sudah terpakai di server
+    environment:
+      - TZ=Asia/Jakarta
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:80/index.html"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
