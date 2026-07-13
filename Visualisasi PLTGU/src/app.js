@@ -11,7 +11,6 @@ export const buildingData = {
         dimensi: "± 5.320 m² (diameter ±82 m)",
         shortDesc: "Fasilitas penyimpanan besar yang dari atas terlihat berbentuk bundar. Tangki ini berfungsi krusial untuk menampung bahan bakar cadangan, yang biasanya berupa minyak diesel atau High-Speed Diesel (HSD).",
         description: "Tangki penyimpanan Distillate Oil (minyak sulingan) berkapasitas lebih kecil yang digunakan sebagai bahan bakar cadangan harian (day tank) atau untuk proses start-up gas turbin sebelum dialihkan ke gas alam.",
-        image: "Screenshot 2026-07-06 153448.png",
         fungsi: [
             "Menyimpan bahan bakar cadangan High-Speed Diesel (HSD)",
             "Menyediakan bahan bakar saat start-up gas turbin",
@@ -450,6 +449,32 @@ export const buildingData = {
             "Pengelolaan akses dan keamanan kendaraan",
             "Fasilitas penunjang mobilitas di area PLTGU"
         ]
+    },
+    "38": {
+        number: "38",
+        name: "Area Fire Water Tank",
+        zona: "A",
+        dimensi: "± 600 m²",
+        shortDesc: "Area penyimpanan cadangan air pemadam kebakaran dan pasokan air darurat PLTGU.",
+        description: "Area Fire Water Tank merupakan fasilitas penyimpanan air berkapasitas besar yang khusus didedikasikan untuk sistem pemadam kebakaran (hydrant & fire fighting system) di seluruh area PLTGU Cilegon guna menjamin keselamatan kerja dan perlindungan aset.",
+        fungsi: [
+            "Menyimpan cadangan air khusus untuk sistem pemadam kebakaran (Fire Fighting)",
+            "Menyuplai jaringan pipa hydrant di seluruh area operasional PLTGU",
+            "Menjamin pasokan air darurat saat terjadi insiden atau kebakaran"
+        ]
+    },
+    "b38": {
+        number: "38",
+        name: "Area Fire Water Tank",
+        zona: "A",
+        dimensi: "± 600 m²",
+        shortDesc: "Area penyimpanan cadangan air pemadam kebakaran dan pasokan air darurat PLTGU.",
+        description: "Area Fire Water Tank merupakan fasilitas penyimpanan air berkapasitas besar yang khusus didedikasikan untuk sistem pemadam kebakaran (hydrant & fire fighting system) di seluruh area PLTGU Cilegon guna menjamin keselamatan kerja dan perlindungan aset.",
+        fungsi: [
+            "Menyimpan cadangan air khusus untuk sistem pemadam kebakaran (Fire Fighting)",
+            "Menyuplai jaringan pipa hydrant di seluruh area operasional PLTGU",
+            "Menjamin pasokan air darurat saat terjadi insiden atau kebakaran"
+        ]
     }
 };
 
@@ -613,28 +638,37 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         popoverDesc.textContent = desc;
 
-        // Auto-load thumbnail dari /buildings/<id>(<nama>)/thumb.jpg atau thumb.png
+        // Auto-load thumbnail dari allImagePaths matching folderName atau buildingId
         const folderName = buildingId + '(' + data.name.replace(/[\/\\:*?"<>|]/g, '-') + ')';
-        const thumbSrc = `/buildings/${folderName}/thumb.jpg`;
-        const thumbImg = new Image();
-        thumbImg.onload = () => {
-            popoverImage.src = thumbSrc;
+        const folderPathMatcher = `../public/buildings/${folderName}/`;
+        const folderPathMatcherFallback = `../public/buildings/${buildingId}/`;
+
+        let thumbPath = allImagePaths.find(path => {
+            const lowerPath = path.toLowerCase();
+            const isInsideFolder = path.startsWith(folderPathMatcher) || path.startsWith(folderPathMatcherFallback);
+            const isThumb = lowerPath.endsWith('/thumb.jpg') || 
+                            lowerPath.endsWith('/thumb.jpeg') || 
+                            lowerPath.endsWith('/thumb.png') || 
+                            lowerPath.endsWith('/thumb.webp');
+            return isInsideFolder && isThumb;
+        });
+
+        // Fallback: jika tidak ada file thumb.*, gunakan gambar pertama di folder tersebut
+        if (!thumbPath) {
+            const folderImages = allImagePaths.filter(path => {
+                return path.startsWith(folderPathMatcher) || path.startsWith(folderPathMatcherFallback);
+            }).sort();
+            if (folderImages.length > 0) {
+                thumbPath = folderImages[0];
+            }
+        }
+
+        if (thumbPath) {
+            popoverImage.src = thumbPath.replace('../public', '');
             popoverImage.style.display = 'block';
-        };
-        thumbImg.onerror = () => {
-            // Coba thumb.png jika thumb.jpg tidak ada
-            const thumbPng = `/buildings/${buildingId}/thumb.png`;
-            const thumbImgPng = new Image();
-            thumbImgPng.onload = () => {
-                popoverImage.src = thumbPng;
-                popoverImage.style.display = 'block';
-            };
-            thumbImgPng.onerror = () => {
-                popoverImage.style.display = 'none';
-            };
-            thumbImgPng.src = thumbPng;
-        };
-        thumbImg.src = thumbSrc;
+        } else {
+            popoverImage.style.display = 'none';
+        }
 
         popoverCard.classList.add('visible');
 
@@ -720,7 +754,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         allImagePaths.forEach(path => {
             if (path.startsWith(folderPathMatcher) || path.startsWith(folderPathMatcherFallback)) {
-                if (path.toLowerCase().endsWith('thumb.jpg') || path.toLowerCase().endsWith('thumb.png')) return;
+                const lowerPath = path.toLowerCase();
+                if (lowerPath.endsWith('/thumb.jpg') || 
+                    lowerPath.endsWith('/thumb.jpeg') || 
+                    lowerPath.endsWith('/thumb.png') || 
+                    lowerPath.endsWith('/thumb.webp')) {
+                    return;
+                }
                 
                 const url = path.replace('../public', '');
                 const fileName = path.split('/').pop();
