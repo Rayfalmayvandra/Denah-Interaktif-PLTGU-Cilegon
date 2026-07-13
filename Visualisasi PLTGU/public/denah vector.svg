@@ -4062,4 +4062,16 @@
 <path d="M0 0 C0.33 0 0.66 0 1 0 C2.12029814 5.48946087 1.79217969 8.83430559 0 14 C-0.33 14 -0.66 14 -1 14 C-1.08333357 9.1666528 -0.95261487 4.76307437 0 0 Z " fill="#9E9E9F" transform="translate(928,38)"/>
 <path d="M0 0 C0.66 0 1.32 0 2 0 C1.50168276 3.68754757 0.89932357 5.60490662 -2 8 C-1.125 2.25 -1.125 2.25 0 0 Z " fill="#262529" transform="translate(2120,39)"/>
 <path d="M0 0 C0.66 0 1.32 0 2 0 C1.46930939 3.82097239 0.50298434 6.06171403 -2 9 C-1.125 2.25 -1.125 2.25 0 0 Z " fill="#272729" transform="translate(2128,21)"/>
+
+<g id="Area Safety First" transform="translate(569, 1015) scale(1)">
+  <rect x="50" y="10" width="40" height="40" fill="#A7C2DE" stroke="#4A6A8E" stroke-width="1"/> 
+</g>
+
+<g id="Area Pos Jaga" transform="translate(445, 1050) scale(1)">
+  <rect x="60" y="10" width="43" height="40" fill="#A7C2DE" stroke="#4A6A8E" stroke-width="1"/> 
+</g>
+
+<g id="Area Bangunan K3 Kecil" transform="translate(1710, 604) scale(1)">
+  <rect x="60" y="10" width="40" height="60" fill="#A7C2DE" stroke="#4A6A8E" stroke-width="1"/> 
+</g>
 </svg>
