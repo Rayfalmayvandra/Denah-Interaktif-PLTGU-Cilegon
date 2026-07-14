@@ -4067,6 +4067,10 @@
   <rect x="50" y="10" width="40" height="40" fill="#A7C2DE" stroke="#4A6A8E" stroke-width="1"/> 
 </g>
 
+<g id="Area BSM" transform="translate(620, 1015) scale(1)">
+  <rect x="70" y="10" width="70" height="40" fill="#A7C2DE" stroke="#4A6A8E" stroke-width="1"/> 
+</g>
+
 <g id="Area Pos Jaga" transform="translate(445, 1050) scale(1)">
   <rect x="60" y="10" width="43" height="40" fill="#A7C2DE" stroke="#4A6A8E" stroke-width="1"/> 
 </g>
