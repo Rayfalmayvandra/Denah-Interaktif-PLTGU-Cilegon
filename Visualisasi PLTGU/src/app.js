@@ -1025,12 +1025,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) closeLightbox();
     });
 
-    // Daftar Bangunan (always visible panel inside SVG)
-    const cariCepatWrapper = document.getElementById('cariCepatWrapper');
-    const buildingList = document.getElementById('buildingList');
+    // Daftar Bangunan (always visible panel inside SVG - Satelit & Vektor)
+    const buildingLists = [
+        document.getElementById('buildingList'),
+        document.getElementById('buildingListVektor')
+    ].filter(Boolean);
 
-    if (cariCepatWrapper && buildingList) {
-
+    if (buildingLists.length > 0) {
         // 1. Populate data
         const sortedBuildings = Object.entries(buildingData).sort((a, b) => {
             const numA = parseInt(a[0].replace(/[^0-9]/g, '')) || 0;
@@ -1039,37 +1040,39 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         sortedBuildings.forEach(([id, data]) => {
-            const li = document.createElement('li');
-            li.className = 'building-item';
-            li.innerHTML = `
-                <div class="building-item-number">${data.number || id}</div>
-                <div class="building-item-name">${data.name}</div>
-            `;
+            buildingLists.forEach(listEl => {
+                const li = document.createElement('li');
+                li.className = 'building-item';
+                li.innerHTML = `
+                    <div class="building-item-number">${data.number || id}</div>
+                    <div class="building-item-name">${data.name}</div>
+                `;
 
-            li.addEventListener('click', (e) => {
-                e.stopPropagation();
+                li.addEventListener('click', (e) => {
+                    e.stopPropagation();
 
-                // Cari elemen polygon bangunan yang sedang aktif/terlihat di layar (Satelit atau Vektor)
-                const polys = document.querySelectorAll(`.building-polygon[data-building-id="${id}"]`);
-                let targetRect = null;
-                for (let i = 0; i < polys.length; i++) {
-                    const rect = polys[i].getBoundingClientRect();
-                    if (rect && rect.width > 0 && rect.height > 0) {
-                        targetRect = rect;
-                        break;
+                    // Cari elemen polygon bangunan yang sedang aktif/terlihat di layar (Satelit atau Vektor)
+                    const polys = document.querySelectorAll(`.building-polygon[data-building-id="${id}"]`);
+                    let targetRect = null;
+                    for (let i = 0; i < polys.length; i++) {
+                        const rect = polys[i].getBoundingClientRect();
+                        if (rect && rect.width > 0 && rect.height > 0) {
+                            targetRect = rect;
+                            break;
+                        }
                     }
-                }
 
-                if (targetRect) {
-                    const x = targetRect.left + targetRect.width / 2;
-                    const y = targetRect.top + targetRect.height / 2;
-                    openPopover(id, x, y);
-                } else {
-                    openPopover(id, window.innerWidth / 2, window.innerHeight / 2);
-                }
+                    if (targetRect) {
+                        const x = targetRect.left + targetRect.width / 2;
+                        const y = targetRect.top + targetRect.height / 2;
+                        openPopover(id, x, y);
+                    } else {
+                        openPopover(id, window.innerWidth / 2, window.innerHeight / 2);
+                    }
+                });
+
+                listEl.appendChild(li);
             });
-
-            buildingList.appendChild(li);
         });
     }
 

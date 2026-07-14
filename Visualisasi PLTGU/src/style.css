@@ -1016,6 +1016,45 @@ body {
     font-weight: 600;
 }
 
+/* ==================== DAFTAR BANGUNAN (Skala Vektor ~36%) ==================== */
+.daftar-bangunan-fo--vektor .daftar-bangunan-wrapper {
+    border-radius: 24px;
+    border-width: 2px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.daftar-bangunan-fo--vektor .daftar-bangunan-header {
+    padding: 20px 24px;
+    font-size: 40px;
+    border-bottom-width: 2px;
+}
+
+.daftar-bangunan-fo--vektor .building-list {
+    padding: 12px 0;
+}
+
+.daftar-bangunan-fo--vektor .building-list::-webkit-scrollbar {
+    width: 14px;
+}
+
+.daftar-bangunan-fo--vektor .building-item {
+    padding: 16px 24px;
+    gap: 18px;
+    font-size: 32px;
+}
+
+.daftar-bangunan-fo--vektor .building-item-number {
+    font-size: 24px;
+    padding: 6px 14px;
+    border-radius: 10px;
+    min-width: 55px;
+    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
+}
+
+.daftar-bangunan-fo--vektor .building-item-name {
+    font-size: 32px;
+}
+
 /* ==================== SIDE NAVBAR DRAWER ==================== */
 .side-navbar-backdrop {
     position: fixed;
