@@ -34,17 +34,7 @@
         <!-- ===== MAP AREA ===== -->
         <main class="map-container" id="mapContainer">
 
-            <!-- ===== CARI CEPAT (EXPANDABLE) ===== -->
-            <div class="cari-cepat-wrapper" id="cariCepatWrapper">
-                <div class="cari-cepat-header" id="btnCariCepat">
-                    Cari Cepat
-                </div>
-                <div class="cari-cepat-content">
-                    <ul class="building-list" id="buildingList">
-                        <!-- List bangunan akan dimasukkan lewat JavaScript -->
-                    </ul>
-                </div>
-            </div>
+            <!-- Cari Cepat dipindahkan ke dalam SVG overlay sebagai foreignObject -->
 
             <!-- ===== MAP VIEW TOGGLE ===== -->
             <div class="map-view-toggle" id="mapViewToggle">
@@ -373,9 +363,9 @@
                 </g>
 
                 <!-- ===== AREA FIRE WATER TANK ===== -->
-                <g data-building-id="38" class="building-polygon" role="button" tabindex="0" aria-label="38">
+                <g data-building-id="b38" class="building-polygon" role="button" tabindex="0" aria-label="b38">
                     <polygon points="1318,586 1926,586 1917,971 1335,971" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
-                    <text x="1624" y="779" class="bldg-label" font-size="9">38</text>
+                    <text x="1624" y="779" class="bldg-label" font-size="9">b38</text>
                     <image href="/png/033-tank-water.png" x="1510" y="638" width="200" height="200" class="building-icon" />
                 </g>
 
@@ -422,6 +412,20 @@
                     <!-- Rute 20 -->
                     <polyline class="jalan-industri" points="3493,1104 3493,653" />
                 </g>
+
+                <!-- ===== DAFTAR BANGUNAN (embedded panel) ===== -->
+                <foreignObject x="6400" y="199" width="1600" height="2157" class="daftar-bangunan-fo">
+                    <div xmlns="http://www.w3.org/1999/xhtml" class="daftar-bangunan-wrapper" id="cariCepatWrapper">
+                        <div class="daftar-bangunan-header" id="btnCariCepat">
+                            📋 Daftar Bangunan
+                        </div>
+                        <div class="daftar-bangunan-content">
+                            <ul class="building-list" id="buildingList">
+                                <!-- List bangunan akan dimasukkan lewat JavaScript -->
+                            </ul>
+                        </div>
+                    </div>
+                </foreignObject>
 
             </svg>
 

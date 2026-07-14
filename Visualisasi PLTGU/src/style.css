@@ -868,139 +868,101 @@ body {
     pointer-events: none;
 }
 
-/* ==================== EXPANDABLE CARI CEPAT ==================== */
-.cari-cepat-wrapper {
-    position: absolute;
-    /* Posisi awal (Button Mode) */
-    top: 25px;
-    right: 25px;
-    width: 170px;
-    height: 52px;
-    background: #1e293b;
-    border-radius: 999px; /* Bentuk pil */
-    z-index: 50;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+/* ==================== DAFTAR BANGUNAN (Embedded in SVG foreignObject) ==================== */
+/* NOTE: All sizes are ~5x larger than normal because the SVG viewBox (8192x4320)
+   gets scaled down to fit the screen (~1536px). */
+.daftar-bangunan-fo {
+    overflow: visible;
+}
+
+.daftar-bangunan-wrapper {
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(12px);
+    border-radius: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.12);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
-/* Mode Terekspansi (Dropdown List) */
-.cari-cepat-wrapper.expanded {
-    /* Dimensi dari user: W=439, H=512 */
-    width: 439px;
-    height: 512px;
-    /* Posisi dari user: Y=117. X=1360 (dari kiri) setara dengan right:~120px di layar 1920p. 
-       Kita buat responsif tapi meniru posisi relatifnya */
-    top: 117px;
-    right: 40px; 
-    border-radius: 16px; /* Kotak melengkung */
-    background: #1e293b;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-}
-
-.cari-cepat-header {
+.daftar-bangunan-header {
     width: 100%;
-    height: 52px;
-    min-height: 52px;
+    padding: 45px 50px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
     color: white;
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 500;
-    transition: background 0.2s, justify-content 0.4s;
-    user-select: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 80px;
+    font-weight: 700;
+    border-bottom: 5px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+    letter-spacing: -0.01em;
 }
 
-.cari-cepat-wrapper:not(.expanded):hover .cari-cepat-header {
-    background: #2a3a52;
-}
-
-.cari-cepat-wrapper.expanded .cari-cepat-header {
-    justify-content: flex-start;
-    padding: 0 25px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.2);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #94a3b8; /* Agak redup untuk header list */
-}
-
-/* Mengubah teks dari "Cari Cepat" ke "Daftar Bangunan" saat terbuka */
-.cari-cepat-wrapper.expanded .cari-cepat-header::after {
-    content: "Daftar Bangunan";
-    position: absolute;
-    left: 25px;
-    color: white;
-}
-.cari-cepat-wrapper.expanded .cari-cepat-header {
-    color: transparent; /* Sembunyikan tulisan Cari Cepat */
-}
-
-
-.cari-cepat-content {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease;
+.daftar-bangunan-content {
     flex: 1;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-}
-
-.cari-cepat-wrapper.expanded .cari-cepat-content {
-    opacity: 1;
-    visibility: visible;
-    transition-delay: 0.25s; /* Tunggu sampai kotak melebar */
 }
 
 .building-list {
     list-style: none;
     margin: 0;
-    padding: 10px 0;
+    padding: 20px 0;
     overflow-y: auto;
     flex: 1;
 }
 
 .building-list::-webkit-scrollbar {
-    width: 6px;
+    width: 25px;
+}
+.building-list::-webkit-scrollbar-track {
+    background: transparent;
 }
 .building-list::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    border-radius: 15px;
+}
+.building-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
 }
 
 .building-item {
-    padding: 14px 25px;
+    padding: 32px 50px;
     cursor: pointer;
     transition: background 0.2s;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 35px;
     color: #e2e8f0;
+    font-size: 52px;
 }
 
 .building-item:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(96, 165, 250, 0.12);
 }
 
 .building-item-number {
     background: #3b82f6;
     color: white;
-    font-size: 0.8rem;
+    font-size: 42px;
     font-weight: bold;
-    padding: 4px 10px;
-    border-radius: 6px;
-    min-width: 32px;
+    padding: 12px 28px;
+    border-radius: 20px;
+    min-width: 100px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .building-item-name {
-    font-size: 1rem;
+    font-size: 52px;
     font-weight: 500;
 }
+
+

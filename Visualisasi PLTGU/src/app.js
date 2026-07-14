@@ -450,21 +450,8 @@ export const buildingData = {
             "Fasilitas penunjang mobilitas di area PLTGU"
         ]
     },
-    "38": {
-        number: "38",
-        name: "Area Fire Water Tank",
-        zona: "A",
-        dimensi: "± 600 m²",
-        shortDesc: "Area penyimpanan cadangan air pemadam kebakaran dan pasokan air darurat PLTGU.",
-        description: "Area Fire Water Tank merupakan fasilitas penyimpanan air berkapasitas besar yang khusus didedikasikan untuk sistem pemadam kebakaran (hydrant & fire fighting system) di seluruh area PLTGU Cilegon guna menjamin keselamatan kerja dan perlindungan aset.",
-        fungsi: [
-            "Menyimpan cadangan air khusus untuk sistem pemadam kebakaran (Fire Fighting)",
-            "Menyuplai jaringan pipa hydrant di seluruh area operasional PLTGU",
-            "Menjamin pasokan air darurat saat terjadi insiden atau kebakaran"
-        ]
-    },
     "b38": {
-        number: "38",
+        number: "b38",
         name: "Area Fire Water Tank",
         zona: "A",
         dimensi: "± 600 m²",
@@ -999,12 +986,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) closeLightbox();
     });
 
-    // Cari Cepat Expanding Logic
+    // Daftar Bangunan (always visible panel inside SVG)
     const cariCepatWrapper = document.getElementById('cariCepatWrapper');
-    const btnCariCepat = document.getElementById('btnCariCepat');
     const buildingList = document.getElementById('buildingList');
 
-    if (cariCepatWrapper && btnCariCepat && buildingList) {
+    if (cariCepatWrapper && buildingList) {
 
         // 1. Populate data
         const sortedBuildings = Object.entries(buildingData).sort((a, b) => {
@@ -1023,7 +1009,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             li.addEventListener('click', (e) => {
                 e.stopPropagation();
-                cariCepatWrapper.classList.remove('expanded');
 
                 // Cari elemen polygon bangunan yang sedang aktif/terlihat di layar (Satelit atau Vektor)
                 const polys = document.querySelectorAll(`.building-polygon[data-building-id="${id}"]`);
@@ -1046,19 +1031,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             buildingList.appendChild(li);
-        });
-
-        // 2. Toggle Expansi
-        btnCariCepat.addEventListener('click', (e) => {
-            e.stopPropagation();
-            cariCepatWrapper.classList.toggle('expanded');
-        });
-
-        // 3. Tutup saat klik di luar
-        document.addEventListener('click', (e) => {
-            if (!cariCepatWrapper.contains(e.target)) {
-                cariCepatWrapper.classList.remove('expanded');
-            }
         });
     }
 });
