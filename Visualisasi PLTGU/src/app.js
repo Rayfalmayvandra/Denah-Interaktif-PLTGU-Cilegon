@@ -618,6 +618,10 @@ document.addEventListener("DOMContentLoaded", () => {
         currentBuildingId = buildingId;
         popoverTitle.textContent = data.name;
 
+        // Nyalakan (highlight) polygon bangunan yang dipilih di peta
+        document.querySelectorAll('.building-polygon.active').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll(`.building-polygon[data-building-id="${buildingId}"]`).forEach(el => el.classList.add('active'));
+
         // Use shortDesc if available, otherwise truncate description
         let desc = data.shortDesc || data.description;
         if (!data.shortDesc && desc.length > 150) {
@@ -675,6 +679,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function closePopover() {
         popoverCard.classList.remove('visible');
+        document.querySelectorAll('.building-polygon.active').forEach(el => el.classList.remove('active'));
     }
 
     // Detail button clicks inside popover
@@ -1033,4 +1038,75 @@ document.addEventListener("DOMContentLoaded", () => {
             buildingList.appendChild(li);
         });
     }
+
+    // ===== SIDE NAVBAR DRAWER LOGIC =====
+    const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
+    const sideNavbar = document.getElementById('sideNavbar');
+    const sideNavbarClose = document.getElementById('sideNavbarClose');
+    const sideNavbarBackdrop = document.getElementById('sideNavbarBackdrop');
+
+    function openSidebar() {
+        if (sideNavbar && sideNavbarBackdrop) {
+            sideNavbar.classList.add('active');
+            sideNavbarBackdrop.classList.add('active');
+            sideNavbar.setAttribute('aria-hidden', 'false');
+        }
+    }
+
+    function closeSidebar() {
+        if (sideNavbar && sideNavbarBackdrop) {
+            sideNavbar.classList.remove('active');
+            sideNavbarBackdrop.classList.remove('active');
+            sideNavbar.setAttribute('aria-hidden', 'true');
+        }
+    }
+
+    if (sidebarToggleBtn) {
+        sidebarToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (sideNavbar && sideNavbar.classList.contains('active')) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        });
+    }
+
+    if (sideNavbarClose) sideNavbarClose.addEventListener('click', closeSidebar);
+    if (sideNavbarBackdrop) sideNavbarBackdrop.addEventListener('click', closeSidebar);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sideNavbar && sideNavbar.classList.contains('active')) {
+            closeSidebar();
+        }
+    });
+
+    // ===== SIDEBAR PORTAL LINKS & ACTIONS =====
+    const btnNavDenah = document.getElementById('btnNavDenah');
+    const btnNavReoc = document.getElementById('btnNavReoc');
+    const btnNavSolar = document.getElementById('btnNavSolar');
+    const btnNavPronia = document.getElementById('btnNavPronia');
+
+    if (btnNavDenah) {
+        btnNavDenah.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeSidebar();
+        });
+    }
+
+    // Handler untuk link portal external yang siap diisi URL dari user
+    const externalNavBtns = [btnNavReoc, btnNavSolar, btnNavPronia];
+    externalNavBtns.forEach(btn => {
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                const targetUrl = btn.getAttribute('href');
+                if (!targetUrl || targetUrl === '#' || targetUrl === '') {
+                    e.preventDefault();
+                    const titleText = btn.querySelector('.web-nav-title') ? btn.querySelector('.web-nav-title').textContent.trim() : 'Website';
+                    alert('Tautan menuju ' + titleText + ' akan segera dipasang/disinkronkan.');
+                } else {
+                    closeSidebar();
+                }
+            });
+        }
+    });
 });

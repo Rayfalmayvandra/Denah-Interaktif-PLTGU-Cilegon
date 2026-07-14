@@ -12,8 +12,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
         rel="stylesheet">
-  <script type="module" crossorigin src="/assets/app-BIus8ZMU.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-D34T2kC7.css">
+  <script type="module" crossorigin src="/assets/app-CFQyOgDR.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-MZ0gZ_3B.css">
 </head>
 
 <body class="dark-mode">
@@ -21,6 +21,13 @@
         <!-- ===== TOP BAR ===== -->
         <header class="top-bar">
             <div class="top-bar-left">
+                <button id="sidebarToggleBtn" class="sidebar-toggle-btn" title="Buka Menu Navigasi" aria-label="Menu Navigasi">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
                 <img src="/assets/pln-logo-airBi3Xi.svg" alt="PLN Logo" class="logo">
                 <div class="top-bar-text">
                     <h1 class="top-bar-title">Denah Interaktif PLTGU Cilegon</h1>
@@ -32,6 +39,95 @@
                 <span class="clock-label">WIB</span>
             </div>
         </header>
+
+        <!-- ===== SIDE NAVBAR DRAWER ===== -->
+        <div class="side-navbar-backdrop" id="sideNavbarBackdrop"></div>
+        <aside class="side-navbar" id="sideNavbar" aria-hidden="true">
+            <div class="side-navbar-header">
+                <div class="side-navbar-brand">
+                    <img src="/assets/pln-logo-airBi3Xi.svg" alt="PLN Logo" class="side-navbar-logo">
+                    <div>
+                        <h2 class="side-navbar-title">PLTGU Cilegon</h2>
+                        <span class="side-navbar-subtitle">Menu & Navigasi Cepat</span>
+                    </div>
+                </div>
+                <button class="side-navbar-close" id="sideNavbarClose" title="Tutup Menu">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="side-navbar-body">
+                <!-- Section: Navigasi Portal & Aplikasi -->
+                <div class="side-navbar-section">
+                    <h3 class="side-navbar-section-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        Portal Aplikasi & Website
+                    </h3>
+                    <div class="side-navbar-web-list">
+                        <!-- 1. Denah (Web Project Ini) -->
+                        <a href="#" class="web-nav-btn active" id="btnNavDenah">
+                            <div class="web-nav-icon">🗺️</div>
+                            <div class="web-nav-text">
+                                <span class="web-nav-title">Denah <span class="web-badge">Project Ini</span></span>
+                                <span class="web-nav-desc">Peta Interaktif PLTGU Cilegon</span>
+                            </div>
+                            <svg class="web-nav-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </a>
+
+                        <!-- 2. REOC -->
+                        <a href="#" class="web-nav-btn" id="btnNavReoc" data-target="reoc">
+                            <div class="web-nav-icon">📊</div>
+                            <div class="web-nav-text">
+                                <span class="web-nav-title">REOC</span>
+                                <span class="web-nav-desc">Reliability & Efficiency Optimization Center</span>
+                            </div>
+                            <svg class="web-nav-arrow external" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+
+                        <!-- 3. Solar Pv -->
+                        <a href="#" class="web-nav-btn" id="btnNavSolar" data-target="solar-pv">
+                            <div class="web-nav-icon">☀️</div>
+                            <div class="web-nav-text">
+                                <span class="web-nav-title">Solar Pv</span>
+                                <span class="web-nav-desc">Monitoring Pembangkit Surya (PV System)</span>
+                            </div>
+                            <svg class="web-nav-arrow external" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+
+                        <!-- 4. PRONIA -->
+                        <a href="#" class="web-nav-btn" id="btnNavPronia" data-target="pronia">
+                            <div class="web-nav-icon">🚀</div>
+                            <div class="web-nav-text">
+                                <span class="web-nav-title">PRONIA</span>
+                                <span class="web-nav-desc">Portal Manajemen & Operasional PLN</span>
+                            </div>
+                            <svg class="web-nav-arrow external" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Section: Informasi -->
+                <div class="side-navbar-section">
+                    <h3 class="side-navbar-section-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="16"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        Informasi Sistem
+                    </h3>
+                    <div class="side-navbar-info-box">
+                        <p><strong>PLTGU Cilegon</strong> — Sistem visualisasi interaktif fasilitas pembangkit listrik siklus kombinasi (Combined Cycle Power Plant) untuk mendukung pengawasan aset & K3.</p>
+                        <div class="side-navbar-status">
+                            <span class="status-indicator"></span> Sistem Aktif & Sinkron
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-navbar-footer">
+                <span>&copy; 2026 PT PLN (Persero) PLTGU Cilegon</span>
+            </div>
+        </aside>
 
         <!-- ===== MAP AREA ===== -->
         <main class="map-container" id="mapContainer">
@@ -249,7 +345,7 @@
                     <polygon points="4831,1095 4354,1072 4422,360 4808,344" rx="3" fill="#6b8ba8" stroke="#2d3748"
                         stroke-width="0.8" filter="url(#shadow)" />
                     <text x="4604" y="718" class="bldg-label" font-size="9">b23</text>
-                    <image href="/png/060-laboratory.png" x="4461" y="606" width="200" height="200" class="building-icon" />
+                    <image href="/png/026-settings.png" x="4461" y="606" width="200" height="200" class="building-icon" />
                 </g>
 
                 <!-- ===== AREA SOLAR PANEL ===== -->
@@ -275,7 +371,6 @@
                         stroke-width="0.8" filter="url(#shadow)" />
                     <text x="4218" y="3316" class="bldg-label" font-size="9">b26</text>
                     <image href="/png/055-drainage.png" x="4054" y="3175" width="200" height="200" class="building-icon" />
-                    <image href="/png/032-gas-storage.png" x="6870" y="3829" width="200" height="200" class="building-icon" />
                 </g>
 
                 <!-- ===== AREA AIR LIMBAH DESALINASI ===== -->
@@ -291,6 +386,7 @@
                     <polygon points="6605,3778 7492,3786 7590,3778 7575,4119 6597,4119" rx="3" fill="#6b8ba8"
                         stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
                     <text x="7172" y="3916" class="bldg-label" font-size="9">b28</text>
+                    <image href="/png/032-gas-storage.png" x="6870" y="3829" width="200" height="200" class="building-icon" />
                 </g>
 
                 <!-- ===== GUDANG & WORKSHOP ===== -->
@@ -416,7 +512,7 @@
                 </g>
 
                 <!-- ===== DAFTAR BANGUNAN (embedded panel) ===== -->
-                <foreignObject x="6360" y="199" width="1577" height="2157" class="daftar-bangunan-fo">
+                <foreignObject x="6090" y="180" width="1900" height="2300" class="daftar-bangunan-fo">
                     <div xmlns="http://www.w3.org/1999/xhtml" class="daftar-bangunan-wrapper" id="cariCepatWrapper">
                         <div class="daftar-bangunan-header" id="btnCariCepat">
                             📋 Daftar Bangunan
@@ -574,7 +670,7 @@
              <g data-building-id="b23" class="building-polygon" role="button" tabindex="0" aria-label="b23"> 
                 <polygon points="1574,514 1703,516 1693,296 1581,298" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
                 <text x="1638" y="406" class="bldg-label" font-size="9">b23</text> 
-                <image href="/png/060-laboratory.png" x="1588" y="356" width="100" height="100" class="building-icon" />
+                <image href="/png/026-settings.png" x="1588" y="356" width="100" height="100" class="building-icon" />
             </g> 
             <!-- ===== AREA SOLAR PANEL ===== --> 
              <g data-building-id="b24" class="building-polygon" role="button" tabindex="0" aria-label="b24"> 
