@@ -451,7 +451,6 @@ body {
     background: var(--danger);
     color: #fff;
     border-color: var(--danger);
-    transform: rotate(90deg);
 }
 
 .modal-header {
@@ -832,7 +831,6 @@ body {
 
 .lightbox-close:hover {
     background: rgba(255, 255, 255, 0.2);
-    transform: rotate(90deg);
 }
 
 /* ==================== RESPONSIVE ==================== */
@@ -1115,7 +1113,6 @@ body {
     background: rgba(239, 68, 68, 0.2);
     border-color: rgba(239, 68, 68, 0.5);
     color: #ef4444;
-    transform: rotate(90deg);
 }
 
 .side-navbar-body {
