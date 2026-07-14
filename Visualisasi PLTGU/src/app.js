@@ -462,6 +462,28 @@ export const buildingData = {
             "Menyuplai jaringan pipa hydrant di seluruh area operasional PLTGU",
             "Menjamin pasokan air darurat saat terjadi insiden atau kebakaran"
         ]
+    },
+    "b39": {
+        number: "b39",
+        name: "Area BSM",
+        zona: "A",
+        dimensi: "-",
+        shortDesc: "Area BSM.",
+        description: "Area BSM.",
+        fungsi: [
+            "Fasilitas dan operasional Area BSM"
+        ]
+    },
+    "b40": {
+        number: "b40",
+        name: "Laboratory",
+        zona: "B",
+        dimensi: "-",
+        shortDesc: "Laboratory.",
+        description: "Laboratory.",
+        fungsi: [
+            "Fasilitas pengujian dan analisis laboratorium PLTGU"
+        ]
     }
 };
 
@@ -470,7 +492,7 @@ export const buildingData = {
 // APPLICATION LOGIC
 // ============================================================
 
-const allImageFiles = import.meta.glob('../public/buildings/**/*.{jpg,jpeg,png,webp}');
+const allImageFiles = import.meta.glob('../public/buildings/**/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP}');
 const allImagePaths = Object.keys(allImageFiles);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -631,12 +653,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Auto-load thumbnail dari allImagePaths matching folderName atau buildingId
         const folderName = buildingId + '(' + data.name.replace(/[\/\\:*?"<>|]/g, '-') + ')';
-        const folderPathMatcher = `../public/buildings/${folderName}/`;
-        const folderPathMatcherFallback = `../public/buildings/${buildingId}/`;
+        const folderPathMatcher = `../public/buildings/${folderName}/`.toLowerCase();
+        const folderPathMatcherFallback = `../public/buildings/${buildingId}/`.toLowerCase();
 
         let thumbPath = allImagePaths.find(path => {
-            const lowerPath = path.toLowerCase();
-            const isInsideFolder = path.startsWith(folderPathMatcher) || path.startsWith(folderPathMatcherFallback);
+            const normPath = path.replace(/\\/g, '/');
+            const lowerPath = normPath.toLowerCase();
+            const isInsideFolder = lowerPath.startsWith(folderPathMatcher) || lowerPath.startsWith(folderPathMatcherFallback);
             const isThumb = lowerPath.endsWith('/thumb.jpg') || 
                             lowerPath.endsWith('/thumb.jpeg') || 
                             lowerPath.endsWith('/thumb.png') || 
@@ -647,7 +670,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Fallback: jika tidak ada file thumb.*, gunakan gambar pertama di folder tersebut
         if (!thumbPath) {
             const folderImages = allImagePaths.filter(path => {
-                return path.startsWith(folderPathMatcher) || path.startsWith(folderPathMatcherFallback);
+                const normPath = path.replace(/\\/g, '/');
+                const lowerPath = normPath.toLowerCase();
+                return lowerPath.startsWith(folderPathMatcher) || lowerPath.startsWith(folderPathMatcherFallback);
             }).sort();
             if (folderImages.length > 0) {
                 thumbPath = folderImages[0];
@@ -737,33 +762,38 @@ document.addEventListener("DOMContentLoaded", () => {
         galleryContent.innerHTML = '';
 
         const folderName = buildingId + '(' + data.name.replace(/[\/\\:*?"<>|]/g, '-') + ')';
-        const folderPathMatcher = `../public/buildings/${folderName}/`;
-        const folderPathMatcherFallback = `../public/buildings/${buildingId}/`;
+        const folderPathMatcher = `../public/buildings/${folderName}/`.toLowerCase();
+        const folderPathMatcherFallback = `../public/buildings/${buildingId}/`.toLowerCase();
 
         // Categorize photos into root photos and floor-grouped photos
         const rootPhotos = [];
         const floorPhotos = {}; // key = floor name, value = array of photo objects
+        let thumbPhoto = null;
 
         allImagePaths.forEach(path => {
-            if (path.startsWith(folderPathMatcher) || path.startsWith(folderPathMatcherFallback)) {
-                const lowerPath = path.toLowerCase();
+            const normPath = path.replace(/\\/g, '/');
+            const lowerPath = normPath.toLowerCase();
+
+            if (lowerPath.startsWith(folderPathMatcher) || lowerPath.startsWith(folderPathMatcherFallback)) {
                 if (lowerPath.endsWith('/thumb.jpg') || 
                     lowerPath.endsWith('/thumb.jpeg') || 
                     lowerPath.endsWith('/thumb.png') || 
                     lowerPath.endsWith('/thumb.webp')) {
+                    thumbPhoto = { url: normPath.replace('../public', ''), title: 'Foto Utama / Thumbnail', fileName: 'thumb', originalPath: path };
                     return;
                 }
                 
-                const url = path.replace('../public', '');
-                const fileName = path.split('/').pop();
+                const url = normPath.replace('../public', '');
+                const fileName = normPath.split('/').pop();
                 const match = fileName.match(/\((.*?)\)/);
                 const title = match ? match[1] : '';
 
                 // Determine which folder the file lives in
-                const relativePath = path.startsWith(folderPathMatcher) 
-                    ? path.substring(folderPathMatcher.length) 
-                    : path.substring(folderPathMatcherFallback.length);
+                const matcherLength = lowerPath.startsWith(folderPathMatcher) 
+                    ? folderPathMatcher.length 
+                    : folderPathMatcherFallback.length;
                 
+                const relativePath = normPath.substring(matcherLength);
                 const pathParts = relativePath.split('/');
                 
                 if (pathParts.length > 1) {
@@ -777,6 +807,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         });
+
+        if (rootPhotos.length === 0 && Object.keys(floorPhotos).length === 0 && thumbPhoto) {
+            rootPhotos.push(thumbPhoto);
+        }
 
         // Sort photos by numeric prefix in filename
         const sortPhotos = (arr) => arr.sort((a, b) => {
