@@ -35,11 +35,12 @@ export const buildingData = {
         name: "Area Pos Jaga",
         zona: "D",
         dimensi: "± 171 m²",
-        description: "Area pos jaga keamanan tambahan di fasilitas PLTGU.",
+        shortDesc: "Pos pemantauan keamanan 24 jam yang menjaga perimeter area PLTGU dan berkoordinasi langsung dengan pos gate utama.",
+        description: "Area Pos Jaga merupakan pos keamanan tambahan yang ditempatkan secara strategis di titik-titik kritis perimeter PLTGU Cilegon. Petugas keamanan yang bertugas di pos ini menjalankan patroli rutin, memantau CCTV area sekitar, dan melakukan verifikasi identitas bagi siapa pun yang memasuki zona terbatas. Pos ini juga dilengkapi alat komunikasi radio yang terhubung langsung ke pusat kendali keamanan (Security Control Center) untuk respons cepat terhadap insiden.",
         fungsi: [
-            "Pemantauan keamanan area PLTGU",
-            "Kontrol akses keluar-masuk kendaraan dan personel",
-            "Koordinasi keamanan dengan pos gate utama"
+            "Pemantauan keamanan area PLTGU secara real-time melalui CCTV dan patroli",
+            "Kontrol akses keluar-masuk kendaraan dan personel di zona terbatas",
+            "Koordinasi keamanan dengan pos gate utama dan pusat kendali keamanan"
         ]
     },
     "b4": {
@@ -47,11 +48,12 @@ export const buildingData = {
         name: "Fire Truck Station",
         zona: "D",
         dimensi: "± 171 m²",
-        description: "Stasiun pemadam kebakaran (Fire Truck Station) untuk penanganan darurat dan siaga kebakaran di area PLTGU.",
+        shortDesc: "Stasiun penyimpanan armada truk pemadam kebakaran yang bersiaga 24 jam untuk penanganan darurat di seluruh area PLTGU.",
+        description: "Fire Truck Station adalah markas kendaraan pemadam kebakaran PLTGU Cilegon yang disiagakan 24 jam sehari, 7 hari seminggu. Stasiun ini menampung truk pemadam kebakaran lengkap dengan tangki air, foam concentrate, selang bertekanan tinggi, dan peralatan rescue. Tim pemadam yang terlatih khusus untuk kebakaran fasilitas industri energi bersiaga di sini, siap merespons dalam hitungan menit terhadap potensi kebakaran — terutama di area tangki bahan bakar, turbin, dan transformer yang memiliki risiko tinggi.",
         fungsi: [
-            "Penyimpanan armada truk pemadam kebakaran",
-            "Siaga 24 jam untuk penanganan darurat kebakaran",
-            "Pusat koordinasi respons darurat kebakaran PLTGU"
+            "Penyimpanan dan pemeliharaan armada truk pemadam kebakaran",
+            "Siaga 24/7 untuk penanganan darurat kebakaran dan insiden di seluruh area PLTGU",
+            "Pusat koordinasi respons darurat dengan tim Fire & Safety PLTGU"
         ]
     },
     "b5": {
@@ -59,11 +61,12 @@ export const buildingData = {
         name: "Unit Pelayanan Kesehatan Kerja (UPPK)",
         zona: "D",
         dimensi: "± 111 m²",
-        description: "Unit Pelayanan Kesehatan Kerja (UPPK) yang menyediakan fasilitas medis dan penanganan kesehatan bagi para pekerja dan staf.",
+        shortDesc: "Klinik kesehatan kerja yang menyediakan layanan medis, pertolongan pertama, dan program pemantauan kesehatan bagi seluruh karyawan PLTGU.",
+        description: "Unit Pelayanan Kesehatan Kerja (UPPK) adalah fasilitas medis internal PLTGU Cilegon yang melayani kebutuhan kesehatan seluruh personel — mulai dari pemeriksaan kesehatan rutin (medical check-up) hingga penanganan darurat kecelakaan kerja. Klinik ini dilengkapi peralatan P3K standar industri, obat-obatan dasar, serta ruang perawatan sementara. UPPK juga menjalankan program kesehatan kerja preventif seperti pemantauan paparan kebisingan, debu, dan bahan kimia bagi pekerja di area operasional berisiko tinggi, sesuai regulasi K3 Kementerian Ketenagakerjaan.",
         fungsi: [
-            "Pelayanan kesehatan dasar bagi karyawan PLTGU",
-            "Penanganan pertolongan pertama kecelakaan kerja",
-            "Pemantauan kesehatan dan program K3 karyawan"
+            "Pelayanan kesehatan dasar dan medical check-up rutin bagi karyawan",
+            "Penanganan pertolongan pertama (P3K) pada kecelakaan kerja",
+            "Program pemantauan kesehatan kerja dan pencegahan penyakit akibat kerja (PAK)"
         ]
     },
     "b6": {
@@ -71,11 +74,13 @@ export const buildingData = {
         name: "Stasiun Gas",
         zona: "B",
         dimensi: "± 124 m²",
-        description: "Stasiun penerimaan dan pengaturan pasokan gas (Stasiun Gas).",
+        shortDesc: "Stasiun penerimaan dan regulasi gas bumi yang mengontrol tekanan serta kualitas pasokan gas sebelum dialirkan ke turbin.",
+        description: "Stasiun Gas merupakan titik penerimaan awal pasokan gas bumi dari jaringan pipa Perusahaan Gas Negara (PGN) sebelum didistribusikan ke unit-unit turbin gas PLTGU Cilegon. Di sini, gas bumi melewati serangkaian proses penting: filtrasi untuk menghilangkan partikel dan kontaminan, regulasi tekanan dari tekanan transmisi tinggi ke tekanan operasi turbin, serta pengukuran debit dan komposisi gas menggunakan chromatograph dan flow meter. Stasiun ini juga dilengkapi dengan emergency shut-off valve (ESDV) yang akan menutup aliran gas secara otomatis apabila terdeteksi anomali tekanan atau kebocoran.",
         fungsi: [
-            "Penerimaan dan regulasi tekanan gas bumi dari jaringan PGN",
-            "Pengukuran debit dan kualitas gas masuk",
-            "Sistem keamanan dan shut-off valve otomatis"
+            "Penerimaan dan filtrasi gas bumi dari jaringan PGN",
+            "Regulasi tekanan gas dari tekanan transmisi ke tekanan operasi turbin",
+            "Pengukuran debit, kualitas, dan komposisi gas secara real-time",
+            "Sistem keamanan dengan emergency shut-off valve (ESDV) otomatis"
         ]
     },
     "b7": {
@@ -83,11 +88,12 @@ export const buildingData = {
         name: "Rumah Bibit",
         zona: "D",
         dimensi: "± 145 m²",
-        description: "Rumah Bibit (Greenhouse / Nursery) untuk pembibitan tanaman di area PLTGU.",
+        shortDesc: "Fasilitas nursery yang mengelola pembibitan dan perawatan tanaman untuk mendukung program penghijauan kawasan PLTGU.",
+        description: "Rumah Bibit (Greenhouse/Nursery) PLTGU Cilegon merupakan bukti komitmen perusahaan terhadap kelestarian lingkungan di kawasan industri. Fasilitas ini mengelola pembibitan berbagai jenis tanaman — mulai dari pohon peneduh, tanaman hias, hingga tanaman penyerap polutan — yang ditanam di sepanjang area terbuka dan perimeter PLTGU. Program penghijauan ini bukan hanya estetika, melainkan berperan penting dalam menyerap emisi CO₂, meredam kebisingan operasional, serta menjaga ekosistem lokal agar tetap lestari sesuai AMDAL (Analisis Mengenai Dampak Lingkungan).",
         fungsi: [
-            "Pembibitan dan perawatan tanaman penghijauan",
-            "Penyediaan bibit untuk program penghijauan PLTGU",
-            "Pemeliharaan vegetasi kawasan industri"
+            "Pembibitan dan perawatan tanaman untuk program penghijauan PLTGU",
+            "Penyediaan bibit tanaman penyerap polutan dan pohon peneduh",
+            "Pemeliharaan vegetasi kawasan industri sesuai komitmen AMDAL"
         ]
     },
     "b8": {
@@ -95,11 +101,12 @@ export const buildingData = {
         name: "Gedung Admin",
         zona: "D",
         dimensi: "± 718 m²",
-        description: "Gedung Admin (Administrative Building) sebagai pusat kegiatan administrasi dan perkantoran.",
+        shortDesc: "Pusat kegiatan administrasi, manajemen, dan perkantoran yang menjadi 'otak' operasional non-teknis PLTGU Cilegon.",
+        description: "Gedung Admin (Administrative Building) adalah pusat operasional non-teknis PLTGU Cilegon yang menaungi seluruh kegiatan administrasi, manajemen SDM, keuangan, logistik, dan hubungan eksternal. Gedung berlantai ini dilengkapi dengan ruang kerja staf, ruang rapat, ruang pimpinan, serta pusat dokumentasi dan arsip. Semua koordinasi strategis — mulai dari perencanaan overhaul, pengadaan suku cadang, pelaporan kinerja unit pembangkit, hingga koordinasi dengan PLN Pusat dan mitra kerja — dikelola dari gedung ini.",
         fungsi: [
-            "Pusat administrasi dan manajemen operasional PLTGU",
-            "Ruang kerja staf dan pejabat perusahaan",
-            "Ruang rapat, dokumen, dan komunikasi"
+            "Pusat administrasi, manajemen SDM, keuangan, dan logistik PLTGU",
+            "Ruang kerja staf, pejabat, serta ruang rapat koordinasi",
+            "Pengelolaan dokumen, arsip, dan pelaporan kinerja unit pembangkit"
         ]
     },
     "b9": {
@@ -107,11 +114,12 @@ export const buildingData = {
         name: "Safety Center",
         zona: "D",
         dimensi: "± 189 m²",
-        description: "Safety Center sebagai pusat kendali dan pemantauan K3 (Keselamatan dan Kesehatan Kerja).",
+        shortDesc: "Pusat kendali K3 (Keselamatan dan Kesehatan Kerja) yang mengoordinasikan seluruh program keselamatan di PLTGU.",
+        description: "Safety Center adalah pusat komando Keselamatan dan Kesehatan Kerja (K3) PLTGU Cilegon. Dari sini, seluruh program keselamatan dikendalikan — termasuk penerbitan izin kerja (work permit), pemantauan kepatuhan penggunaan APD (Alat Pelindung Diri), investigasi insiden, serta pelatihan dan simulasi keadaan darurat (fire drill, emergency evacuation). Safety Center juga menyimpan inventaris lengkap APD dan peralatan keselamatan seperti SCBA (Self-Contained Breathing Apparatus), detektor gas portabel, fire blanket, dan perangkat rescue. Semua pekerja — baik karyawan internal maupun kontraktor — wajib melapor ke Safety Center sebelum memasuki area kerja berisiko tinggi.",
         fungsi: [
-            "Pusat koordinasi program K3 seluruh PLTGU",
-            "Penyimpanan alat pelindung diri (APD) dan peralatan keselamatan",
-            "Pelatihan dan sosialisasi prosedur K3"
+            "Pusat koordinasi dan penerbitan izin kerja (work permit) untuk seluruh area PLTGU",
+            "Penyimpanan dan distribusi APD serta peralatan keselamatan darurat",
+            "Penyelenggaraan pelatihan K3, fire drill, dan simulasi evakuasi darurat"
         ]
     },
     "b10": {
@@ -119,11 +127,12 @@ export const buildingData = {
         name: "Masjid",
         zona: "D",
         dimensi: "± 245 m²",
-        description: "Masjid untuk fasilitas ibadah karyawan dan tamu di lingkungan PLTGU.",
+        shortDesc: "Fasilitas ibadah yang nyaman dan representatif bagi seluruh karyawan Muslim dan tamu di lingkungan PLTGU Cilegon.",
+        description: "Masjid PLTGU Cilegon merupakan fasilitas ibadah yang dibangun untuk memenuhi kebutuhan spiritual para karyawan dan tamu. Dengan kapasitas yang memadai, masjid ini mampu menampung jamaah sholat wajib 5 waktu maupun sholat Jumat. Selain sebagai tempat ibadah, masjid ini juga menjadi pusat kegiatan keagamaan seperti pengajian rutin, peringatan hari besar Islam, dan kegiatan sosial keagamaan lainnya. Keberadaan masjid di kawasan industri mencerminkan budaya kerja yang menyeimbangkan antara produktivitas dan spiritualitas.",
         fungsi: [
-            "Fasilitas ibadah sholat bagi karyawan Muslim",
-            "Kegiatan kerohanian dan keagamaan karyawan",
-            "Tempat ibadah untuk tamu dan mitra PLTGU"
+            "Fasilitas ibadah sholat 5 waktu dan sholat Jumat bagi karyawan Muslim",
+            "Pusat kegiatan kerohanian: pengajian rutin dan peringatan hari besar Islam",
+            "Tempat ibadah yang juga terbuka bagi tamu dan mitra kerja PLTGU"
         ]
     },
     "b11": {
@@ -131,11 +140,12 @@ export const buildingData = {
         name: "Area Pos Gate",
         zona: "D",
         dimensi: "± 119 m²",
-        description: "Area Pos Gate untuk pemeriksaan akses masuk dan pengamanan fasilitas.",
+        shortDesc: "Gerbang utama PLTGU yang menjadi titik kontrol akses masuk-keluar seluruh personel, kendaraan, dan material.",
+        description: "Area Pos Gate merupakan gerbang utama fasilitas PLTGU Cilegon yang menjadi lini pertama sistem keamanan. Setiap orang dan kendaraan yang memasuki atau meninggalkan kawasan PLTGU wajib melewati pemeriksaan identitas di pos ini. Petugas keamanan memverifikasi kartu identitas karyawan, surat izin masuk tamu/kontraktor, serta memeriksa muatan kendaraan pengangkut material. Pos Gate juga dilengkapi palang otomatis, kamera CCTV, dan sistem pencatatan digital yang merekam seluruh aktivitas keluar-masuk sebagai bagian dari audit trail keamanan fasilitas vital.",
         fungsi: [
-            "Pemeriksaan identitas dan akses masuk personel",
-            "Pencatatan keluar-masuk kendaraan dan tamu",
-            "Pengamanan gerbang utama fasilitas PLTGU"
+            "Pemeriksaan identitas dan verifikasi akses masuk personel dan tamu",
+            "Pencatatan dan monitoring keluar-masuk kendaraan dan material",
+            "Pengamanan gerbang utama dengan CCTV, palang otomatis, dan log digital"
         ]
     },
     "b12": {
@@ -143,11 +153,12 @@ export const buildingData = {
         name: "Area Traffo",
         zona: "A",
         dimensi: "± 2.145 m²",
-        description: "Area Transformator (Traffo) yang berfungsi menaikkan tegangan untuk ditransmisikan atau menurunkan tegangan untuk pemakaian sendiri.",
+        shortDesc: "Area transformator utama yang menaikkan tegangan listrik dari generator ke 150kV untuk disalurkan ke jaringan transmisi PLN.",
+        description: "Area Transformator (Traffo) adalah jantung sistem penyaluran tenaga listrik PLTGU Cilegon. Di area seluas lebih dari 2.000 m² ini terdapat unit-unit transformator utama (Main Power Transformer) yang bertugas menaikkan tegangan output generator — dari tegangan menengah (sekitar 11-20 kV) ke tegangan transmisi tinggi 150 kV — agar listrik dapat disalurkan efisien ke jaringan PLN melalui Switch Yard. Selain itu, terdapat pula Station Service Transformer yang menurunkan tegangan untuk kebutuhan pemakaian sendiri (auxiliary power) fasilitas PLTGU. Area ini dilengkapi sistem pendingin oli transformator, fire protection khusus, serta bunding (tanggul penahan) untuk menampung kebocoran minyak transformator.",
         fungsi: [
-            "Menaikkan tegangan output generator ke 150kV",
-            "Menurunkan tegangan untuk kebutuhan auxiliary PLTGU",
-            "Distribusi tenaga listrik ke seluruh area fasilitas"
+            "Menaikkan tegangan output generator ke 150kV melalui Main Power Transformer",
+            "Menurunkan tegangan untuk kebutuhan auxiliary power seluruh fasilitas PLTGU",
+            "Distribusi tenaga listrik ke seluruh area dengan sistem proteksi dan pendinginan"
         ]
     },
     "b13": {
@@ -155,11 +166,12 @@ export const buildingData = {
         name: "Area Raw Water Tank",
         zona: "C",
         dimensi: "± 468 m²",
-        description: "Area tangki penampungan air mentah (Raw Water Tank) sebelum diproses lebih lanjut oleh unit pengolahan air.",
+        shortDesc: "Tangki penampungan air mentah yang menjadi buffer stok sebelum air diproses lebih lanjut oleh unit desalinasi dan pengolahan air.",
+        description: "Area Raw Water Tank merupakan fasilitas penampungan air mentah (raw water) yang berfungsi sebagai buffer antara sumber air baku dan unit pengolahan air PLTGU Cilegon. Air mentah yang diterima dari sumber air baku (air laut melalui Water Intake atau air tawar dari PDAM) ditampung sementara di tangki ini sebelum dialirkan ke unit Desalination Plant atau unit demineralisasi untuk diolah menjadi air proses berkualitas tinggi. Tangki ini memastikan pasokan air tetap tersedia secara kontinu meskipun terjadi fluktuasi debit atau gangguan pada sumber air baku.",
         fungsi: [
-            "Penampungan air mentah dari sumber air baku",
-            "Buffer stok air sebelum masuk unit pengolahan",
-            "Menjamin ketersediaan air proses secara berkelanjutan"
+            "Penampungan sementara air mentah dari sumber air baku (laut/PDAM)",
+            "Buffer stok air untuk menjamin kontinuitas pasokan ke unit pengolahan",
+            "Pemerataan debit air masuk sebelum proses desalinasi dan demineralisasi"
         ]
     },
     "b14": {
@@ -167,11 +179,12 @@ export const buildingData = {
         name: "Area Desalination A & B",
         zona: "C",
         dimensi: "± 1.693 m²",
-        description: "Area fasilitas desalinasi unit A & B yang mengolah air laut menjadi air tawar untuk kebutuhan pembangkit.",
+        shortDesc: "Fasilitas desalinasi ganda (unit A & B) yang mengolah air laut menjadi air tawar murni untuk kebutuhan siklus uap pembangkit.",
+        description: "Area Desalination A & B adalah fasilitas pengolahan air berteknologi tinggi yang mengubah air laut menjadi air tawar berkualitas tinggi melalui proses Reverse Osmosis (RO). PLTGU Cilegon memiliki dua unit desalinasi (A dan B) yang beroperasi secara paralel untuk memenuhi kebutuhan air demineralisasi yang sangat besar — terutama untuk siklus air-uap di HRSG (Heat Recovery Steam Generator) dan sistem pendinginan. Air hasil desalinasi ini memiliki tingkat kemurnian tinggi (Total Dissolved Solids sangat rendah) sehingga aman digunakan dalam boiler bertekanan tinggi tanpa risiko pembentukan kerak atau korosi.",
         fungsi: [
-            "Mengolah air laut menjadi air tawar melalui teknologi reverse osmosis",
-            "Menyediakan air proses berkualitas tinggi untuk HRSG dan cooling",
-            "Mengurangi ketergantungan terhadap pasokan air tawar eksternal"
+            "Mengolah air laut menjadi air tawar murni melalui teknologi Reverse Osmosis (RO)",
+            "Menyediakan air demineralisasi berkualitas tinggi untuk siklus uap HRSG",
+            "Operasi ganda (unit A & B) untuk menjamin keandalan pasokan air proses"
         ]
     },
     "b15": {
@@ -179,11 +192,12 @@ export const buildingData = {
         name: "Gardu Induk",
         zona: "A",
         dimensi: "± 340 m²",
-        description: "Fasilitas Gardu Induk untuk mendistribusikan aliran listrik yang dihasilkan ke jaringan transmisi PLN.",
+        shortDesc: "Fasilitas gardu induk bertegangan tinggi yang menjadi titik interkoneksi antara PLTGU Cilegon dan jaringan transmisi PLN.",
+        description: "Gardu Induk PLTGU Cilegon merupakan fasilitas kelistrikan tegangan tinggi yang menjadi titik interkoneksi antara pembangkit dan jaringan transmisi PLN 150 kV. Di sini terdapat peralatan switching (pemutus tenaga / circuit breaker), bus bar, disconnecting switch, current & voltage transformer, serta sistem proteksi relay digital yang memonitor seluruh parameter kelistrikan secara real-time. Gardu induk ini memastikan bahwa daya listrik yang dihasilkan PLTGU dapat disalurkan secara aman, stabil, dan terkontrol ke jaringan eksternal — sekaligus mampu mengisolasi unit pembangkit dari jaringan apabila terjadi gangguan (fault).",
         fungsi: [
-            "Distribusi dan pengaturan aliran daya listrik 150kV",
-            "Pengamanan sistem tenaga melalui proteksi relay",
-            "Switching dan isolasi jaringan transmisi"
+            "Titik interkoneksi dan penyaluran daya listrik 150kV ke jaringan transmisi PLN",
+            "Pengamanan sistem tenaga melalui proteksi relay digital dan circuit breaker",
+            "Switching, sinkronisasi, dan isolasi jaringan transmisi saat terjadi gangguan"
         ]
     },
     "b16": {
@@ -191,11 +205,12 @@ export const buildingData = {
         name: "Area Make Up Watertank",
         zona: "C",
         dimensi: "± 973 m²",
-        description: "Area tangki Make Up Water yang menampung air pengisi tambahan untuk menjaga siklus air dan uap di dalam pembangkit.",
+        shortDesc: "Tangki penyimpanan air pengisi tambahan (make-up water) yang menjaga keseimbangan volume air dalam siklus uap HRSG.",
+        description: "Area Make Up Water Tank menampung cadangan air demineralisasi (demin water) yang siap digunakan sebagai air pengisi tambahan (make-up water) dalam siklus air-uap tertutup PLTGU. Dalam operasi normal, siklus uap mengalami kehilangan air secara alami melalui blow-down boiler, kebocoran kecil pada seal, dan penguapan. Make-up water tank menyediakan pasokan pengganti untuk menjaga level air di HRSG dan deaerator tetap optimal. Kualitas air di tangki ini dijaga sangat ketat — dengan konduktivitas sangat rendah dan pH terkontrol — agar tidak merusak tube boiler yang beroperasi pada tekanan dan suhu tinggi.",
         fungsi: [
-            "Penyimpanan air pengisi (make-up water) untuk siklus uap HRSG",
-            "Menjaga keseimbangan volume air dalam sistem siklus tertutup",
-            "Cadangan air demin untuk operasi darurat"
+            "Penyimpanan air demineralisasi berkualitas tinggi untuk siklus uap HRSG",
+            "Penggantian volume air yang hilang akibat blow-down, kebocoran, dan penguapan",
+            "Cadangan air demin untuk situasi darurat dan proses start-up pembangkit"
         ]
     },
     "b17": {
@@ -203,11 +218,12 @@ export const buildingData = {
         name: "Traffo Cadangan",
         zona: "C",
         dimensi: "± 150 m²",
-        description: "Area Transformator (Traffo) Cadangan.",
+        shortDesc: "Transformator cadangan yang siap menggantikan transformator utama saat terjadi kerusakan, menjamin keandalan sistem kelistrikan PLTGU.",
+        description: "Traffo Cadangan (Spare Transformer) merupakan unit transformator siap pakai yang disimpan sebagai backup apabila salah satu transformator utama mengalami kerusakan atau memerlukan pemeliharaan besar (overhaul). Kerusakan transformator utama berpotensi menghentikan operasi unit pembangkit secara total selama berminggu-minggu karena waktu pengadaan transformator baru sangat lama. Dengan adanya Traffo Cadangan, downtime dapat diminimalkan karena unit ini dapat langsung dipasang menggantikan transformator bermasalah — sebuah strategi yang lazim di pembangkit listrik berdaya besar untuk menjaga keandalan pasokan listrik ke jaringan PLN.",
         fungsi: [
-            "Transformator cadangan untuk keandalan pasokan listrik",
-            "Backup saat transformator utama dalam perbaikan",
-            "Memastikan kontinuitas operasi sistem kelistrikan"
+            "Cadangan siap pasang saat transformator utama mengalami kerusakan atau overhaul",
+            "Meminimalkan downtime dan menjaga keandalan pasokan listrik ke jaringan PLN",
+            "Memastikan kontinuitas operasi sistem kelistrikan PLTGU tanpa gangguan berkepanjangan"
         ]
     },
     "b18": {
@@ -215,11 +231,12 @@ export const buildingData = {
         name: "Fire Pump Station",
         zona: "C",
         dimensi: "± 297 m²",
-        description: "Fire Pump Station untuk sistem pemadam kebakaran.",
+        shortDesc: "Stasiun pompa pemadam kebakaran yang memompa air bertekanan tinggi ke seluruh jaringan hydrant dan sprinkler PLTGU.",
+        description: "Fire Pump Station adalah jantung dari sistem proteksi kebakaran (Fire Fighting System) PLTGU Cilegon. Stasiun ini menampung pompa-pompa bertekanan tinggi — termasuk Electric Fire Pump, Diesel Fire Pump (yang dapat beroperasi saat listrik padam), dan Jockey Pump (untuk menjaga tekanan konstan di jaringan pipa) — yang memompa air dari Fire Water Tank ke seluruh jaringan pipa hydrant, sprinkler, dan water spray di area pembangkit. Sistem ini dirancang berdasarkan standar NFPA (National Fire Protection Association) dan diuji secara berkala untuk memastikan kesiapan 100% saat dibutuhkan.",
         fungsi: [
-            "Memompa air bertekanan untuk sistem hydrant dan sprinkler",
-            "Menjamin pasokan air pemadam kebakaran di seluruh area",
-            "Operasi otomatis saat deteksi kebakaran terdeteksi"
+            "Memompa air bertekanan tinggi ke sistem hydrant dan sprinkler di seluruh area PLTGU",
+            "Operasi otomatis (Diesel Fire Pump) saat listrik padam untuk menjamin kesiapan",
+            "Jockey Pump untuk menjaga tekanan konstan di jaringan pipa pemadam kebakaran"
         ]
     },
     "b19": {
@@ -227,11 +244,12 @@ export const buildingData = {
         name: "Area Water Intake",
         zona: "C",
         dimensi: "± 720 m²",
-        description: "Area Water Intake untuk pengambilan air baku.",
+        shortDesc: "Fasilitas pengambilan air baku dari laut yang dilengkapi sistem screening dan pompa transfer untuk memasok kebutuhan air seluruh PLTGU.",
+        description: "Area Water Intake merupakan titik pengambilan air baku dari laut yang menjadi sumber utama pasokan air untuk seluruh proses di PLTGU Cilegon. Fasilitas ini dilengkapi dengan travelling screen (penyaring otomatis) untuk menahan sampah, rumput laut, ubur-ubur, dan organisme laut lainnya agar tidak masuk ke sistem perpipaan. Pompa transfer berkapasitas besar mengalirkan air baku ke unit Chlorination Plant (untuk mencegah bio-fouling) dan selanjutnya ke Desalination Plant untuk diolah menjadi air tawar. Desain Water Intake memperhitungkan pasang-surut laut, gelombang, serta perlindungan terhadap korosi air laut.",
         fungsi: [
-            "Pengambilan air laut/sungai sebagai sumber air baku",
-            "Penyaringan awal (screening) material besar dari air",
-            "Pompa transfer air ke unit pengolahan selanjutnya"
+            "Pengambilan air laut sebagai sumber air baku utama PLTGU",
+            "Penyaringan awal (travelling screen) untuk menahan debris dan biota laut",
+            "Pompa transfer air baku ke unit klorinasi dan desalinasi"
         ]
     },
     "b20": {
@@ -239,11 +257,12 @@ export const buildingData = {
         name: "Area HRSG",
         zona: "A",
         dimensi: "± 3.360 m²",
-        description: "Area Heat Recovery Steam Generator (HRSG) — memanfaatkan gas buang panas dari Gas Turbin untuk menghasilkan uap bertekanan tinggi yang menggerakkan Steam Turbin, menghasilkan listrik tambahan tanpa bahan bakar ekstra.",
+        shortDesc: "Jantung sistem Combined Cycle — memanfaatkan gas buang panas turbin gas untuk menghasilkan uap bertekanan tinggi yang menggerakkan steam turbin.",
+        description: "Area Heat Recovery Steam Generator (HRSG) adalah komponen kunci yang membuat PLTGU menjadi pembangkit 'Combined Cycle' — yaitu siklus gabungan gas dan uap. HRSG menangkap panas dari gas buang turbin gas yang bersuhu sekitar 500-600°C (yang normalnya terbuang percuma di PLTG biasa) dan menggunakannya untuk memanaskan air menjadi uap bertekanan tinggi. Uap ini kemudian menggerakkan Steam Turbin untuk menghasilkan listrik tambahan — tanpa membakar bahan bakar ekstra. Dengan HRSG, efisiensi keseluruhan PLTGU meningkat drastis dari sekitar 35% (siklus tunggal gas) menjadi 50-60% (siklus gabungan). Area HRSG Cilegon juga mencakup Control Room sebagai pusat pengendalian operasi seluruh unit pembangkit.",
         fungsi: [
-            "Mengkonversi panas gas buang turbin gas menjadi uap bertekanan",
-            "Menghasilkan uap untuk menggerakkan steam turbin",
-            "Meningkatkan efisiensi keseluruhan sistem Combined Cycle"
+            "Mengkonversi panas gas buang turbin gas (~500-600°C) menjadi uap bertekanan tinggi",
+            "Menghasilkan uap untuk menggerakkan steam turbin — listrik tambahan tanpa bahan bakar ekstra",
+            "Meningkatkan efisiensi keseluruhan sistem Combined Cycle dari ~35% menjadi ~50-60%"
         ]
     },
     "b21": {
@@ -251,11 +270,12 @@ export const buildingData = {
         name: "Condensate Water Tank",
         zona: "A",
         dimensi: "± 2.900 m²",
-        description: "Tangki air kondensat (Condensate Water Tank) — menampung uap yang telah dikondensasikan kembali menjadi air setelah melewati steam turbin, untuk kemudian disirkulasikan kembali ke HRSG.",
+        shortDesc: "Tangki besar yang menampung air kondensat hasil pendinginan uap setelah melewati steam turbin, untuk disirkulasikan kembali ke HRSG.",
+        description: "Condensate Water Tank merupakan tangki penampungan air kondensat — yaitu uap yang telah dikondensasikan (diubah kembali menjadi air cair) setelah menggerakkan steam turbin dan melewati kondenser. Air kondensat ini masih memiliki kualitas yang sangat baik (hampir murni) sehingga sangat berharga untuk disirkulasikan kembali ke HRSG melalui sistem Condensate Extraction Pump (CEP) dan deaerator. Tangki ini berperan vital dalam menjaga keseimbangan siklus air-uap tertutup pembangkit — memastikan pasokan air untuk boiler selalu tersedia dan meminimalkan kebutuhan make-up water.",
         fungsi: [
-            "Menampung air kondensat dari kondenser steam turbin",
-            "Mendistribusikan air kondensat kembali ke HRSG",
-            "Menjaga keseimbangan siklus air-uap pembangkit"
+            "Menampung air kondensat berkualitas tinggi dari kondenser steam turbin",
+            "Menyirkulasikan air kondensat kembali ke HRSG melalui CEP dan deaerator",
+            "Menjaga keseimbangan dan efisiensi siklus air-uap tertutup pembangkit"
         ]
     },
     "b22": {
@@ -263,11 +283,12 @@ export const buildingData = {
         name: "Area Bangunan K3 Kecil",
         zona: "C",
         dimensi: "± 205 m²",
-        description: "Area fasilitas Bangunan K3 Kecil.",
+        shortDesc: "Pos keselamatan lapangan yang menyediakan APD, peralatan P3K, dan titik evakuasi darurat di area operasi teknis PLTGU.",
+        description: "Area Bangunan K3 Kecil merupakan pos keselamatan satelit yang ditempatkan di dekat zona operasi teknis PLTGU Cilegon. Berbeda dengan Safety Center utama yang berfungsi sebagai pusat komando K3, bangunan K3 kecil ini lebih bersifat operasional lapangan — menyediakan akses cepat ke APD cadangan (helm, sarung tangan, kacamata, earplug), kotak P3K, fire extinguisher portabel, serta berfungsi sebagai titik kumpul (assembly point) saat simulasi evakuasi darurat. Keberadaan pos ini memastikan bahwa peralatan keselamatan selalu dalam jangkauan bagi pekerja di area yang jauh dari gedung K3 utama.",
         fungsi: [
-            "Penyimpanan peralatan K3 dan APD di area setempat",
-            "Pos pemantauan keselamatan kerja lapangan",
-            "Fasilitas P3K di area operasi"
+            "Penyediaan APD cadangan dan peralatan P3K di dekat area kerja lapangan",
+            "Pos pemantauan keselamatan kerja operasional dan titik kumpul evakuasi",
+            "Penyimpanan fire extinguisher portabel dan peralatan tanggap darurat"
         ]
     },
     "b23": {
@@ -275,11 +296,12 @@ export const buildingData = {
         name: "Area Clorination Plant",
         zona: "C",
         dimensi: "± 1.840 m²",
-        description: "Fasilitas Chlorination Plant — melakukan proses klorinasi pada air baku untuk mencegah pertumbuhan biota laut (bio-fouling) pada sistem pendingin.",
+        shortDesc: "Fasilitas injeksi klorin yang mencegah pertumbuhan biota laut (bio-fouling) pada pipa kondenser dan sistem pendingin PLTGU.",
+        description: "Chlorination Plant merupakan fasilitas vital yang melindungi sistem pendinginan PLTGU dari ancaman bio-fouling — yaitu pertumbuhan organisme laut seperti kerang (barnacle), ganggang, dan teritip di dalam pipa kondenser dan saluran air pendingin. Tanpa klorinasi, organisme ini akan menyumbat pipa, mengurangi efisiensi perpindahan panas di kondenser, dan akhirnya menurunkan daya output pembangkit. Fasilitas ini memproduksi dan menginjeksikan larutan sodium hypochlorite (NaOCl) ke air laut yang masuk melalui Water Intake. Dosis klorin dikontrol secara presisi agar efektif membunuh biota laut namun tetap memenuhi baku mutu lingkungan saat air buangan dikembalikan ke laut.",
         fungsi: [
-            "Injeksi klorin pada air pendingin untuk mencegah bio-fouling",
-            "Perlindungan pipa kondenser dari pertumbuhan kerang dan ganggang",
-            "Pengolahan air laut sebelum digunakan sebagai media pendingin"
+            "Produksi dan injeksi sodium hypochlorite (NaOCl) ke air pendingin laut",
+            "Pencegahan bio-fouling (kerang, ganggang) pada pipa kondenser dan cooling system",
+            "Kontrol dosis klorin agar tetap memenuhi baku mutu lingkungan"
         ]
     },
     "b24": {
@@ -287,11 +309,12 @@ export const buildingData = {
         name: "Area Solar Panel",
         zona: "B",
         dimensi: "± 250 m²",
-        description: "Area panel surya (Solar Panel) untuk pasokan energi bersih.",
+        shortDesc: "Instalasi panel surya yang memanfaatkan energi matahari untuk memasok sebagian kebutuhan listrik fasilitas penunjang PLTGU.",
+        description: "Area Solar Panel adalah instalasi pembangkit listrik tenaga surya (PLTS) di lingkungan PLTGU Cilegon yang merepresentasikan komitmen perusahaan terhadap diversifikasi energi dan transisi energi bersih. Panel-panel fotovoltaik (PV) yang terpasang mengkonversi cahaya matahari secara langsung menjadi energi listrik untuk memasok sebagian kebutuhan listrik fasilitas penunjang — seperti penerangan area, gedung administrasi, dan sistem monitoring. Meskipun kapasitasnya kecil dibandingkan output utama PLTGU, keberadaan PLTS ini mencerminkan keseriusan dalam implementasi program Environmental, Social, and Governance (ESG) serta kontribusi terhadap target bauran energi terbarukan nasional.",
         fungsi: [
-            "Pembangkitan listrik dari energi surya",
-            "Memasok kebutuhan listrik fasilitas penunjang",
-            "Kontribusi terhadap target energi terbarukan perusahaan"
+            "Pembangkitan listrik bersih dari energi surya melalui panel fotovoltaik (PV)",
+            "Memasok kebutuhan listrik fasilitas penunjang (penerangan, gedung, monitoring)",
+            "Kontribusi terhadap target energi terbarukan dan program ESG perusahaan"
         ]
     },
     "b25": {
@@ -299,11 +322,12 @@ export const buildingData = {
         name: "Area Gudang Penyimpan Pelumas",
         zona: "C",
         dimensi: "± 1.870 m²",
-        description: "Fasilitas gudang penyimpanan pelumas (lubricant storage).",
+        shortDesc: "Gudang penyimpanan oli pelumas berkapasitas besar untuk turbin gas, steam turbin, generator, dan seluruh peralatan berputar PLTGU.",
+        description: "Area Gudang Penyimpan Pelumas (Lubricant Storage) adalah fasilitas logistik yang menampung seluruh jenis minyak pelumas yang dibutuhkan operasional PLTGU Cilegon. Turbin gas, steam turbin, generator, dan ratusan peralatan berputar (rotating equipment) lainnya memerlukan pelumasan yang tepat dan berkualitas tinggi untuk meminimalkan gesekan, meredam panas, dan mencegah keausan bearing. Gudang ini menyimpan berbagai grade oli — mulai dari turbine oil, hydraulic oil, gear oil, hingga grease — dalam drum dan tangki curah dengan sistem manajemen stok terkomputerisasi. Area ini juga mengelola oli bekas (used oil) untuk didaur ulang atau dibuang sesuai regulasi limbah B3.",
         fungsi: [
-            "Penyimpanan oli pelumas untuk turbin gas dan steam turbin",
-            "Manajemen stok minyak pelumas operasional",
-            "Pengelolaan dan pembuangan limbah oli bekas"
+            "Penyimpanan berbagai grade oli pelumas untuk turbin, generator, dan rotating equipment",
+            "Manajemen stok oli pelumas dengan sistem inventori terkomputerisasi",
+            "Pengelolaan dan pembuangan limbah oli bekas sesuai regulasi B3"
         ]
     },
     "b26": {
@@ -311,11 +335,12 @@ export const buildingData = {
         name: "Area Air Limbah WWTP",
         zona: "C",
         dimensi: "± 1.000 m²",
-        description: "Fasilitas pengolahan air limbah (Waste Water Treatment Plant) — mengolah air limbah dari berbagai proses PLTGU sebelum dibuang ke lingkungan.",
+        shortDesc: "Unit pengolahan air limbah (WWTP) yang memproses seluruh air buangan PLTGU agar memenuhi baku mutu lingkungan sebelum dibuang.",
+        description: "Waste Water Treatment Plant (WWTP) adalah fasilitas pengolahan air limbah yang memproses seluruh air buangan dari berbagai sumber di PLTGU Cilegon — termasuk limbah blow-down boiler, regenerasi resin demineralizer, pencucian peralatan, limbah laboratorium, dan limbah domestik. Proses pengolahan meliputi netralisasi pH, koagulasi-flokulasi, sedimentasi, filtrasi, dan desinfeksi. Air hasil olahan (effluent) dipantau secara real-time melalui parameter pH, TSS (Total Suspended Solids), COD, BOD, dan logam berat menggunakan online analyzer. Effluent hanya boleh dibuang ke lingkungan apabila telah memenuhi baku mutu sesuai Peraturan Menteri Lingkungan Hidup dan Kehutanan (KLHK).",
         fungsi: [
-            "Pengolahan air limbah proses sebelum dibuang ke lingkungan",
-            "Menetralisir kandungan kimia berbahaya dalam air limbah",
-            "Memenuhi baku mutu lingkungan sesuai regulasi KLHK"
+            "Pengolahan air limbah proses (blow-down, regenerasi resin, pencucian) sebelum dibuang",
+            "Netralisasi kandungan kimia berbahaya melalui proses koagulasi, filtrasi, dan desinfeksi",
+            "Pemantauan kualitas effluent secara real-time untuk memenuhi baku mutu KLHK"
         ]
     },
     "b27": {
@@ -323,11 +348,12 @@ export const buildingData = {
         name: "Area Air Limbah Desalinasi",
         zona: "C",
         dimensi: "± 3.500 m²",
-        description: "Fasilitas pengolahan limbah dari proses desalinasi (brine discharge area).",
+        shortDesc: "Area pengolahan dan pembuangan brine — air garam pekat sisa proses desalinasi — dengan kontrol dampak lingkungan ketat.",
+        description: "Area Air Limbah Desalinasi merupakan fasilitas penanganan brine (air garam pekat) yang merupakan produk sampingan dari proses Reverse Osmosis di Desalination Plant. Brine memiliki konsentrasi garam yang jauh lebih tinggi daripada air laut normal dan mengandung sisa bahan kimia proses (anti-scalant, anti-fouling), sehingga tidak boleh langsung dibuang ke laut tanpa penanganan. Di area ini, brine diencerkan (dilution) dengan air laut hingga konsentrasinya mendekati kondisi alamiah, kemudian disalurkan ke titik pembuangan (outfall) yang dirancang untuk dispersi optimal. Pemantauan berkala terhadap salinitas, suhu, dan ekosistem laut di sekitar outfall dilakukan untuk memastikan tidak ada dampak negatif terhadap biota laut.",
         fungsi: [
-            "Pengolahan dan pembuangan air garam hasil desalinasi",
-            "Pengenceran brine water sebelum dibuang ke laut",
-            "Pemantauan dampak lingkungan pembuangan brine"
+            "Penanganan dan pengenceran brine (air garam pekat) dari proses desalinasi RO",
+            "Penyaluran brine ke outfall dengan sistem dispersi untuk meminimalkan dampak lingkungan",
+            "Pemantauan berkala terhadap salinitas, suhu, dan ekosistem laut sekitar"
         ]
     },
     "b28": {
@@ -335,11 +361,12 @@ export const buildingData = {
         name: "Area Pertamina / Gas Metering Station",
         zona: "B",
         dimensi: "± 1.770 m²",
-        description: "Stasiun pengukuran gas (Gas Metering Station) dan area fasilitas Pertamina untuk penerimaan bahan bakar minyak.",
+        shortDesc: "Stasiun pengukuran gas bumi (custody transfer metering) dan area penerimaan bahan bakar minyak dari Pertamina.",
+        description: "Area Pertamina / Gas Metering Station merupakan fasilitas yang memiliki dua fungsi penting. Pertama, sebagai Gas Metering Station (stasiun pengukuran gas) yang melakukan custody transfer metering — yaitu pengukuran volume gas bumi yang diterima dari PGN/Pertamina dengan akurasi tinggi untuk keperluan perhitungan pembayaran dan verifikasi kontrak pasokan gas. Peralatan metering meliputi ultrasonic flow meter, gas chromatograph (untuk analisis komposisi gas), serta pressure dan temperature transmitter. Kedua, area ini juga berfungsi sebagai titik penerimaan bahan bakar minyak (HSD) dari Pertamina melalui fasilitas unloading untuk mengisi Distillate Oil Tank sebagai bahan bakar cadangan.",
         fungsi: [
-            "Pengukuran volume gas bumi yang diterima dari PGN/Pertamina",
-            "Stasiun regulasi tekanan gas untuk distribusi ke turbin",
-            "Penerimaan dan pemeriksaan kualitas bahan bakar"
+            "Custody transfer metering: pengukuran volume gas bumi untuk verifikasi kontrak dan pembayaran",
+            "Analisis komposisi dan kualitas gas bumi menggunakan gas chromatograph",
+            "Penerimaan dan pemeriksaan kualitas bahan bakar HSD dari Pertamina"
         ]
     },
     "b29": {
@@ -347,11 +374,12 @@ export const buildingData = {
         name: "Gudang & Workshop",
         zona: "C",
         dimensi: "± 648 m²",
-        description: "Area Gudang dan Workshop untuk penyimpanan suku cadang dan kegiatan pemeliharaan.",
+        shortDesc: "Pusat penyimpanan suku cadang dan bengkel pemeliharaan untuk perbaikan, fabrikasi, dan modifikasi peralatan mekanik PLTGU.",
+        description: "Gudang & Workshop adalah fasilitas terpadu yang menggabungkan fungsi logistik dan bengkel teknis. Bagian gudang menyimpan ribuan item suku cadang (spare parts) — mulai dari bearing, gasket, valve, instrumen, hingga komponen turbin — yang dikategorikan dan dikelola menggunakan sistem manajemen material terkomputerisasi (CMMS). Bagian workshop dilengkapi mesin bubut, milling, gerinda, las (welding), dan peralatan pengujian non-destructive testing (NDT) untuk perbaikan, fabrikasi, dan modifikasi komponen mekanik secara in-house. Keberadaan workshop ini menghemat waktu dan biaya dibandingkan harus mengirim komponen ke bengkel eksternal.",
         fungsi: [
-            "Penyimpanan suku cadang (spare parts) mesin dan peralatan",
-            "Kegiatan perbaikan dan pemeliharaan peralatan",
-            "Fabrikasi dan modifikasi komponen mekanik"
+            "Penyimpanan dan manajemen ribuan item suku cadang menggunakan sistem CMMS",
+            "Bengkel perbaikan, fabrikasi, dan modifikasi komponen mekanik in-house",
+            "Pengujian non-destructive testing (NDT) dan pengelasan (welding) spesialis"
         ]
     },
     "b30": {
@@ -359,11 +387,12 @@ export const buildingData = {
         name: "Gas Station",
         zona: "C",
         dimensi: "± 770 m²",
-        description: "Gas Station — stasiun pengisian bahan bakar untuk kendaraan operasional PLTGU.",
+        shortDesc: "SPBU internal untuk pengisian bahan bakar kendaraan operasional dan dinas yang beroperasi di lingkungan PLTGU.",
+        description: "Gas Station adalah stasiun pengisian bahan bakar (SPBU internal) khusus untuk kendaraan operasional yang beroperasi di lingkungan PLTGU Cilegon. Kendaraan-kendaraan seperti truk pengangkut, crane mobile, forklift, mobil patroli keamanan, dan kendaraan dinas mengisi bahan bakar di sini. Fasilitas ini dilengkapi tangki penyimpanan BBM bawah tanah, dispenser otomatis dengan flow meter terakreditasi, serta sistem pencatatan konsumsi BBM per kendaraan untuk keperluan audit dan efisiensi biaya operasional. Area ini juga memenuhi standar keselamatan SPBU — termasuk grounding, fire extinguisher, dan larangan merokok.",
         fungsi: [
-            "Pengisian bahan bakar kendaraan operasional",
-            "Penyimpanan BBM untuk kendaraan dinas",
-            "Pengelolaan distribusi BBM internal"
+            "Pengisian BBM untuk kendaraan operasional, crane, forklift, dan kendaraan dinas",
+            "Penyimpanan BBM dalam tangki bawah tanah dengan sistem keamanan standar SPBU",
+            "Pencatatan dan monitoring konsumsi BBM per kendaraan untuk efisiensi operasional"
         ]
     },
     "b31": {
@@ -371,11 +400,12 @@ export const buildingData = {
         name: "Station Gas Compressor",
         zona: "C",
         dimensi: "± 614 m²",
-        description: "Fasilitas kompresor gas (Station Gas Compressor) untuk meningkatkan tekanan gas sebelum masuk ke ruang bakar turbin gas.",
+        shortDesc: "Fasilitas kompresor yang meningkatkan tekanan gas bumi hingga mencapai tekanan operasi yang dibutuhkan turbin gas.",
+        description: "Station Gas Compressor merupakan fasilitas yang menampung kompresor-kompresor berkapasitas besar untuk menaikkan tekanan gas bumi dari tekanan jaringan pipa distribusi ke tekanan yang dibutuhkan oleh combustor turbin gas (biasanya berkisar 20-30 bar). Gas bumi yang diterima dari Gas Metering Station seringkali belum mencapai tekanan yang cukup untuk injeksi langsung ke ruang bakar turbin, sehingga diperlukan kompresi tambahan. Stasiun ini menggunakan kompresor tipe centrifugal atau reciprocating yang dilengkapi sistem pendinginan (intercooler/aftercooler), separator, dan kontrol otomatis untuk menjaga tekanan output tetap stabil sesuai kebutuhan masing-masing unit turbin gas.",
         fungsi: [
-            "Kompresi gas bumi ke tekanan operasi turbin gas",
-            "Memastikan tekanan gas yang cukup untuk injeksi ke combustor",
-            "Pengaturan laju aliran gas ke masing-masing unit turbin"
+            "Kompresi gas bumi dari tekanan distribusi ke tekanan operasi turbin gas (~20-30 bar)",
+            "Pendinginan gas terkompresi menggunakan intercooler/aftercooler",
+            "Pengaturan dan stabilisasi tekanan gas ke masing-masing unit turbin secara otomatis"
         ]
     },
     "b32": {
@@ -383,11 +413,12 @@ export const buildingData = {
         name: "Area Gasena",
         zona: "C",
         dimensi: "± 1.235 m²",
-        description: "Area Gasena — fasilitas pengelolaan gas industri dan nitrogen untuk kebutuhan operasional PLTGU.",
+        shortDesc: "Fasilitas penyimpanan dan distribusi gas industri (nitrogen, udara instrumen) untuk mendukung operasional dan pemeliharaan PLTGU.",
+        description: "Area Gasena merupakan fasilitas pengelolaan gas-gas industri yang esensial bagi operasional PLTGU Cilegon. Gas nitrogen (N₂) merupakan kebutuhan utama — digunakan untuk proses purging (pembersihan) pipa-pipa gas bumi dan bahan bakar sebelum commissioning atau setelah shutdown, blanketing tangki, serta sebagai gas inert untuk mencegah ledakan pada area yang mengandung gas mudah terbakar. Selain nitrogen, area ini juga mengelola pasokan udara instrumen (instrument air) bertekanan yang telah dikeringkan dan difiltrasi untuk mengoperasikan seluruh katup pneumatik dan instrumen kontrol di pembangkit. Fasilitas penyimpanan berupa tabung gas bertekanan tinggi (cylinder) dan tangki curah.",
         fungsi: [
-            "Penyimpanan dan distribusi gas nitrogen untuk purging",
-            "Penyediaan gas industri untuk kebutuhan operasional dan pemeliharaan",
-            "Fasilitas pengelolaan gas bertekanan"
+            "Penyimpanan dan distribusi gas nitrogen (N₂) untuk purging, blanketing, dan inerting",
+            "Penyediaan udara instrumen bertekanan untuk katup pneumatik dan instrumen kontrol",
+            "Pengelolaan gas industri bertekanan tinggi untuk kebutuhan operasional dan pemeliharaan"
         ]
     },
     "b33": {
@@ -395,11 +426,12 @@ export const buildingData = {
         name: "Area Titik Pembuangan (Outfall)",
         zona: "D",
         dimensi: "± 800 m²",
-        description: "Area Titik Pembuangan (Outfall) — titik akhir pembuangan air dari sistem pendingin dan proses pengolahan air limbah ke laut.",
+        shortDesc: "Titik akhir pembuangan air dari sistem pendingin dan WWTP ke laut, dirancang untuk dispersi optimal dengan dampak lingkungan minimal.",
+        description: "Area Titik Pembuangan (Outfall) merupakan struktur infrastruktur di tepi laut yang menjadi titik akhir pembuangan air dari seluruh sistem PLTGU Cilegon — termasuk air pendingin kondenser yang telah digunakan, effluent dari WWTP, dan brine dari unit desalinasi. Outfall dirancang secara khusus dengan sistem diffuser bawah laut yang menyebarkan (mendispersi) air buangan secara merata ke badan air penerima, sehingga perbedaan suhu dan konsentrasi kimia dengan air laut sekitar dapat diminimalkan. Program pemantauan lingkungan berkala dilakukan di sekitar outfall — mengukur suhu, salinitas, kualitas air, dan kesehatan ekosistem laut — untuk memastikan kepatuhan terhadap izin pembuangan dan baku mutu lingkungan.",
         fungsi: [
-            "Titik pembuangan air pendingin ke laut",
-            "Pemantauan suhu dan kualitas air buangan",
-            "Pengenceran dan dispersi air buangan ke lingkungan laut"
+            "Titik pembuangan air pendingin, effluent WWTP, dan brine ke laut melalui diffuser",
+            "Dispersi optimal air buangan untuk meminimalkan dampak suhu dan kimia terhadap laut",
+            "Pemantauan berkala kualitas air dan ekosistem laut di sekitar outfall"
         ]
     },
     "b34": {
@@ -407,11 +439,12 @@ export const buildingData = {
         name: "Gedung Enjinering",
         zona: "D",
         dimensi: "± 180 m²",
-        description: "Gedung Enjinering sebagai pusat kegiatan teknis, perencanaan, dan engineering support.",
+        shortDesc: "Pusat kegiatan teknis dan engineering support yang mengelola perencanaan pemeliharaan, dokumen teknis, dan proyek engineering PLTGU.",
+        description: "Gedung Enjinering merupakan markas tim engineering PLTGU Cilegon yang bertanggung jawab atas seluruh aspek teknis pembangkit. Tim ini mengelola dokumen-dokumen teknis krusial — P&ID (Piping and Instrumentation Diagram), wiring diagram, engineering drawing, datasheet peralatan, manual operasi dan pemeliharaan — serta merencanakan jadwal pemeliharaan preventif, predictive, dan overhaul. Dari gedung ini pula dikoordinasikan proyek-proyek modifikasi dan perbaikan besar (retrofit), analisis kegagalan peralatan (root cause failure analysis), serta evaluasi kinerja unit pembangkit menggunakan data performance test.",
         fungsi: [
-            "Ruang kerja tim engineering dan technical support",
-            "Penyimpanan dokumen teknis, P&ID, dan drawing",
-            "Perencanaan dan koordinasi proyek pemeliharaan"
+            "Pusat pengelolaan dokumen teknis: P&ID, drawing, datasheet, dan manual O&M",
+            "Perencanaan jadwal pemeliharaan preventif, predictive, dan overhaul unit pembangkit",
+            "Koordinasi proyek engineering, analisis kegagalan (RCFA), dan evaluasi kinerja"
         ]
     },
     "b35": {
@@ -419,11 +452,12 @@ export const buildingData = {
         name: "Gedung K3",
         zona: "D",
         dimensi: "± 156 m²",
-        description: "Gedung K3 sebagai pusat kegiatan Keselamatan dan Kesehatan Kerja.",
+        shortDesc: "Gedung pusat administrasi program K3 yang mengelola kebijakan keselamatan, pelatihan, dan dokumentasi K3 seluruh PLTGU.",
+        description: "Gedung K3 merupakan pusat administrasi program Keselamatan dan Kesehatan Kerja (K3) yang mengelola seluruh aspek kebijakan, prosedur, dan dokumentasi K3 PLTGU Cilegon. Di sini disusun Standard Operating Procedure (SOP) keselamatan, Job Safety Analysis (JSA), HIRA (Hazard Identification and Risk Assessment), serta pengelolaan statistik kecelakaan kerja (lost time injury, near miss, dll). Gedung ini juga dilengkapi ruang pelatihan untuk program induksi K3 bagi karyawan baru dan kontraktor, simulasi pertolongan pertama, serta pelatihan penggunaan APAR (Alat Pemadam Api Ringan) dan alat pelindung diri (APD).",
         fungsi: [
-            "Pusat administrasi program K3 PLTGU",
-            "Ruang pelatihan dan simulasi keselamatan",
-            "Penyimpanan dan pengelolaan dokumen K3"
+            "Pusat penyusunan SOP, JSA, dan HIRA untuk seluruh aktivitas PLTGU",
+            "Ruang pelatihan dan simulasi K3: induksi, P3K, penggunaan APAR dan APD",
+            "Pengelolaan statistik keselamatan dan dokumentasi audit K3"
         ]
     },
     "b36": {
@@ -431,11 +465,12 @@ export const buildingData = {
         name: "Area Olahraga",
         zona: "D",
         dimensi: "± 235 m²",
-        description: "Area Olahraga untuk fasilitas kebugaran dan rekreasi karyawan.",
+        shortDesc: "Fasilitas olahraga dan rekreasi karyawan untuk mendukung program kesehatan, kebugaran, dan kebersamaan di lingkungan PLTGU.",
+        description: "Area Olahraga merupakan fasilitas rekreasi dan kebugaran yang disediakan bagi seluruh karyawan PLTGU Cilegon. Area ini mencakup lapangan olahraga serbaguna yang dapat digunakan untuk berbagai aktivitas fisik — mulai dari bola voli, badminton, hingga senam pagi bersama. Keberadaan fasilitas olahraga di lingkungan kerja bukan sekadar pelengkap, melainkan bagian integral dari program kesehatan kerja yang bertujuan menjaga kebugaran fisik dan mental karyawan — terutama bagi mereka yang bekerja dalam shift rotasi 24 jam. Area ini juga sering digunakan untuk kegiatan team building dan acara sosial perusahaan.",
         fungsi: [
-            "Fasilitas olahraga dan rekreasi karyawan",
-            "Program kesehatan dan kebugaran staf",
-            "Kegiatan sosial dan team building"
+            "Fasilitas olahraga serbaguna: voli, badminton, senam, dan aktivitas fisik lainnya",
+            "Program kesehatan dan kebugaran untuk karyawan shift 24 jam",
+            "Sarana kegiatan team building, kompetisi olahraga, dan acara sosial perusahaan"
         ]
     },
     "b37": {
@@ -443,11 +478,12 @@ export const buildingData = {
         name: "Gedung Parkir",
         zona: "D",
         dimensi: "± 311 m²",
-        description: "Gedung Parkir untuk kendaraan karyawan dan tamu PLTGU.",
+        shortDesc: "Area parkir terlindung untuk kendaraan karyawan dan tamu yang dilengkapi sistem keamanan dan pengelolaan akses.",
+        description: "Gedung Parkir menyediakan area parkir yang aman dan terlindung untuk kendaraan pribadi karyawan, kendaraan dinas, serta kendaraan tamu yang berkunjung ke PLTGU Cilegon. Fasilitas ini dilengkapi dengan kamera CCTV, pencahayaan yang memadai, serta sistem pengelolaan akses yang terintegrasi dengan Pos Gate. Kapasitas parkir didesain untuk mengakomodasi jumlah karyawan shift terbesar, termasuk area khusus untuk kendaraan roda dua dan roda empat. Lokasi gedung parkir yang berada di zona D (area penunjang) memastikan kendaraan pribadi tidak perlu memasuki area operasional sensitif.",
         fungsi: [
-            "Area parkir kendaraan karyawan dan tamu",
-            "Pengelolaan akses dan keamanan kendaraan",
-            "Fasilitas penunjang mobilitas di area PLTGU"
+            "Area parkir aman dan terlindung untuk kendaraan karyawan, dinas, dan tamu",
+            "Sistem keamanan terintegrasi: CCTV, pencahayaan, dan akses terkontrol",
+            "Pemisahan zona parkir dari area operasional untuk keamanan fasilitas"
         ]
     },
     "b38": {
@@ -455,12 +491,12 @@ export const buildingData = {
         name: "Area Fire Water Tank",
         zona: "A",
         dimensi: "± 600 m²",
-        shortDesc: "Area penyimpanan cadangan air pemadam kebakaran dan pasokan air darurat PLTGU.",
-        description: "Area Fire Water Tank merupakan fasilitas penyimpanan air berkapasitas besar yang khusus didedikasikan untuk sistem pemadam kebakaran (hydrant & fire fighting system) di seluruh area PLTGU Cilegon guna menjamin keselamatan kerja dan perlindungan aset.",
+        shortDesc: "Tangki cadangan air berkapasitas besar yang khusus didedikasikan untuk sistem pemadam kebakaran di seluruh area PLTGU.",
+        description: "Area Fire Water Tank merupakan fasilitas penyimpanan air berkapasitas besar yang khusus didedikasikan untuk sistem pemadam kebakaran (Fire Fighting System) di seluruh area PLTGU Cilegon. Tangki ini menyimpan volume air yang dihitung berdasarkan skenario kebakaran terburuk — cukup untuk memadamkan kebakaran terbesar yang mungkin terjadi (misalnya kebakaran tangki bahan bakar) selama durasi tertentu sebelum bantuan eksternal tiba. Air di tangki ini dijaga kualitas dan levelnya secara konstan melalui sistem make-up otomatis, dan tidak boleh digunakan untuk keperluan selain pemadam kebakaran. Fire Pump Station memompa air dari tangki ini ke seluruh jaringan hydrant, sprinkler, dan water spray di area PLTGU.",
         fungsi: [
-            "Menyimpan cadangan air khusus untuk sistem pemadam kebakaran (Fire Fighting)",
-            "Menyuplai jaringan pipa hydrant di seluruh area operasional PLTGU",
-            "Menjamin pasokan air darurat saat terjadi insiden atau kebakaran"
+            "Menyimpan cadangan air eksklusif untuk sistem pemadam kebakaran (Fire Fighting)",
+            "Menyuplai jaringan pipa hydrant, sprinkler, dan water spray di seluruh area PLTGU",
+            "Menjamin ketersediaan air darurat dengan kapasitas sesuai skenario kebakaran terburuk"
         ]
     },
     "b39": {
@@ -468,10 +504,12 @@ export const buildingData = {
         name: "Area BSM",
         zona: "A",
         dimensi: "-",
-        shortDesc: "Area BSM.",
-        description: "Area BSM.",
+        shortDesc: "Bangunan Sarana Mekanik — pusat peralatan bantu mekanik yang mendukung operasional turbin, generator, dan siklus uap PLTGU.",
+        description: "Area BSM (Bangunan Sarana Mekanik) merupakan fasilitas yang menampung berbagai peralatan bantu (auxiliary equipment) mekanik yang krusial untuk menjaga operasional turbin gas, steam turbin, dan generator PLTGU Cilegon. Tanpa sistem-sistem pendukung yang dikelola dari BSM ini, unit pembangkit utama tidak dapat beroperasi secara optimal maupun aman. Peralatan yang umumnya dikelola dari BSM meliputi: sistem pelumasan (lube oil system) untuk bearing turbin dan generator, sistem hidrolik untuk aktuator katup kontrol besar, pompa-pompa pendukung (feed water pump, condensate extraction pump), serta kompresor udara instrumen. BSM juga berfungsi sebagai area pemantauan dan pemeliharaan peralatan mekanik pendukung yang terpusat.",
         fungsi: [
-            "Fasilitas dan operasional Area BSM"
+            "Menampung dan mengelola peralatan bantu mekanik: lube oil system, sistem hidrolik, pompa",
+            "Mendukung operasional turbin gas, steam turbin, dan generator secara kontinu",
+            "Pusat pemeliharaan terpusat untuk seluruh auxiliary mechanical equipment PLTGU"
         ]
     },
     "b40": {
@@ -479,10 +517,90 @@ export const buildingData = {
         name: "Laboratory",
         zona: "B",
         dimensi: "-",
-        shortDesc: "Laboratory.",
-        description: "Laboratory.",
+        shortDesc: "Laboratorium analisis kimia dan fisika yang memantau kualitas air, bahan bakar, pelumas, dan emisi untuk menjaga performa PLTGU.",
+        description: "Laboratory PLTGU Cilegon adalah fasilitas pengujian dan analisis ilmiah yang memainkan peran vital dalam menjaga kinerja dan keandalan pembangkit. Tim analis laboratorium secara rutin menguji kualitas air di setiap tahap siklus — air baku, air desalinasi, air demin, air boiler feed, kondensat, hingga effluent WWTP — untuk memastikan parameter seperti pH, konduktivitas, dissolved oxygen, silica, dan hardness berada dalam batas aman. Laboratorium juga menganalisis kualitas bahan bakar gas dan HSD (nilai kalor, kandungan sulfur, densitas), memantau kondisi oli pelumas turbin (analisis tribologi), serta mengukur emisi gas buang (NOx, SOx, CO, partikulat) untuk kepatuhan lingkungan. Hasil analisis laboratorium menjadi dasar pengambilan keputusan operasional — seperti penyesuaian dosis bahan kimia water treatment atau penggantian oli pelumas.",
         fungsi: [
-            "Fasilitas pengujian dan analisis laboratorium PLTGU"
+            "Pengujian rutin kualitas air di seluruh tahap siklus: feed water, kondensat, effluent",
+            "Analisis kualitas bahan bakar (gas & HSD) dan kondisi oli pelumas (tribologi)",
+            "Pemantauan emisi gas buang (NOx, SOx, CO) untuk kepatuhan lingkungan"
+        ]
+    },
+    "b41": {
+        number: "b41",
+        name: "Water Injection Pump",
+        zona: "B",
+        dimensi: "-",
+        shortDesc: "Pompa bertekanan tinggi yang menginjeksikan air demineralisasi ke combustor turbin gas untuk menekan emisi NOx dan meningkatkan daya.",
+        description: "Water Injection Pump adalah pompa bertekanan tinggi yang merupakan bagian integral dari sistem pengendalian emisi nitrogen oksida (NOx) pada turbin gas PLTGU Cilegon. Pompa ini menginjeksikan air demineralisasi berkualitas tinggi langsung ke ruang bakar (combustor) turbin gas saat beroperasi. Injeksi air menurunkan suhu puncak nyala api (peak flame temperature) di dalam combustor — yang merupakan penyebab utama pembentukan thermal NOx. Selain mengurangi emisi, injeksi air juga meningkatkan massa aliran gas melalui turbin, sehingga menambah daya output pembangkit (power augmentation). Sistem ini dilengkapi flow control valve presisi tinggi, filter air ultra-halus untuk melindungi nozzle injeksi, serta interlocking otomatis dengan sistem kontrol turbin untuk menjaga rasio air-bahan bakar tetap aman.",
+        fungsi: [
+            "Injeksi air demineralisasi ke combustor turbin gas untuk menekan emisi NOx",
+            "Power augmentation — meningkatkan daya output turbin melalui peningkatan massa aliran",
+            "Kontrol presisi rasio air-bahan bakar dengan flow control valve dan interlock otomatis"
+        ]
+    },
+    "b42": {
+        number: "b42",
+        name: "Fuel Oil Unloading Pump Area",
+        zona: "B",
+        dimensi: "-",
+        shortDesc: "Area pompa pembongkaran bahan bakar minyak (HSD) dari truk tangki ke tangki penyimpanan PLTGU.",
+        description: "Fuel Oil Unloading Pump Area merupakan fasilitas yang menangani proses pembongkaran (unloading) bahan bakar minyak — biasanya High-Speed Diesel (HSD) — dari truk tangki atau kapal tanker ke tangki penyimpanan (Distillate Oil Tank dan Fuel Oil Receiving Tank) PLTGU Cilegon. Area ini dilengkapi dengan pompa transfer berkapasitas besar, flexible hose connection untuk menghubungkan truk tangki, strainer/filter untuk menyaring kontaminan, serta flow meter untuk mengukur volume penerimaan secara akurat. Proses unloading dilakukan dengan prosedur keselamatan ketat — termasuk grounding/bonding kendaraan untuk mencegah percikan api statis, penutupan area (barricading), dan penyiagaan fire extinguisher portabel serta foam system.",
+        fungsi: [
+            "Pembongkaran (unloading) HSD dari truk tangki ke tangki penyimpanan PLTGU",
+            "Pengukuran volume penerimaan bahan bakar secara akurat menggunakan flow meter",
+            "Prosedur keselamatan ketat: grounding, barricading, dan penyiagaan fire suppression"
+        ]
+    },
+    "b43": {
+        number: "b43",
+        name: "Fuel Oil Receiving Tank",
+        zona: "B",
+        dimensi: "-",
+        shortDesc: "Tangki penerima awal bahan bakar HSD yang berfungsi sebagai buffer sebelum disalurkan ke tangki utama atau langsung ke sistem bahan bakar turbin.",
+        description: "Fuel Oil Receiving Tank adalah tangki penerima awal (buffer tank) yang menampung bahan bakar High-Speed Diesel (HSD) setelah dibongkar dari truk tangki melalui Fuel Oil Unloading Pump. Tangki ini berfungsi sebagai perantara sebelum HSD disalurkan ke tangki penyimpanan utama (Distillate Oil Tank) atau langsung ke HSD Treatment Plant untuk proses pemurnian lebih lanjut. Selama berada di Receiving Tank, bahan bakar dibiarkan 'settle' (mengendap) agar air dan partikel berat terpisah secara gravitasi ke dasar tangki dan dapat di-drain. Tangki dilengkapi level indicator, temperature gauge, dan high-level alarm untuk mencegah overflow, serta dikelilingi bunding (tanggul penahan tumpahan) sebagai secondary containment.",
+        fungsi: [
+            "Penampungan sementara HSD setelah pembongkaran sebelum disalurkan ke tangki utama",
+            "Proses settling (pengendapan) untuk memisahkan air dan partikel dari bahan bakar",
+            "Dilengkapi bunding (secondary containment), level indicator, dan high-level alarm"
+        ]
+    },
+    "b44": {
+        number: "b44",
+        name: "HSD Treatment Plant",
+        zona: "B",
+        dimensi: "-",
+        shortDesc: "Fasilitas pemurnian bahan bakar HSD melalui filtrasi, separasi, dan pengeringan agar memenuhi spesifikasi turbin gas.",
+        description: "HSD Treatment Plant adalah fasilitas pemurnian bahan bakar High-Speed Diesel (HSD) yang memastikan kualitas bahan bakar memenuhi spesifikasi ketat turbin gas sebelum digunakan. Bahan bakar HSD yang diterima dari pemasok (Pertamina) dapat mengandung kontaminan seperti air, partikel padat, lumpur, dan senyawa sulfur berlebih. Treatment Plant memproses HSD melalui beberapa tahap: centrifugal separator (untuk memisahkan air dan partikel halus berdasarkan perbedaan densitas), filter bertingkat (coarse filter dan fine filter), serta heater untuk menurunkan viskositas agar bahan bakar mudah dipompa dan diatomisasi di combustor. Kualitas HSD setelah treatment dipantau melalui parameter seperti water content, viscosity, density, flash point, dan sulfur content. Bahan bakar yang telah memenuhi spesifikasi kemudian disimpan di Distillate Oil Tank, siap digunakan saat turbin gas beroperasi dengan bahan bakar cair.",
+        fungsi: [
+            "Pemurnian HSD melalui centrifugal separator, filtrasi bertingkat, dan pemanasan",
+            "Penghilangan kontaminan: air, partikel padat, lumpur, dan senyawa sulfur berlebih",
+            "Pemantauan kualitas bahan bakar: water content, viscosity, flash point, dan sulfur content"
+        ]
+    },
+    "b45": {
+        number: "b45",
+        name: "Foam Spare Bottle Space",
+        zona: "B",
+        dimensi: "-",
+        shortDesc: "Area penyimpanan tabung konsentrat foam cadangan untuk sistem pemadam kebakaran khusus area tangki bahan bakar.",
+        description: "Foam Spare Bottle Space adalah area penyimpanan khusus yang menampung tabung-tabung konsentrat foam (busa pemadam) cadangan untuk sistem fire suppression di area tangki bahan bakar PLTGU Cilegon. Foam pemadam kebakaran berbeda dari air biasa — foam membentuk selimut busa yang menutupi permukaan cairan mudah terbakar (seperti HSD), menekan uap yang mudah terbakar, memutus pasokan oksigen, dan mendinginkan permukaan bahan bakar secara bersamaan. Jenis foam yang disimpan biasanya berupa AFFF (Aqueous Film-Forming Foam) atau AR-AFFF yang efektif untuk kebakaran kelas B (cairan mudah terbakar). Tabung cadangan ini sangat penting karena dalam skenario kebakaran besar di tangki bahan bakar, konsumsi foam concentrate sangat tinggi dan stok utama di bladder tank sistem bisa habis — sehingga diperlukan refill cepat dari cadangan.",
+        fungsi: [
+            "Penyimpanan tabung konsentrat foam cadangan (AFFF/AR-AFFF) untuk proteksi area bahan bakar",
+            "Memastikan ketersediaan foam untuk refill cepat saat skenario kebakaran besar di tangki",
+            "Bagian integral dari sistem Fire Fighting sesuai standar NFPA untuk area bahan bakar"
+        ]
+    },
+    "b46": {
+        number: "b46",
+        name: "Oil Separator For Distillate Oil Tank Yard",
+        zona: "B",
+        dimensi: "-",
+        shortDesc: "Fasilitas pemisah minyak-air di area tangki bahan bakar yang mencegah kontaminasi minyak ke saluran air dan lingkungan.",
+        description: "Oil Separator For Distillate Oil Tank Yard adalah fasilitas pengolahan lingkungan yang memisahkan minyak dari air di area yard (halaman) tangki penyimpanan bahan bakar (Distillate Oil Tank). Di sekitar tangki bahan bakar, air hujan yang turun ke area bunding (tanggul penahan tumpahan) dapat terkontaminasi oleh tumpahan kecil minyak, kebocoran seal, atau residu bahan bakar. Air terkontaminasi ini tidak boleh langsung dibuang ke saluran drainase umum karena akan mencemari lingkungan. Oil separator bekerja berdasarkan prinsip perbedaan densitas — minyak yang lebih ringan mengapung di permukaan dan dipisahkan melalui skimmer atau weir plate, sementara air bersih dialirkan keluar melalui outlet bawah menuju WWTP untuk pengolahan lebih lanjut. Fasilitas ini merupakan persyaratan wajib dalam AMDAL dan regulasi lingkungan untuk area penyimpanan bahan bakar.",
+        fungsi: [
+            "Separasi minyak dari air hujan dan drainase di area bunding tangki bahan bakar",
+            "Pencegahan kontaminasi minyak ke saluran drainase umum dan lingkungan sekitar",
+            "Kepatuhan terhadap persyaratan AMDAL dan regulasi lingkungan untuk area bahan bakar"
         ]
     }
 };
