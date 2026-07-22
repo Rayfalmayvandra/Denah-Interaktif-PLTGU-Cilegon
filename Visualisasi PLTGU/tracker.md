@@ -87,7 +87,7 @@ docker build -t visualisasi-pltgu:latest .
 docker run -d \
   --name denah-pltgu-container \
   --restart always \
-  -p 80:80 \
+  -p 3004:80 \
   visualisasi-pltgu:latest
 ```
 

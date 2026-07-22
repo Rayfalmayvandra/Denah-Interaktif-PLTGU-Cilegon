@@ -7,7 +7,7 @@ services:
     container_name: denah-pltgu-container
     restart: always
     ports:
-      - "80:80"       # Ubah ke "8080:80" atau port lain jika port 80 sudah terpakai di server
+      - "3004:80"       # Port 3004 diakses dari luar, diteruskan ke port 80 Nginx di dalam container
     environment:
       - TZ=Asia/Jakarta
     healthcheck:
