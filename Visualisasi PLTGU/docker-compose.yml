@@ -7,7 +7,7 @@ services:
     container_name: denah-pltgu-container
     restart: always
     ports:
-      - "80:80"       # Ubah ke "8080:80" atau port lain jika port 80 sudah terpakai di server
+      - "3004:3000"       
     environment:
       - TZ=Asia/Jakarta
     healthcheck:

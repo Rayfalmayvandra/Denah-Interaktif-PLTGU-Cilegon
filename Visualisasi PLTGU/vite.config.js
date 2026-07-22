@@ -3,7 +3,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   server: {
-    port: 3004,
+    port: 3000,
     host: true,
   },
   // Semua asset statis (gambar, SVG, PNG) ada di folder public/
